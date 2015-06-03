@@ -1,7 +1,7 @@
 # General Jekyll Config
 markdown: kramdown
 pygments: true
-url: http://zhe-he.github.io
+url: http://www.hezhe.pw
 lsi: false
 exclude: [LICENSE, CNAME, README.md, .gitignore]
 
