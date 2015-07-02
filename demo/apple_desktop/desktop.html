@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>仿苹果桌面拖拽效果 --zhe-he</title>
+<style>
+*{margin:0; padding:0;}
+li{list-style:none;}
+body{background:url("img/bg.jpg") center top fixed;} 
+.box{position: relative; width:224px; height:437px; background:url("img/phone.png") left top no-repeat; margin:50px auto;}
+#ul1{width:194px; padding:70px 20px}
+#ul1 li{width:30px; height:30px; margin:10px 8px; float:left; text-align:center; line-height:100px; color:red;}
+
+h1{background: #000; font-size: 16px; line-height: 40px; text-align: center; color: #fff;}
+p{text-align:center; padding:10px 0; color:blue;}
+p a{color:blue; text-decoration:none;}
+p a:hover{text-decoration:underline;}
+</style>
+<script src="move.js"></script>
+<script>
+window.onload=function(){
+	var oUl=document.getElementById('ul1');
+	for(var i=0; i<16; i++){
+		var oLi=document.createElement('li');
+		oLi.innerHTML='<img width=30 src="img/'+(i+1)+'.png">'
+		oUl.appendChild(oLi);
+	}
+	var aLi=oUl.children;	
+	var zIndex=2;
+	var aPos=[];
+	for(var i=0; i<aLi.length; i++){
+		aPos[i]={left:aLi[i].offsetLeft, top:aLi[i].offsetTop};
+		aLi[i].style.left=aPos[i].left+'px';
+		aLi[i].style.top=aPos[i].top+'px';
+	}	
+	for(var i=0; i<aLi.length; i++){
+		aLi[i].style.position='absolute';
+		aLi[i].style.margin=0;
+	}
+	for(var i=0; i<aLi.length; i++){
+		drag(aLi[i]);
+		aLi[i].index=i;
+	}
+	function drag(obj){
+		obj.onmousedown=function(ev){
+			var oEvent=ev || event;
+			var disX=oEvent.clientX-obj.offsetLeft;
+			var disY=oEvent.clientY-obj.offsetTop;	
+			obj.style.zIndex=zIndex++;		
+			document.onmousemove=function(ev){
+				var oEvent=ev || event;
+				obj.style.left=oEvent.clientX-disX+'px';
+				obj.style.top=oEvent.clientY-disY+'px';	
+				var oNear=findNearest(obj);
+				if(oNear && obj!=oNear){
+					var n=obj.index;
+					var m=oNear.index;		
+					if(n<m){
+						for(var i=0; i<aLi.length; i++){
+							if(aLi[i].index>=n+1 && aLi[i].index<=m){
+								aLi[i].index--;
+								startMove(aLi[i],aPos[aLi[i].index]);	
+							}
+						}
+						obj.index=m;	
+					}else{ 
+						for(var i=0; i<aLi.length; i++){
+							if(aLi[i].index>=m && aLi[i].index<=n-1){
+								aLi[i].index++;
+								startMove(aLi[i],aPos[aLi[i].index]);	
+							}
+						}
+						obj.index=m;	
+					}
+				}	
+			}
+			document.onmouseup=function(){
+				document.onmousemove=null;
+				document.onmouseup=null;	
+				obj.releaseCapture && obj.releaseCapture();
+				startMove(obj,aPos[obj.index]);
+			}
+			obj.setCapture && obj.setCapture();
+			return false;	
+		}	
+	}
+	function findNearest(obj){
+		var iMin=new Date().getTime();
+		var iMinIndex=-1;	
+		for(var i=0; i<aLi.length; i++){
+			if(collTest(obj,aLi[i])){
+				var dis=getDis(obj,aLi[i]);
+				if(dis<iMin){
+					iMin=dis;
+					iMinIndex=i;	
+				}
+			}
+		}
+		if(iMinIndex==-1){
+			return null;	
+		}else{
+			return aLi[iMinIndex];	
+		}
+	}	
+	function collTest(obj,obj2){
+		var l1=obj.offsetLeft;
+		var r1=obj.offsetLeft+obj.offsetWidth;
+		var t1=obj.offsetTop;
+		var b1=obj.offsetTop+obj.offsetHeight;	
+		var l2=aPos[obj2.index].left;
+		var r2=aPos[obj2.index].left+obj2.offsetWidth;
+		var t2=aPos[obj2.index].top;
+		var b2=aPos[obj2.index].top+obj2.offsetHeight;	
+		if(r1<l2 || l1>r2 || b1<t2 || t1>b2){
+			return false;
+		}else{
+			return true;
+		}
+	}
+	function getDis(obj,obj2){
+		var a=obj.offsetLeft-obj2.offsetLeft;
+		var b=obj.offsetTop-obj2.offsetTop;
+		return Math.sqrt(a*a+b*b);
+	}
+}
+</script>
+</head>
+
+<body>
+<h1>仿苹果手机桌面拖拽效果，使用了碰撞检测，运动框架，拖拽等完成。</h1>
+<div class="box">
+    <ul id="ul1">
+    </ul>
+</div>
+<p>by <a href="https://github.com/zhe-he">zhe-he</a> <a href="http://www.hezhe.pw/">www.hezhe.pw</a></p>
+</body>
+</html>

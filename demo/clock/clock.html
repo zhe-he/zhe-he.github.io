@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS3时钟 --zhe-he</title>
+<style>
+*{padding:0; margin:0;}
+body{background:url("img/bg.jpg") center top fixed;} 
+
+#div1 {width:300px; height:300px; border:10px solid #F06; background:#FDF8E4; border-radius:50%; margin:50px auto; position:relative;}
+#div1 div.hour {width:8px; height:70px; background:black; position:absolute; left:50%; margin-left:-4px; top:80px; -webkit-transform-origin:bottom center;}
+#div1 div.min {width:6px; height:100px; background:black; position:absolute; left:50%; margin-left:-3px; top:50px; -webkit-transform-origin:bottom center;}
+#div1 div.sec {width:2px; height:130px; background:red; position:absolute; left:50%; margin-left:-1px; top:20px; -webkit-transform-origin:bottom center;}
+
+#div1 .scaler {width:2px; height:10px; background:black; position:absolute; left:50%; margin-left:-1px; -webkit-transform-origin:center 150px;}
+#div1 .big_scaler {width:4px; height:15px; background:black; position:absolute; left:50%; margin-left:-2px;-webkit-transform-origin:center 150px;}
+
+#div1 .big_scaler em {width:100px; position:absolute; left:50%; margin-left:-50px; top:18px; text-align:center; font-style:normal;}
+#div1 .gap {width:20px; height:20px; background:#333; position:absolute; left:50%; top:50%; margin-left:-10px; margin-top:-10px; border-radius:50%;}
+
+h1{background: #000; font-size: 16px; line-height: 40px; text-align: center; color: #fff;}
+p{text-align:center; padding:10px 0; color:#F0F;}
+p a{color:#F0F; text-decoration:none;}
+p a:hover{text-decoration:underline;}
+</style>
+<script>
+window.onload=function(){
+	var oDiv=document.getElementById('div1');
+	var oHour=document.querySelector('#div1 .hour');
+	var oMin=document.querySelector('#div1 .min');
+	var oSec=document.querySelector('#div1 .sec');
+	function tick(){
+		var oDate=new Date();
+		oHour.style.WebkitTransform='rotate('+(oDate.getHours()+oDate.getMinutes()/60)*30+'deg)';
+		oMin.style.WebkitTransform='rotate('+(oDate.getMinutes()+oDate.getSeconds()/60)*6+'deg)';
+		oSec.style.WebkitTransform='rotate('+oDate.getSeconds()*6+'deg)';
+	}
+	setInterval(tick, 1000);
+	tick();
+	for(var i=0;i<60;i++){
+		var oSpan=document.createElement('span');
+		if(i%5){
+			oSpan.className='scaler';
+		}else{
+			oSpan.className='big_scaler';
+			if(i==0){
+				oSpan.innerHTML='<em>'+12+'</em>';
+			}else{
+				oSpan.innerHTML='<em>'+i/5+'<\/em>';
+			}
+			oSpan.children[0].style.WebkitTransform='rotate('+-i*6+'deg)';
+		}
+		oDiv.appendChild(oSpan);
+		oSpan.style.WebkitTransform='rotate('+i*6+'deg)';
+	}
+};
+</script>
+</head>
+
+<body>
+<h1>该时钟运用CSS3制作</h1>
+<div id="div1">
+	<div class="hour"></div>
+	<div class="min"></div>
+	<div class="sec"></div>
+    <span class="gap"></span>
+</div>
+
+<p>by <a href="https://github.com/zhe-he">zhe-he</a> <a href="http://www.hezhe.pw/">www.hezhe.pw</a></p>
+
+</body>
+</html>
