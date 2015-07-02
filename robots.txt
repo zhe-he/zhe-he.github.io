@@ -1,5 +1,0 @@
-Sitemap: http://hezhe.github.io/sitemap.xml
-
-User-agent: *
-Disallow: /assets/images/
-Disallow: /resume/
