@@ -14,6 +14,20 @@ h1{font-size: 70px; font-weight: normal;}
 .bar p{text-align:center; margin-top:30px; color: #000;}
 
 /*导航*/
+#top{position: fixed; top: 0; left: 0; 
+	-moz-transition: width .7s linear; 
+	-webkit-transition: width .7s linear; 
+	-o-transition: width .7s linear; 
+	transition: width .7s linear;
+	width: 0%;
+	height: 6px;
+	z-index: 1000;
+	border-radius: 3px;
+	background:-o-linear-gradient(left,#f00,#ff0 200px,#0f0 400px,#0ff 600px,#00f 800px,#f00);
+	background:-webkit-linear-gradient(left,#f00,#ff0 200px,#0f0 400px,#0ff 600px,#00f 800px,#f00);
+	background:-moz-linear-gradient(left,#f00,#ff0 200px,#0f0 400px,#0ff 600px,#00f 800px,#f00);
+	background:linear-gradient(left,#f00,#ff0 200px,#0f0 400px,#0ff 600px,#00f 800px,#f00);
+}
 .nav_box{width:20px; position:fixed; z-index:100; right:10px; top:50%; margin-top:-100px;}
 .nav_box ul li{width:20px; height:20px; background:#eee; margin-bottom:10px; border-radius:50%; cursor:pointer;}
 .nav_box ul li span{position:absolute; width:100px; height:20px; right:25px; color:#FFF; text-align:right; font-family:"微软雅黑"; font-size:14px; line-height:20px; opacity:0; filter:alpha(opacity:0);}

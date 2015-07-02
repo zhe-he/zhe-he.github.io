@@ -27,6 +27,9 @@ myWeb.fn.ready(function (){
 			
 		};
 		
+		//顶部彩色条
+		myWeb.fn.getById('top').style.width = 100*nowIndex/(aScreen.length-1) + '%';
+
 
 		var time = 700;
 		var n = 0;
