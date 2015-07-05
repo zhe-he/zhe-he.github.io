@@ -92,7 +92,7 @@ myWeb.fn.ready(function (){
 			var oSpan = myWeb.fn.getByTagName(oBox,'span')[0];
 			var oP = myWeb.fn.getByTagName(oBox,'p')[0];
 			var timer = null;	//加载时间过长，十秒必打开
-			var imgArr = ["box.png","demo.png","dot1.png","email.png","face.png","face2.png","find.png","more.png","qq.png","skill.jpg","skill.png","tel.png","apple.jpg","block.jpg","clock.jpg","desktop.jpg","magnifier.jpg","photo.jpg","tab.jpg","waterfall.jpg"]; 	//需要加载的图片
+			var imgArr = ["box.png","demo.png","dot1.png","email.png","face.png","face2.png","find.png","more.png","qq.png","skill.jpg","skill.png","tel.png","apple.jpg","block.jpg","clock.jpg","desktop.jpg","magnifier.jpg","photo.jpg","tab.jpg","waterfall.jpg","t1.jpg","t2.jpg","t3.jpg","t4.jpg","t5.jpg","t6.jpg","t7.jpg","t8.jpg","t9.jpg","t10.jpg","t11.jpg"]; 	//需要加载的图片
 			var iNow = 0;
 			var count = imgArr.length; 			//100/length 有余数，仅为计算
 
