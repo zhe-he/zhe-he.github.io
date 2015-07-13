@@ -244,5 +244,5 @@ myWeb.fn.ready(function (){
 		}
 	};
 
-	window.a = new TypingGame();
+	window.TypingGame = TypingGame;
 });
