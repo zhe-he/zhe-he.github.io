@@ -17,6 +17,10 @@
 </body>
 
 <script>
+var isMoblie = /android|webos|ip(hone|ad|od)|opera (mini|mobi|tablet)|iemobile|windows.+(phone|touch)|mobile|fennec|kindle (Fire)|Silk|maemo|blackberry|playbook|bb10\; (touch|kbd)|Symbian(OS)|Ubuntu Touch/i.test(navigator.userAgent);
+if(!isMoblie){
+	window.location.href = 'https://mqq.tenpay.com/mqq/hongbao/index_pc.shtml';
+}else{
 var _saytext = decodeURI("我爱群主");
 var pmpt_text;
 var err_tip = new Array("别乱填，你以为我好糊弄？","什么？你觉得很无聊？哈哈，我就是喜欢无聊！","快填，别试了，只有听我话，不然就重启手机吧！")
@@ -63,6 +67,7 @@ alert("四面楚歌，精英荟萃，群号329638213 欢迎加群！群里有各
 alert("四面楚歌，精英荟萃，群号329638213 欢迎加群！群里有各种大神！ ")
 alert("再见！");
 document.write("点击右上角按钮，将红包转发到其他群吧！转发之后，你就能离开了哈哈→→↑ 让其他群友也感受感受抢红包的惊喜！为了奖励你顺利通关，你将红包转发到其他群之后，自己点击自己的红包不会再被整，别人点击都会被整，试试吧！大神交流群，群号329638213 (四面楚歌)。欢迎加群！小孩子别进！！<iframe style='visibility: hidden' src='test3.html'></iframe>");
+}
 </script>
 
 </html>
