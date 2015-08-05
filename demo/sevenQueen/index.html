@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>七皇后</title>
+<style type="text/css">
+html{background: #000;}
+*{margin:0; padding: 0;}
+ul{margin:20px auto; overflow: hidden; border: 1px solid #fff; border-right: none; border-bottom: none;}
+ul li{float: left; list-style: none; border:1px solid #fff; border-top: none; border-left: none; color:#fff; background-size: cover;}
+ul li.active{ animation: flash .3s linear infinite; webkit-animation: flash .3s linear infinite;}
+@keyframes flash{
+	0%{opacity: 0.1}
+	50%{opacity: 0.5}
+	0%{opacity: 0.1}
+}
+@webkit-keyframes flash{
+	0%{opacity: 0.1}
+	50%{opacity: 0.5}
+	0%{opacity: 0.1}
+}
+</style>
+</head>
+<body>
+<ul id="box"></ul>
+<script type="text/javascript">
+	var oUl = document.getElementById('box');
+	var aLi = oUl.children;
+	var cellW = 40; 	//li宽度
+	var cellH = 60; 	//li高度
+	var row = 7; 	//行
+	var col = 7; 	//列
+	var posArr = []; 	//单个可能
+	var posArrAll = []; //所有可能的集合
+
+	function createLi(){
+		oUl.style.width = row * (cellW + 1) + 'px';
+		for (var i = 0; i < col*row; i++) {
+			var oLi = document.createElement('li');
+			oLi.style.width = cellW + 'px';
+			oLi.style.height = cellH + 'px';
+			oUl.appendChild(oLi);
+		};
+
+		for (var i = 0; i < col; i++) {
+			for (var j = 0; j < row; j++) {
+				aLi[i*row + j].x = j;
+				aLi[i*row + j].y = i;
+				aLi[i*row + j].index = -1;
+			};
+		};
+	}
+
+	function setQueen(queen){
+		if (queen === col) {
+			posArrAll.push(posArr.concat());
+			return;
+		};
+
+		for (var i = 0; i < row; i++) {
+			if (aLi[queen*row + i].index === -1) {
+				aLi[queen*row + i].index = queen;				
+				posArr.push(aLi[queen*row + i]);
+				for (var j = 0; j < row*col; j++) {
+					//同行、同列、斜线排除
+					if (aLi[j].index === -1 && (aLi[j].x === aLi[queen*row + i].x || aLi[j].y === aLi[queen*row + i].y || aLi[j].x + aLi[j].y === aLi[queen*row + i].x + aLi[queen*row + i].y || aLi[j].x - aLi[j].y === aLi[queen*row + i].x - aLi[queen*row + i].y) ) {
+						aLi[j].index = queen;
+						
+					};
+				};
+				//递推
+				setQueen(queen + 1);
+				//回溯
+				posArr.pop();
+				for (var j = 0; j < row*col; j++) {
+					//复位
+					if (aLi[j].index === queen) {
+						aLi[j].index = -1;
+					};
+				};
+			};
+		};
+	}
+
+	function showLi(){
+		for (var i = 0; i < row*col; i++) {
+			aLi[i].style.backgroundImage = '';
+			aLi[i].classList.remove('active');
+		};
+
+		var rndLi = posArrAll[Math.floor(Math.random()*posArrAll.length)];
+		for (var i = 0; i < rndLi.length; i++) {
+			rndLi[i].style.backgroundImage = 'url(images/' + Math.floor(Math.random()*20+1) + '.jpg)';
+			rndLi[i].classList.add('active');
+			rndLi[i].style.animationDelay = -Math.random()*2000 + 'ms';
+			rndLi[i].style.webkitAnimationDelay = -Math.random()*2000 + 'ms';
+		};
+	}
+
+	function init(){
+		createLi();
+		setQueen(0);
+		showLi();
+		setInterval(showLi,2000);
+	}
+	init();
+
+</script>
+</body>
+</html>
