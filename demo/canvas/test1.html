@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>放大镜 --zhe-he</title>
+</head>
+<body>
+<canvas id="myCanvas" style="margin: 40px auto; display:block; border:1px solid #000;"></canvas>
+<input id="ctrn" type="range" style="display:block; width:800px; margin: 0 auto" max="3.2" value="1.0" min="0.5" step="0.01" />
+<canvas id="aside" style="display:none;"></canvas>
+<script type="text/javascript">
+(function (){
+var oCanvas = document.getElementById('myCanvas');
+var ctx = oCanvas.getContext('2d');
+var oCtrn = document.getElementById('ctrn');
+var oAside = document.getElementById('aside');
+
+
+oCanvas.width = 800;
+oCanvas.height = 500;
+oAside.width = 200;
+oAside.height = 50;
+
+var oImg = new Image();
+oImg.src = 'images/1.jpg';
+oImg.onload = function (){
+	this.onload = null;
+	init();
+}
+
+function addMark(){
+	var ctx2 = oAside.getContext('2d');
+	ctx2.fillStyle = 'yellow';
+	ctx2.font = '20px/1.5 宋体';
+	ctx2.fillText('http://www.hezhe.pw/',0,30);
+}
+
+function scaleImg(scale){
+	var imgWidth = scale*oCanvas.width;
+	var imgHeight = scale*oCanvas.height;
+
+	var disX = (oCanvas.width - imgWidth)/2;
+	var disY = (oCanvas.height - imgHeight)/2;
+	ctx.clearRect(0,0,oCanvas.width,oCanvas.height);
+	ctx.drawImage(oImg,disX,disY,imgWidth,imgHeight);
+}
+
+function fnCtrnMove(){
+	scaleImg(oCtrn.value);
+	ctx.drawImage(oAside,oCanvas.width-oAside.width,oCanvas.height-oAside.height);
+}
+
+function init(){
+	var isClickDown = false;
+	var pos = {x:0,y:0,w:100}
+
+	addMark();
+	fnCtrnMove();
+	oCtrn.onmousemove = fnCtrnMove;
+	oCanvas.onclick = function (e){
+		if (!isClickDown) {
+			isClickDown = true;
+			this.style.cursor = 'move';
+			_drawBigImg(e);
+			
+		}else{
+			isClickDown = false;
+			this.style.cursor = 'auto';
+			fnCtrnMove();
+		};
+	}
+	oCanvas.onmousemove = function (e){
+		if (isClickDown) {
+			fnCtrnMove();
+			_drawBigImg(e);
+		};
+	}
+	oCanvas.onmouseout = function (e){
+		fnCtrnMove();
+	}
+	function _drawBigImg(e){
+		pos.x = e.clientX - oCanvas.getBoundingClientRect().left;
+		pos.y = e.clientY - oCanvas.getBoundingClientRect().top;
+		
+		ctx.save();
+		ctx.beginPath();
+		ctx.arc(pos.x,pos.y,pos.w,0,Math.PI*2);
+		ctx.strokeStyle = 'yellow';
+		ctx.lineWidth = 5;
+		ctx.stroke();
+		ctx.clip();
+		ctx.drawImage(oImg,
+			oImg.width*(pos.x+oCanvas.width*(oCtrn.value-1)/2)/(oCanvas.width*oCtrn.value)-pos.w,
+			oImg.height*(pos.y+oCanvas.height*(oCtrn.value-1)/2)/(oCanvas.height*oCtrn.value)-pos.w,pos.w*2,pos.w*2,
+			pos.x-pos.w,pos.y-pos.w,pos.w*2,pos.w*2);
+		ctx.restore();
+	}
+}
+})();
+</script>
+</body>
+</html>
