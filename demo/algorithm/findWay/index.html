@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>寻路</title>
+<style type="text/css">
+*{margin: 0; padding: 0;}
+#findWay{margin: 50px auto 30px; border: 1px solid #000; border-right: none; border-bottom: none; overflow: hidden;}
+li{list-style: none; float: left; border: 1px solid #000; border-top: none; border-left: none;}
+
+.coral{background-color: lightcoral;}
+.blue{background-color: lightblue;}
+.green{background-color: lightgreen;}
+.red{background-color: red;}
+.btn{position: absolute; left: 50%; font-size: 20px; margin-left: -40px;}
+</style>
+</head>
+<body>
+<ul id="findWay"></ul>
+<button class="btn">开始寻路</button>
+<script type="text/javascript">
+var sizeGrad = 20;
+var map = [
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+];
+var oUl = document.getElementById('findWay');
+var oBtn = document.querySelector('.btn');
+var aLi = oUl.children;
+var beginLi = oUl.getElementsByClassName('coral');
+var endLi = oUl.getElementsByClassName('green');
+var openArr = [];
+var closeArr = [];
+var iNow = 0;
+function createLi(){
+	oUl.style.width = Math.sqrt(map.length) * (sizeGrad + 1) + 'px';
+	for (var i = 0; i < map.length; i++) {
+		var oLi = document.createElement('li');
+		oLi.style.width = sizeGrad + 'px';
+		oLi.style.height = sizeGrad + 'px';
+		oUl.appendChild(oLi);
+		
+	};
+	setFilter();
+}
+function setFilter(){
+	for (var i = 0; i < aLi.length; i++) {
+		if (map[i] === 1) {
+			aLi[i].className = 'coral';
+			openArr.push(aLi[i]);
+		}else if(map[i] === 2){
+			aLi[i].className = 'green';
+		}else if(map[i] === 3){
+			aLi[i].className = 'blue';
+			closeArr.push(aLi[i]);
+		}
+	};
+}
+
+function openFn(){
+	var oLi = openArr.shift();
+	if (oLi === endLi[0]) {
+		showLine();
+		return;
+	};
+	closeFn(oLi);
+	findLi(oLi);
+	openArr.sort(function (li1,li2){
+		return li1.distance - li2.distance
+	});
+	openFn();
+}
+function closeFn(oLi){
+	closeArr.push(oLi);
+}
+function findLi(oLi){
+	var result = [];
+	for (var i = 0; i < aLi.length; i++) {
+		if (filter(aLi[i])) {
+			result.push(aLi[i])
+		};
+	};
+
+	for (var i = 0; i < result.length; i++) {
+		if (Math.abs(oLi.offsetLeft - result[i].offsetLeft) <= sizeGrad + 1 && Math.abs(oLi.offsetTop - result[i].offsetTop) <= sizeGrad + 1) {
+			result[i].distance = f(result[i]);
+			result[i].parent = oLi;
+			openArr.push(result[i]);
+		};
+	};
+
+	function filter(curLi){
+		for (var i = 0; i < openArr.length; i++) {
+			if(curLi === openArr[i]){
+				return false;
+			}
+		};
+		for (var i = 0; i < closeArr.length; i++) {
+			if(curLi === closeArr[i]){
+				return false;
+			}
+		};
+		return true;
+	}
+}
+
+function showLine(){
+	var result = [];
+	var lastLi = closeArr.pop();
+	findParent(lastLi);
+	function findParent(lastLi){
+		result.unshift(lastLi);
+		if (lastLi.parent === beginLi[0]) {
+			return;
+		};
+		findParent(lastLi.parent);
+	}
+
+	var timer = setInterval(function (){
+		result[iNow].className = 'red';
+		iNow++;
+		if(iNow === result.length){
+			iNow = 0;
+			openArr = [];
+			closeArr = [];
+			setFilter();
+			clearInterval(timer);
+		}
+	}, 500);
+}
+
+function clearClass(){
+	for (var i = 0; i < aLi.length; i++) {
+		aLi[i].classList.remove('red');
+	};
+}
+
+//估价函数
+function f(nodeLi){
+	return g(nodeLi) + h(nodeLi);
+}
+function g(nodeLi){
+	var x = beginLi[0].offsetLeft - nodeLi.offsetLeft;
+	var y = beginLi[0].offsetTop - nodeLi.offsetTop;
+	return Math.sqrt(x*x+y*y);
+}
+function h(nodeLi){
+	var x = endLi[0].offsetLeft - nodeLi.offsetLeft;
+	var y = endLi[0].offsetTop - nodeLi.offsetTop;
+	return Math.sqrt(x*x+y*y);
+}
+
+init();
+function init(){
+	createLi();
+	oBtn.addEventListener('click', function (){
+		if (iNow === 0) {
+			clearClass();
+			openFn();
+		};
+	}, false);
+}
+
+</script>
+</body>
+</html>

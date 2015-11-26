@@ -1,0 +1,38 @@
+html,body{
+	background:#000;
+	color: #fff;
+}
+.main{position: relative; width: 750px; height: 480px; border: 1px solid #fff; margin: 100px auto;}
+.box{position: absolute; overflow: hidden; width: 580px; height: 460px; left: 10px; top: 10px;}
+.count{width: 120px; height: 300px; padding: 10px; position: absolute; top: 10px; right: 10px; border: 4px double #fff; word-break: break-all;}
+.box span{
+	position: absolute;
+	top: -30px;
+	transform: translate3d(0,0,0);
+	font-size: 20px;
+}
+.box span.active{
+	transform: translate3d(0,490px,0);;
+}
+.box .start,.box .end{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -100px;
+	margin-top: -50px;
+	width: 200px;
+	height: 100px;
+	line-height: 100px;
+	background-color: #000;
+	color: #fff;
+	font-size: 32px;
+	text-align: center;
+	text-decoration: none;
+}
+
+p{
+	text-align: center;
+}
+p a{
+	color: #fff;
+}

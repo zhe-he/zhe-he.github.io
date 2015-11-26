@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>瀑布流 --zhe-he</title>
+<style>
+*{margin:0; padding:0;}
+li{list-style:none;}
+img{border:none;}
+a{text-decoration:none;color:#444444;}
+a:hover{color:#999999;}
+body{height:100%; background:#cccccc; font-family:"微软雅黑";}
+h1{background: #000; font-size: 16px; line-height: 40px; text-align: center; color: #fff;}
+.box{width: 1200px; height:auto; position:relative; margin:80px auto; box-shadow:5px 5px 10px #333333;}
+.box ul{width:280px; height:auto; border:none; float:left; margin-right:20px; _margin:0}
+.box ul li{width:280px; height:auto; padding:10px; border:none;}
+.box ul li .info{width:280px; height:auto; border-radius:8px; box-shadow:0 0 11px #666666; background:#fff;}
+.box ul li .info .pic{width:260px; height:auto; margin:0 auto; padding-top:10px;}
+.box ul li .info .pic img{width:260px; border-radius:3px; cursor:pointer;}
+.box ul li .info .desc{width:260px; height:40px; margin:0 auto; line-height:40px; text-align:right; color:#666666; font-size:18px; font-weight:bold; overflow:hidden;}
+.more{position: fixed; bottom: 30px; left: 0; width: 100%; text-align: center;}
+</style>
+<script>
+window.onload=function(){
+	var temp=[{'src':'0.jpg','title':'淡淡的忧桑。。。'},
+			  {'src':'1.jpg','title':'稀有萌物'},
+			  {'src':'2.jpg','title':'主人，我饿啦。。。'},
+			  {'src':'3.jpg','title':'小可怜~~'},
+			  {'src':'4.jpg','title':'嗨！大家好~'},
+			  {'src':'5.jpg','title':'你们怎么是反的'},
+			  {'src':'6.jpg','title':'水汪汪的大眼睛'},
+			  {'src':'7.jpg','title':'狂拽帅气吊炸天。。'},
+			  {'src':'8.jpg','title':'让我静一会儿。'},
+			  {'src':'9.jpg','title':'圆圆的小脑袋。'},
+			  {'src':'10.jpg','title':'你们找不到我。。'}];	
+	waterfall(temp.sort(function(){
+			return Math.random()-0.5;	
+	}));
+	function waterfall(data){
+		var aUl=document.getElementsByTagName('ul');
+		for(var i=0; i <data.length; i++){
+			(function(index){
+				var oImg=new Image();
+				oImg.onload=function (){
+					var oLi=document.createElement('li');
+					oLi.innerHTML='<div class="info"><div class="pic" ><img style="height:'+oImg.height*260/oImg.width+'px;" src="img/'+data[index].src+'"/></div><div class="desc"><a href="#">'+data[index].title+'</a></div></div>';
+					
+					var arr=[];
+					for(var j=0; j<aUl.length; j++){
+						arr[j]=aUl[j];
+					}
+					arr.sort(function (ul1, ul2){
+						return ul1.offsetHeight-ul2.offsetHeight;
+					});
+					
+					arr[0].appendChild(oLi);		
+				};
+				oImg.src='img/'+data[i].src;
+			})(i);
+		}		
+	}
+	var timer=null;
+	window.onscroll=window.onresize=function(){
+		clearTimeout(timer);
+		var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+		if(scrollTop>=document.body.scrollHeight-document.documentElement.clientHeight){
+			timer=setTimeout(function(){
+				waterfall(temp.sort(function(){
+					return Math.random()-0.5;	
+				}));
+			},30);
+			
+		}
+	};
+}
+
+</script>
+</head>
+
+<body>
+<h1>仿花瓣网瀑布流</h1>
+<div class="box">
+	<ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<p class="more">by <a href="https://github.com/zhe-he">zhe-he</a> <a href="http://www.hezhe.pw/">www.hezhe.pw</a></p>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255766170'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255766170' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>
