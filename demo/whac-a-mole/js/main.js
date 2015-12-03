@@ -296,7 +296,7 @@
 
 					if (_this.count > 75) {
 						_this.timeControl = 1;
-					}else if(_this.count > 30){
+					}else if(_this.count > 60){
 						_this.timeControl = 2;
 					}else if(_this.count > 30){
 						_this.timeControl = 5;
