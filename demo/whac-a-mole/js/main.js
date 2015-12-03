@@ -80,7 +80,7 @@
 			
 			this.ready = false; 	// 准备阶段
 			this.pass = key || 1; 			// 关卡
-			this.needScore = 1500 + 500*this.pass; 	//过关分数
+			this.needScore = 4000 + 1000*this.pass; 	//过关分数
 			this.score = 0; 		// 分数
 			this.count = 90; 		// 倒计时
 			this.scoreScale = 1; 	// 得分倍数
@@ -294,13 +294,13 @@
 				this.countTimer = setInterval(function (){
 					_this.count--;
 
-					if (_this.count > 75) {
+					if (_this.count > 80) {
 						_this.timeControl = 1;
-					}else if(_this.count > 60){
+					}else if(_this.count > 75){
 						_this.timeControl = 2;
 					}else if(_this.count > 30){
 						_this.timeControl = 5;
-					}else if(_this.count > 5){
+					}else if(_this.count > 10){
 						_this.timeControl = 2;
 					}else{
 						_this.timeControl = 1;
