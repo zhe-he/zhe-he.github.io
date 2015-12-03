@@ -80,7 +80,7 @@
 			
 			this.ready = false; 	// 准备阶段
 			this.pass = key || 1; 			// 关卡
-			this.needScore = 2000 + 500*this.pass; 	//过关分数
+			this.needScore = 1500 + 500*this.pass; 	//过关分数
 			this.score = 0; 		// 分数
 			this.count = 30; 		// 倒计时
 			this.scoreScale = 1; 	// 得分倍数
@@ -493,6 +493,7 @@
 		gameMap: 			function (){
 			var _this = this;
 			cancelAnimationFrame(_this.baseTimer);
+			clearInterval(_this.countTimer);
 			this.clearMap();
 			this.drawBg();
 			this.drawCount();
