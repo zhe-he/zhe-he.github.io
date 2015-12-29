@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/frozen.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/emot.css">
+    <script type="text/javascript" src="js/viewport.js"></script>
+    <script type="text/javascript" src="js/lib/zeptojs/zepto.min.js"></script>
+    <script type="text/javascript" src="js/frozen.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+	<title>囧社</title>
+</head>
+<body>
+    <div class="demo-block index-ul">
+        <ul class="ui-row">
+             <li class="ui-col ui-col-50 active"><a href="index.html"><div>最热排行</div></a></li>
+            <li class="ui-col ui-col-50"><a href="user.html"><div>我的囧社</div></a></li>
+        </ul>
+    </div>
+    <!--轮播图 start-->
+    <section class="index-slider">
+        <div class="demo-item">
+            <div class="demo-block">
+                <div class="ui-slider">
+                    <ul class="ui-slider-content" style="width: 300%">
+                        <li><span style="background-image:url(images/1.jpg)"></span></li>
+                        <li><span style="background-image:url(images/1.jpg)"></span></li>
+                        <li><span style="background-image:url(images/1.jpg)"></span></li>
+                    </ul>
+                </div>
+            </div>
+            <script class="demo-script">
+            (function (){
+                var slider = new fz.Scroll('.ui-slider', {
+                    role: 'slider',
+                    indicator: true,
+                    autoplay: true,
+                    interval: 3000
+                });
+            })();
+            </script>
+        </div>
+        <div class="box-shadow"></div>
+    </section>
+    <!--轮播图 end-->
+
+    <div class="demo-block index-content"> 
+       <!-- 
+        <a href="detail.html">
+            <div class="index-hot">
+                <img class="index-bg" src="images/bg1.png">
+
+                <h3>#美女吃货在路上#</h3>
+                <p>#吃货在路上#在路上在路上在路上在路上在路上在路上在路上在路上在路上在路上在路上</p>
+                <div class="index-hot-i">
+                    <i class="hot-img"></i>
+                    <span>5000</span>
+                </div>
+                <div class="index-hot-line"></div>
+            </div>
+        </a>
+        <a href="detail.html#show-item1">
+            <div class="index-item">        
+                <h3>#美女吃货在路上#堵车中</h3>
+                <img class="index-item-img" src="images/2.jpg">
+                <div class="down-arrow"></div>
+                <div class="box-shadow"></div>
+            </div>
+        </a>
+        -->
+    </div>
+    
+    <footer class="index-foot">
+        <a href="topic.html">发起我的话题</a>
+    </footer>
+</body>
+</html>

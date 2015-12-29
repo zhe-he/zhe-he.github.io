@@ -1,0 +1,175 @@
+.detail-hot{
+	padding: 18px 23px 13px;
+	background-color: #fff;
+}
+.detail-hot h3{
+	font-size: 14px;
+	line-height: 24px;
+	margin-bottom: 8px;
+}
+.detail-hot p{
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.detail-item{
+	position: relative;
+	padding-top: 46px;
+	background-color: #fff;
+	padding-bottom: 11px;
+}
+.shadow-t{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 17px;
+	background: url(../images/shadow-t.png) no-repeat;
+	background-size: 100% 100%;
+}
+.detail-item-bg{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 55px;
+}
+.detail-i-con .detail-l{
+	float: left;
+	margin: 0 7px 0 12px;
+	width: 32px;
+	height: 32px;
+}
+.detail-i-con .detail-l img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+.detail-i-con .detail-r{
+	float: left;
+	width: 230px;
+}
+.detail-i-con .detail-r h3{
+	font-size: 10px;
+	line-height: 24px;
+}
+.detail-i-con .detail-r p{
+	font-size: 13px;
+	line-height: 20px;
+	padding-bottom: 11px;
+}
+.detail-i-con .detail-t{
+	position: absolute;
+	top: 52px;
+	right: 0;
+	width: 75px;
+}
+
+.color-png{
+	float: left;
+	margin: 0 4px 0 2px;
+	width: 25px;
+	height: 17px;
+	background: url(../images/color.png) no-repeat;
+	background-size: 100% 100%;
+}
+.detail-i-con .detail-t span{
+	float: left;
+	font-size: 9px;
+	color: #999999;
+	line-height: 17px;
+}
+
+.detail-i-img{
+	position: relative;
+	min-height: 50px;
+	padding-bottom: 17px;
+}
+.detail-i-img img{
+	width: 100%;
+}
+
+.detail-i-img .ui-tiled{
+	position: absolute;
+	bottom: 24px;
+    left: 0;
+	width: 100%;
+    padding: 0 12px;
+}
+
+.detail-i-img .ui-tiled li{
+	height: 44px;
+}
+.detail-i-img .ui-tiled li a{
+	display: block;
+	margin: 0 auto;
+	width: 44px;
+	height: 44px;
+	line-height: 44px;
+	border-radius: 50%;
+	background-color: rgba(255,255,255,0.5); 
+	text-align: center;
+	color: #990000;
+	font-size: 12px;
+}
+.detail-i-img .ui-tiled li i{
+	background-size: 100% 100%;
+	float: left;
+	background-repeat: no-repeat;
+
+	
+}
+
+.detail-i-img .ui-tiled li i.active{
+	-webkit-animation:clickAnimation 0.4s 0s 1 ease normal none ;
+	-moz-animation:clickAnimation 0.4s 0s 1 ease normal none ;
+}
+.detail-i-img .ui-tiled li:nth-of-type(1) i{
+	background-image: url(../images/wa.png);
+	width: 15px;
+	height: 32px;
+	margin: 3px 0 0 7px;
+}
+.detail-i-img .ui-tiled li:nth-of-type(2) i{
+	background-image: url(../images/ca.png);
+	width: 24px;
+	height: 24px;
+	margin: 9px 0 0 0px;
+}
+.detail-i-img .ui-tiled li:nth-of-type(3) i{
+	background-image: url(../images/qie.png);
+	width: 16px;
+	height: 35px;
+	margin: 4px 0 0 6px;
+}
+
+.detail-message{
+	height: 28px;
+	position: relative;
+	background-color: #fff;
+}
+.detail-message div{
+	position: absolute;
+	top: 0;
+	right: 35px;
+	width: 34px;
+	height: 28px;
+	background: url(../images/wx.png) no-repeat;
+	background-size: 100% 100%;
+}
+.detail-message div i{
+	position: absolute;
+	top: 0;
+	right: 5px;
+	width: 11px;
+	height: 11px;
+	font-size: 6px;
+	line-height: 10px;
+	text-align: center;
+	border-radius: 50%;
+	background-color: #E60028;
+	color: #fff;
+}
+.detail-message div i:empty{
+	display: none;
+}
