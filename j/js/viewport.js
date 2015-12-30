@@ -63,4 +63,10 @@ if(/MicroMessenger/i.test(navigator.userAgent) && /(Android)/i.test(navigator.us
     },false);
 }
 
+window.addEventListener('DOMContentLoaded',function (){
+    setTimeout(function (){
+        document.documentElement.style.opacity = 1;
+    },330)
+},false);
+
 })();
