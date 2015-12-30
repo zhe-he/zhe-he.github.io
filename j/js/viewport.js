@@ -44,27 +44,23 @@ function viewPort(userAgent, pageWidth) {
 }
 viewPort(navigator.userAgent);
 
-window.addEventListener(Resize,function (){
-    //添加定时器 解决大UC反应慢的问题、慢的问题、慢的问题（重要的事儿说三遍）!!!
-    clearTimeout(view_timer);
-    view_timer = setTimeout(function(){
-        viewPort(navigator.userAgent);
-    }, 300);
-},false);
-if(Resize !== 'resize'){
+if(/MicroMessenger/i.test(navigator.userAgent) && /(Android)/i.test(navigator.userAgent)){
     // weixin
     window.addEventListener('resize',function (){
-        //添加定时器 解决大UC反应慢的问题、慢的问题、慢的问题（重要的事儿说三遍）!!!
         window.removeEventListener('resize',arguments.callee,false);
         clearTimeout(view_timer);
         view_timer = setTimeout(function(){
             viewPort(navigator.userAgent);
         }, 300);
     },false);
+}else{
+    window.addEventListener(Resize,function (){
+        //添加定时器 解决大UC反应慢的问题、慢的问题、慢的问题（重要的事儿说三遍）!!!
+        clearTimeout(view_timer);
+        view_timer = setTimeout(function(){
+            viewPort(navigator.userAgent);
+        }, 300);
+    },false);
 }
-
-setTimeout(function (){
-    document.documentElement.style.opacity = 1;
-},330);
 
 })();
