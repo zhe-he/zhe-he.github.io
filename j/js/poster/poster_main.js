@@ -158,7 +158,13 @@ var myScroll;
 
         function imgLoad() {
             imgLoaded = true;
-
+            //
+            var _this = this;
+            var debugSrc = photoMe(_this);
+            if (debugSrc) {
+                this.src = photoMe;
+            };
+            //
             $rotateLayer.append(this);
 
             hideAction.call(this, $img, function() {
