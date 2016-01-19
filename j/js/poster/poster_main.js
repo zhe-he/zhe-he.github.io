@@ -465,6 +465,9 @@ var myScroll;
             var w = img.naturalWidth;
             var h = img.naturalHeight;
 
+            alert(w+'w')
+            alert(h+'h')
+            alert(img+'img');
             // 初判断是否 可能 是ios自拍竖屏照片
             var isMaybeIosSelfie = (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && h>w)?true:false;
             var isMaybeIosSelfieNumber = 0;
