@@ -162,6 +162,7 @@ var myScroll;
             var _this = this;
             var debugSrc = photoMe(_this);
             if (debugSrc) {
+                alert('yes');
                 this.src = photoMe;
             };
             //
@@ -430,7 +431,7 @@ var myScroll;
 
             ctx.translate(curX - local.x / scale, curY - local.y / scale);
             ctx.rotate(curAngle * Math.PI / 180);
-
+            alert('旋转'+curAngle);
             ctx.drawImage($img[0], 0, 0);
             ctx.restore();
 
