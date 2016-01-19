@@ -160,10 +160,11 @@ var myScroll;
             imgLoaded = true;
             //
             var _this = this;
-            var debugSrc = photoMe(_this);
+            var debugSrc = photoMe($img[0]);
+            alert(debugSrc+'debugSrc');
             if (debugSrc) {
                 alert('yes');
-                this.src = photoMe;
+                $img[0].src = photoMe;
             };
             //
             $rotateLayer.append(this);
