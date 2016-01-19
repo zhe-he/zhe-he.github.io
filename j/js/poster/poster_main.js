@@ -89,9 +89,11 @@ var myScroll;
                         $tempImg.load(function() {
                             // IOS 设备中，如果的照片是竖屏拍摄的，虽然实际在网页中显示出的方向也是垂直，但图片数据依然是以横屏方向展示
                             var sourceWidth = this.naturalWidth; // 在没有加入文档前，jQuery无法获得正确宽高，但可以通过原生属性来读取
+                            
                             $tempImg.appendTo(document.body);
                             // var realityHeight = this.naturalHeight;
                             var realityHeight = $(this).height();
+                            
                             $tempImg.remove();
                             delete $tempImg[0];
                             $tempImg = null;
@@ -158,20 +160,20 @@ var myScroll;
 
         function imgLoad() {
             imgLoaded = true;
-            //
-            var _this = this;
-            var debugSrc = photoMe($img[0]);
-            alert(debugSrc+'debugSrc');
-            if (debugSrc) {
-                alert('yes');
-                $img[0].src = photoMe;
-            };
-            //
+            $(this).off('load');
+            
             $rotateLayer.append(this);
-
+            
+            var h = this.naturalHeight;
+            var w = this.naturalWidth;
             hideAction.call(this, $img, function() {
                 imgWidth = this.naturalWidth;
                 imgHeight = this.naturalHeight;
+
+                if (h === this.naturalWidth && w === this.naturalHeight && h !== w) {
+                    alert('当前照片可能无法正确裁剪,请换一张试试');
+                }
+                
             });
 
             hideAction($moveLayer, function() {
@@ -180,6 +182,92 @@ var myScroll;
 
             loadComplete.call(this, this.src);
         }
+
+        // 处理ios自拍照片
+        function photoMe(img,callback){
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext("2d");
+            var w = img.naturalWidth;
+            var h = img.naturalHeight;
+
+            canvas.width = w;
+            canvas.height = h;
+            ctx.drawImage(img,0,0);
+
+            var myImage = ctx.getImageData(0, 0, w, h);
+
+            var imgData2 = ctx.createImageData(h,w);
+            var imgData2Arr = rotateArr(myImage.data,w,h,90);
+            copyData(imgData2Arr,imgData2);
+            ctx.width = h;
+            ctx.height = w;
+
+            ctx.clearRect(0,0,h,w);
+            ctx.putImageData(imgData2, 0, 0);
+            var dataUrl = canvas.toDataURL(outputType, 1);
+            
+            return dataUrl;
+
+        }
+        //
+        function rotateArr(arr,x,y,deg){
+
+            var newArr = [];
+            while(deg<0){
+                deg+=360;
+            }
+            switch( (deg/90)%4 ){
+                case 1:
+                    var iNow = (x-1)*4;
+                    (function next(){
+                        if(iNow < 0){
+                            return;
+                        }
+                        for(var i=iNow;i<arr.length;i+=(x*4) ){
+
+                            newArr.unshift(arr[i+3]);
+                            newArr.unshift(arr[i+2]);
+                            newArr.unshift(arr[i+1]);
+                            newArr.unshift(arr[i]);
+                        }
+                        iNow-=4;
+                        next();
+                    })();   
+                    break;
+                case 2:
+                    newArr = rotateArr(arr,x,y,90);
+                    newArr = rotateArr(newArr,y,x,90);
+                    break;
+                case 3:
+                    var iNow = (x-1)*4;
+                    (function next(){
+                        if(iNow < 0){
+                            return;
+                        }
+                        for(var i=iNow;i<arr.length;i+=(x*4) ){
+                            newArr.push(arr[i]);
+                            newArr.push(arr[i+1]);
+                            newArr.push(arr[i+2]);
+                            newArr.push(arr[i+3]);
+                        }
+                        iNow-=4;
+                        next();
+                    })();   
+                    break;
+                case 0:
+                    newArr = arr;
+                    break;
+            }
+            return newArr;
+        }
+        function copyData(arr,imgData){
+            for (var i = 0; i < arr.length; i++) {
+                imgData.data[i] = arr[i];
+            };
+        }
+        //
+
+
 
         function initScroll() {
             var options = {
@@ -430,15 +518,19 @@ var myScroll;
                 canvas.height = clipHeight / scale;
             }
 
+
             ctx.translate(curX - local.x / scale, curY - local.y / scale);
             ctx.rotate(curAngle * Math.PI / 180);
+            
             ctx.drawImage($img[0], 0, 0);
             ctx.restore();
 
+
+            
             // 去色 begin
             if (isGrey) {
-                var myImage = ctx.getImageData(0, 0, canvas.width, canvas.height),
-                    picLength = canvas.width * canvas.height;
+                var myImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                var picLength = canvas.width * canvas.height;
                 for (var i = 0; i < picLength; i++) {
                     var r = myImage.data[4*i];
                     var g = myImage.data[4*i+1];
@@ -452,114 +544,11 @@ var myScroll;
             }
             // 去色 end
 
+
             var dataURL = canvas.toDataURL(outputType, 1);
             $view.css("background-image", "url(" + dataURL + ")");
             clipFinish.call($img[0], dataURL);
         }
-
-
-        // 处理ios自拍照片
-        function photoMe(img){
-            var canvas = document.createElement('canvas');
-            var ctx = canvas.getContext("2d");
-            var w = img.naturalWidth;
-            var h = img.naturalHeight;
-
-            alert(w+'w')
-            alert(h+'h')
-            alert(img+'img');
-            // 初判断是否 可能 是ios自拍竖屏照片
-            var isMaybeIosSelfie = (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent) && h>w)?true:false;
-            var isMaybeIosSelfieNumber = 0;
-            // 用照片最下一条黑色的线 二次判断 是否是ios自拍竖屏照片（非正规）
-            if (isMaybeIosSelfie) {
-                canvas.width = w;
-                canvas.height = h;
-                ctx.drawImage(img,0,0);
-                var myImage = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-                for (var j = 0; j < w; j++) {
-                    var k = j+w*(h-1);
-                    var grey = myImage.data[4*k]+myImage.data[4*k+1]+myImage.data[4*k+2];
-                    if (grey==0) {
-                        isMaybeIosSelfieNumber++;
-                    };
-                };
-                alert(myImage.data[4*(w*h-1)])
-                alert(myImage.data[4*(w*h-1)]+1)
-                alert(myImage.data[4*(w*h-1)]+2)
-                alert(myImage.data[4*(w*h-1)]+3)
-                isMaybeIosSelfie = isMaybeIosSelfie && (isMaybeIosSelfieNumber==w);      
-                if (isMaybeIosSelfie) {
-                    var imgData2 = ctx.createImageData(w,h);
-                    var imgData2Arr = rotateArr(myImage.data,h,w,90);
-                    copyData(imgData2Arr,imgData2);
-                    ctx.putImageData(imgData2, w-h, 0);
-                    var dataUrl = canvas.toDataURL(outputType, 1);
-                    ctx.clearRect(0,0,canvas.width,canvas.height);
-                    return dataUrl;
-                }
-            }
-            return '';
-
-        }
-        //
-        function rotateArr(arr,x,y,deg){
-
-            var newArr = [];
-            while(deg<0){
-                deg+=360;
-            }
-            switch( (deg/90)%4 ){
-                case 1:
-                    var iNow = (x-1)*4;
-                    (function next(){
-                        if(iNow < 0){
-                            return;
-                        }
-                        for(var i=iNow;i<arr.length;i+=(x*4) ){
-
-                            newArr.unshift(arr[i+3]);
-                            newArr.unshift(arr[i+2]);
-                            newArr.unshift(arr[i+1]);
-                            newArr.unshift(arr[i]);
-                        }
-                        iNow-=4;
-                        next();
-                    })();   
-                    break;
-                case 2:
-                    newArr = rotateArr(arr,x,y,90);
-                    newArr = rotateArr(newArr,y,x,90);
-                    break;
-                case 3:
-                    var iNow = (x-1)*4;
-                    (function next(){
-                        if(iNow < 0){
-                            return;
-                        }
-                        for(var i=iNow;i<arr.length;i+=(x*4) ){
-                            newArr.push(arr[i]);
-                            newArr.push(arr[i+1]);
-                            newArr.push(arr[i+2]);
-                            newArr.push(arr[i+3]);
-                        }
-                        iNow-=4;
-                        next();
-                    })();   
-                    break;
-                case 0:
-                    newArr = arr;
-                    break;
-            }
-            return newArr;
-        }
-        function copyData(arr,imgData){
-            for (var i = 0; i < arr.length; i++) {
-                imgData.data[i] = arr[i];
-            };
-        }
-        //
   
 
         function resize() {
@@ -698,6 +687,7 @@ var myScroll;
                 "user-select": "none",
                 "pointer-events": "none"
             });
+
             $img.load(imgLoad);
             $img.attr("src", src); // 设置图片base64值
         }
@@ -894,10 +884,29 @@ $("#clipArea").photoClip({
         //console.log(src);
         layer.closeAll();
 
+        //$('.photo-clip-rotateLayer img').attr('src',src);
         // 弹出浮层
         $('#mask-crop').css({
             'display': 'block'
         });
+
+        //调整背景图
+        (function (){
+            var $bgImg = $('.mask-crop .crop_mask img');
+            if ($bgImg.css('position')!='absolute') {
+                var w = $bgImg.width();
+                var h = $bgImg.height();
+                $bgImg.css({
+                    'position': 'absolute',
+                    'top':      '50%',
+                    'left':     '50%',
+                    'margin-top': -h/2+'px',
+                    'margin-left': -w/2+'px'
+                });
+            };
+        })();
+
+        // $('.photo-clip-rotateLayer img').attr('src',src);
 
         // 初始化滑块
         initSlider();
@@ -928,6 +937,8 @@ $("#clipArea").photoClip({
     },
 });
 // 初始化图片剪裁 end
+
+
 
 
 // 调整图片按钮 begin
@@ -1069,7 +1080,7 @@ $('.poster-build').on('click', function (){
     
     $.ajax({
         url:  'index_v1.php?act=up',
-		type: "POST",
+        type: "POST",
         data:       {
             name:       name,                       //用户姓名
             pic:        picData,                    //图片数据
@@ -1084,15 +1095,15 @@ $('.poster-build').on('click', function (){
             isGoing = false;
             if(typeof(res.flag) != "undefined") {
                 if(res.flag==1){
-                	$("#pic_id").val(res.pid);
-                	showImg(res.imgSrc);
+                    $("#pic_id").val(res.pid);
+                    showImg(res.imgSrc);
                     //alertFn('若生成的海报文字不清楚，可点击取消重新选择字体颜色再次生成。');
                 }else{
-                	alert(res.msg);
+                    alert(res.msg);
                 }
-            	
+                
             }else{
-            	alert('网络繁忙，请稍后再试。。。');
+                alert('网络繁忙，请稍后再试。。。');
             }
             return;
         },

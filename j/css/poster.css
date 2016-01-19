@@ -36,7 +36,7 @@ html {
   margin: 0 auto 0.36rem;
 }
 .poster-cell h2 {
-  font-size: 0.34rem;
+  font-size: 0.33rem;
   line-height: 0.52rem;
   color: #666666;
   font-weight: normal;
@@ -232,6 +232,8 @@ html {
   line-height: 100%;
   max-width: 238px;
   max-height: 100%;
+  // max-height: 423px;
+  vertical-align: middle;
 }
 .mask-crop .crop {
   position: relative;
