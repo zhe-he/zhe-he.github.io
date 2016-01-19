@@ -45,7 +45,7 @@
 		<section class="swiper-wrapper">
 		    <div class="swiper-slide">
 		    	<div class="con con1">
-		    		<span class="key"><img src="images/keydefault1.png" data-src="images/key1.gif" data-defaultsrc="images/keydefault1.png"></span>
+		    		<span class="key"><i></i></span>
 					<span class="explain"></span>
 					<span class="name"></span>
 					<span class="say"></span>
@@ -53,7 +53,7 @@
 		    </div>
 		    <div class="swiper-slide">
 		    	<div class="con con2">
-		    		<span class="key"><img src="images/keydefault2.png" data-src="images/key2.gif" data-defaultsrc="images/keydefault2.png"></span>
+		    		<span class="key"><i></i></span>
 					<div class="con2-box">
 						<span class="explain"></span>
 						<span class="name"></span>
@@ -63,7 +63,7 @@
 		    </div>
 		    <div class="swiper-slide">
 		    	<div class="con con3">
-		    		<span class="key"><img src="images/keydefault3.png" data-src="images/key3.gif" data-defaultsrc="images/keydefault3.png"></span>
+		    		<span class="key"><i></i></span>
 					<span class="explain"></span>
 					<span class="name"></span>
 					<span class="say"></span>
@@ -71,7 +71,7 @@
 		    </div>
 		    <div class="swiper-slide">
 		    	<div class="con con4">
-		    		<span class="key"><img src="images/keydefault4.png" data-src="images/key4.gif" data-defaultsrc="images/keydefault4.png"></span>
+		    		<span class="key"><i></i></span>
 					<span class="explain"></span>
 					<span class="name"></span>
 					<span class="say"></span>
@@ -79,7 +79,7 @@
 		    </div>
 		    <div class="swiper-slide">
 		    	<div class="con con5">
-		    		<span class="key"><img src="images/keydefault5.png" data-src="images/key5.gif" data-defaultsrc="images/keydefault5.png"></span>
+		    		<span class="key"><i></i></span>
 					<span class="explain"></span>
 					<span class="name"></span>
 					<span class="say"></span>
@@ -122,17 +122,6 @@
 			},
 			onSlideChangeEnd: 		function (mySwiper){
 				mySwiper.slides.removeClass('active').eq(mySwiper.activeIndex).addClass('active');
-				var allImg = mySwiper.slides.find('.key img');
-				allImg.each(function (index,ele){
-					var src = $(ele).attr('data-src');
-					var src2 = $(ele).attr('data-defaultsrc');
-					if (index == mySwiper.activeIndex) {
-						$(ele).attr('src',src);
-					}else{
-						$(ele).attr('src',src2);
-					};
-					
-				});
 			}
 		});
 

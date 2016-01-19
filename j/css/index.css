@@ -152,6 +152,18 @@ body {
   background: url('../images/bg1.jpg') no-repeat;
   background-size: 100% 100%;
 }
+.index-container .swiper-slide:nth-of-type(1) .key {
+  visibility: hidden;
+  opacity: 0;
+  background: url('../images/keydefault1.png') no-repeat;
+  background-size: 2.95rem 2.95rem;
+}
+.index-container .swiper-slide:nth-of-type(1) .key i {
+  visibility: hidden;
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-image: url('../images/key1.gif');
+}
 .index-container .swiper-slide:nth-of-type(1) .explain {
   visibility: hidden;
   opacity: 0;
@@ -170,20 +182,30 @@ body {
   background: url('../images/say1.png') no-repeat;
   background-size: 100% 100%;
 }
+.index-container .swiper-slide:nth-of-type(1).active .key {
+  visibility: visible;
+  -webkit-animation: fadeIn 0.7s 0.3s ease both;
+  animation: fadeIn 0.7s 0.3s ease both;
+}
+.index-container .swiper-slide:nth-of-type(1).active .key i {
+  visibility: visible;
+  -webkit-animation: bounceIn 1s 1s ease both;
+  animation: bounceIn 1s 1s ease both;
+}
 .index-container .swiper-slide:nth-of-type(1).active .explain {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 1.7s ease both;
-  animation: fadeIn 1s 1.7s ease both;
+  -webkit-animation: fadeIn 1s 2s ease both;
+  animation: fadeIn 1s 2s ease both;
 }
 .index-container .swiper-slide:nth-of-type(1).active .name {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 2.7s ease both;
-  animation: fadeIn 1s 2.7s ease both;
+  -webkit-animation: fadeIn 1s 3s ease both;
+  animation: fadeIn 1s 3s ease both;
 }
 .index-container .swiper-slide:nth-of-type(1).active .say {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 3.7s ease both;
-  animation: fadeIn 1s 3.7s ease both;
+  -webkit-animation: fadeIn 1s 4s ease both;
+  animation: fadeIn 1s 4s ease both;
 }
 .index-container .swiper-slide:nth-of-type(2) {
   position: relative;
@@ -191,6 +213,18 @@ body {
   width: 100%;
   background: url('../images/bg2.jpg') no-repeat;
   background-size: 100% 100%;
+}
+.index-container .swiper-slide:nth-of-type(2) .key {
+  visibility: hidden;
+  opacity: 0;
+  background: url('../images/keydefault2.png') no-repeat;
+  background-size: 2.95rem 2.95rem;
+}
+.index-container .swiper-slide:nth-of-type(2) .key i {
+  visibility: hidden;
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-image: url('../images/key2.gif');
 }
 .index-container .swiper-slide:nth-of-type(2) .explain {
   visibility: hidden;
@@ -210,20 +244,30 @@ body {
   background: url('../images/say2.png') no-repeat;
   background-size: 100% 100%;
 }
+.index-container .swiper-slide:nth-of-type(2).active .key {
+  visibility: visible;
+  -webkit-animation: fadeIn 0.7s 0.3s ease both;
+  animation: fadeIn 0.7s 0.3s ease both;
+}
+.index-container .swiper-slide:nth-of-type(2).active .key i {
+  visibility: visible;
+  -webkit-animation: bounceIn 1s 1s ease both;
+  animation: bounceIn 1s 1s ease both;
+}
 .index-container .swiper-slide:nth-of-type(2).active .explain {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 1.7s ease both;
-  animation: fadeIn 1s 1.7s ease both;
+  -webkit-animation: fadeIn 1s 2s ease both;
+  animation: fadeIn 1s 2s ease both;
 }
 .index-container .swiper-slide:nth-of-type(2).active .name {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 2.7s ease both;
-  animation: fadeIn 1s 2.7s ease both;
+  -webkit-animation: fadeIn 1s 3s ease both;
+  animation: fadeIn 1s 3s ease both;
 }
 .index-container .swiper-slide:nth-of-type(2).active .say {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 3.7s ease both;
-  animation: fadeIn 1s 3.7s ease both;
+  -webkit-animation: fadeIn 1s 4s ease both;
+  animation: fadeIn 1s 4s ease both;
 }
 .index-container .swiper-slide:nth-of-type(3) {
   position: relative;
@@ -231,6 +275,18 @@ body {
   width: 100%;
   background: url('../images/bg3.jpg') no-repeat;
   background-size: 100% 100%;
+}
+.index-container .swiper-slide:nth-of-type(3) .key {
+  visibility: hidden;
+  opacity: 0;
+  background: url('../images/keydefault3.png') no-repeat;
+  background-size: 2.95rem 2.95rem;
+}
+.index-container .swiper-slide:nth-of-type(3) .key i {
+  visibility: hidden;
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-image: url('../images/key3.gif');
 }
 .index-container .swiper-slide:nth-of-type(3) .explain {
   visibility: hidden;
@@ -250,20 +306,30 @@ body {
   background: url('../images/say3.png') no-repeat;
   background-size: 100% 100%;
 }
+.index-container .swiper-slide:nth-of-type(3).active .key {
+  visibility: visible;
+  -webkit-animation: fadeIn 0.7s 0.3s ease both;
+  animation: fadeIn 0.7s 0.3s ease both;
+}
+.index-container .swiper-slide:nth-of-type(3).active .key i {
+  visibility: visible;
+  -webkit-animation: bounceIn 1s 1s ease both;
+  animation: bounceIn 1s 1s ease both;
+}
 .index-container .swiper-slide:nth-of-type(3).active .explain {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 1.7s ease both;
-  animation: fadeIn 1s 1.7s ease both;
+  -webkit-animation: fadeIn 1s 2s ease both;
+  animation: fadeIn 1s 2s ease both;
 }
 .index-container .swiper-slide:nth-of-type(3).active .name {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 2.7s ease both;
-  animation: fadeIn 1s 2.7s ease both;
+  -webkit-animation: fadeIn 1s 3s ease both;
+  animation: fadeIn 1s 3s ease both;
 }
 .index-container .swiper-slide:nth-of-type(3).active .say {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 3.7s ease both;
-  animation: fadeIn 1s 3.7s ease both;
+  -webkit-animation: fadeIn 1s 4s ease both;
+  animation: fadeIn 1s 4s ease both;
 }
 .index-container .swiper-slide:nth-of-type(4) {
   position: relative;
@@ -271,6 +337,18 @@ body {
   width: 100%;
   background: url('../images/bg4.jpg') no-repeat;
   background-size: 100% 100%;
+}
+.index-container .swiper-slide:nth-of-type(4) .key {
+  visibility: hidden;
+  opacity: 0;
+  background: url('../images/keydefault4.png') no-repeat;
+  background-size: 2.95rem 2.95rem;
+}
+.index-container .swiper-slide:nth-of-type(4) .key i {
+  visibility: hidden;
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-image: url('../images/key4.gif');
 }
 .index-container .swiper-slide:nth-of-type(4) .explain {
   visibility: hidden;
@@ -290,20 +368,30 @@ body {
   background: url('../images/say4.png') no-repeat;
   background-size: 100% 100%;
 }
+.index-container .swiper-slide:nth-of-type(4).active .key {
+  visibility: visible;
+  -webkit-animation: fadeIn 0.7s 0.3s ease both;
+  animation: fadeIn 0.7s 0.3s ease both;
+}
+.index-container .swiper-slide:nth-of-type(4).active .key i {
+  visibility: visible;
+  -webkit-animation: bounceIn 1s 1s ease both;
+  animation: bounceIn 1s 1s ease both;
+}
 .index-container .swiper-slide:nth-of-type(4).active .explain {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 1.7s ease both;
-  animation: fadeIn 1s 1.7s ease both;
+  -webkit-animation: fadeIn 1s 2s ease both;
+  animation: fadeIn 1s 2s ease both;
 }
 .index-container .swiper-slide:nth-of-type(4).active .name {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 2.7s ease both;
-  animation: fadeIn 1s 2.7s ease both;
+  -webkit-animation: fadeIn 1s 3s ease both;
+  animation: fadeIn 1s 3s ease both;
 }
 .index-container .swiper-slide:nth-of-type(4).active .say {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 3.7s ease both;
-  animation: fadeIn 1s 3.7s ease both;
+  -webkit-animation: fadeIn 1s 4s ease both;
+  animation: fadeIn 1s 4s ease both;
 }
 .index-container .swiper-slide:nth-of-type(5) {
   position: relative;
@@ -311,6 +399,18 @@ body {
   width: 100%;
   background: url('../images/bg5.jpg') no-repeat;
   background-size: 100% 100%;
+}
+.index-container .swiper-slide:nth-of-type(5) .key {
+  visibility: hidden;
+  opacity: 0;
+  background: url('../images/keydefault5.png') no-repeat;
+  background-size: 2.95rem 2.95rem;
+}
+.index-container .swiper-slide:nth-of-type(5) .key i {
+  visibility: hidden;
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-image: url('../images/key5.gif');
 }
 .index-container .swiper-slide:nth-of-type(5) .explain {
   visibility: hidden;
@@ -330,20 +430,30 @@ body {
   background: url('../images/say5.png') no-repeat;
   background-size: 100% 100%;
 }
+.index-container .swiper-slide:nth-of-type(5).active .key {
+  visibility: visible;
+  -webkit-animation: fadeIn 0.7s 0.3s ease both;
+  animation: fadeIn 0.7s 0.3s ease both;
+}
+.index-container .swiper-slide:nth-of-type(5).active .key i {
+  visibility: visible;
+  -webkit-animation: bounceIn 1s 1s ease both;
+  animation: bounceIn 1s 1s ease both;
+}
 .index-container .swiper-slide:nth-of-type(5).active .explain {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 1.7s ease both;
-  animation: fadeIn 1s 1.7s ease both;
+  -webkit-animation: fadeIn 1s 2s ease both;
+  animation: fadeIn 1s 2s ease both;
 }
 .index-container .swiper-slide:nth-of-type(5).active .name {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 2.7s ease both;
-  animation: fadeIn 1s 2.7s ease both;
+  -webkit-animation: fadeIn 1s 3s ease both;
+  animation: fadeIn 1s 3s ease both;
 }
 .index-container .swiper-slide:nth-of-type(5).active .say {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 3.7s ease both;
-  animation: fadeIn 1s 3.7s ease both;
+  -webkit-animation: fadeIn 1s 4s ease both;
+  animation: fadeIn 1s 4s ease both;
 }
 .index-container .swiper-slide:nth-of-type(6) {
   position: relative;
@@ -351,6 +461,18 @@ body {
   width: 100%;
   background: url('../images/bg6.jpg') no-repeat;
   background-size: 100% 100%;
+}
+.index-container .swiper-slide:nth-of-type(6) .key {
+  visibility: hidden;
+  opacity: 0;
+  background: url('../images/keydefault6.png') no-repeat;
+  background-size: 2.95rem 2.95rem;
+}
+.index-container .swiper-slide:nth-of-type(6) .key i {
+  visibility: hidden;
+  opacity: 0;
+  background-repeat: no-repeat;
+  background-image: url('../images/key6.gif');
 }
 .index-container .swiper-slide:nth-of-type(6) .explain {
   visibility: hidden;
@@ -370,20 +492,30 @@ body {
   background: url('../images/say6.png') no-repeat;
   background-size: 100% 100%;
 }
+.index-container .swiper-slide:nth-of-type(6).active .key {
+  visibility: visible;
+  -webkit-animation: fadeIn 0.7s 0.3s ease both;
+  animation: fadeIn 0.7s 0.3s ease both;
+}
+.index-container .swiper-slide:nth-of-type(6).active .key i {
+  visibility: visible;
+  -webkit-animation: bounceIn 1s 1s ease both;
+  animation: bounceIn 1s 1s ease both;
+}
 .index-container .swiper-slide:nth-of-type(6).active .explain {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 1.7s ease both;
-  animation: fadeIn 1s 1.7s ease both;
+  -webkit-animation: fadeIn 1s 2s ease both;
+  animation: fadeIn 1s 2s ease both;
 }
 .index-container .swiper-slide:nth-of-type(6).active .name {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 2.7s ease both;
-  animation: fadeIn 1s 2.7s ease both;
+  -webkit-animation: fadeIn 1s 3s ease both;
+  animation: fadeIn 1s 3s ease both;
 }
 .index-container .swiper-slide:nth-of-type(6).active .say {
   visibility: visible;
-  -webkit-animation: fadeIn 1s 3.7s ease both;
-  animation: fadeIn 1s 3.7s ease both;
+  -webkit-animation: fadeIn 1s 4s ease both;
+  animation: fadeIn 1s 4s ease both;
 }
 .index-container .con * {
   -webkit-animation-fill-mode: forwards;
@@ -396,9 +528,13 @@ body {
   width: 2.95rem;
   height: 2.95rem;
 }
-.index-container .key img {
+.index-container .key i {
   display: block;
   width: 100%;
+  height: 100%;
+  background-position: center center;
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
 }
 .index-container .con1 {
   position: absolute;
@@ -407,6 +543,9 @@ body {
   margin-top: -3.9rem;
   width: 4rem;
   height: 8rem;
+}
+.index-container .con1 .key i {
+  background-size: 2.49rem 2.34rem;
 }
 .index-container .con1 .explain {
   margin-top: 0.22rem;
@@ -435,6 +574,9 @@ body {
   top: 0;
   right: 0;
 }
+.index-container .con2 .key i {
+  background-size: 2.59rem 2.62rem;
+}
 .index-container .con2 .explain {
   width: 2.96rem;
   height: 1.1rem;
@@ -460,6 +602,9 @@ body {
 .index-container .con3 .key {
   margin-left: 2.04rem;
 }
+.index-container .con3 .key i {
+  background-size: 2.69rem 2.59rem;
+}
 .index-container .con3 .explain {
   margin-left: 2.04rem;
   margin-top: 0.22rem;
@@ -484,6 +629,11 @@ body {
   height: 7.06rem;
   width: 4rem;
 }
+.index-container .con4 .key i {
+  width: 3.38rem;
+  margin-left: -0.22rem;
+  background-size: 3.38rem 2.5rem;
+}
 .index-container .con4 .explain {
   margin-top: 0.22rem;
   width: 2.95rem;
@@ -505,6 +655,9 @@ body {
   margin-top: -3.18rem;
   width: 3.6rem;
   height: 8rem;
+}
+.index-container .con5 .key i {
+  background-size: 2.63rem 1.97rem;
 }
 .index-container .con5 .explain {
   margin-top: 0.23rem;
@@ -735,5 +888,39 @@ body {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@-webkit-keyframes bounceIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.05);
+  }
+  70% {
+    -webkit-transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }
