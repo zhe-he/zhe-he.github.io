@@ -431,7 +431,6 @@ var myScroll;
 
             ctx.translate(curX - local.x / scale, curY - local.y / scale);
             ctx.rotate(curAngle * Math.PI / 180);
-            alert('旋转'+curAngle);
             ctx.drawImage($img[0], 0, 0);
             ctx.restore();
 
@@ -482,7 +481,10 @@ var myScroll;
                         isMaybeIosSelfieNumber++;
                     };
                 };
-
+                alert(myImage.data[4*(w*h-1)])
+                alert(myImage.data[4*(w*h-1)]+1)
+                alert(myImage.data[4*(w*h-1)]+2)
+                alert(myImage.data[4*(w*h-1)]+3)
                 isMaybeIosSelfie = isMaybeIosSelfie && (isMaybeIosSelfieNumber==w);      
                 if (isMaybeIosSelfie) {
                     var imgData2 = ctx.createImageData(w,h);
