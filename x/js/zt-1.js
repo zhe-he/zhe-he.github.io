@@ -1,20 +1,22 @@
 $(function (){
-	var nowTime = Date.now();
-	var ztTime = ["1453651200000","1453910400000","1454169600000","1454428800000"];
+	var nowTime = Date.now(); 	// 备用的时间
+	var ztTime = [1453392000000,1453651200000,1453910400000,1454169600000,1454428800000]; 	// 专题切换的时间
+	var nowZT = 1; 				// 当前的专题
+	var lastZT = 0; 			// 上一个专题
+	var $aItem = $('.zt1-item'); 	// 巡回时间表
 
 	// 倒计时
 	function countdown(){
-		var $aItem = $('.zt1-item');
+		
 		var $aTime = $('.zt1-item-r');
 		var countdownTimer = null;
 		var iNow = 0;
 
 		jsonp({
 			url: 	"https://app.huchill.com/app/activities/getSystemTime.shtml",
-			// jsop: 	"reqParam",
+			// jsonp: 	"reqParam",
 			success: 	function (data){
 				nowTime = data.systemTime;
-				// nowTime = Date.now();
 				go();
 			},
 			error: 		function (){
@@ -24,10 +26,19 @@ $(function (){
 
 		
 		function go(){
-			countdownTimer = setInterval(function (){
-				nowTime+=1000;
+			_fn();
+			countdownTimer = setInterval(_fn, 1000);
+
+			function _fn(){
+				
+				if (lastZT != nowZT){
+					nowZT = lastZT;
+					changeZT(nowZT);
+					$aItem.removeClass('active').eq(nowZT).addClass('active');
+				};
+
+
 				iNow = 0;
-				$aItem.eq(0).addClass('active');
 				$aItem.each(function (index,ele){
 					
 					var endTimeArr = $aTime.eq(index).attr('data-endtime').split('-');
@@ -40,11 +51,12 @@ $(function (){
 						$span.each(function (){
 							$(this).html('0');
 						});
-						$aItem.removeClass('active').eq(index+1).addClass('active');
 						if (iNow === $aItem.length-1) {
 							clearInterval(countdownTimer);
 							$aItem.removeClass('active');
 						};
+
+						lastZT = index+1;
 						return;
 					};
 					if (dataTime.d>0) {
@@ -66,10 +78,12 @@ $(function (){
 						$span.eq(5).html(dataTime.s.charAt(1));
 					};
 				});
-			}, 1000);
 
 
-			
+				
+
+				nowTime+=1000;
+			}
 		}
 	}
 
@@ -150,18 +164,91 @@ $(function (){
 		}
 	}
 
+	// 动画
+	function animateAll(){
+		var t1 = $('.zt1-cell1').offset().top;
+		var t2 = $('.zt1-proposal-cell').offset().top;
+		var t3 = $('.zt1-time .zt1-item').eq(0).offset().top;
+		var t4 = $('.zt1-other li').eq(0).offset().top;
+		var h = $(window).height();
+		
+		_fn();
+		$(window).on('scroll', _fn);
+
+		function _fn(){
+			var T = $(window).scrollTop()+h;
+			
+			if (T > t1) {
+				$('.zt1-evaluate').addClass('animate');
+			};
+			if (T > t2) {
+				$('.zt1-proposal').addClass('animate');
+			};
+			if (T > t3) {
+				$('.zt1-time').addClass('animate');
+			};
+			if (T > t4) {
+				$('.zt1-other').addClass('animate');
+				$(window).off('scroll',_fn);
+			};
+		}
+
+		// 下落的皇冠
+		$('.zt1-time-crown').on('webkitTransitionEnd transitionend', function (){
+			$aItem.removeClass('active').eq(nowZT).addClass('active');
+			$(this).off('webkitTransitionEnd transitionend').remove();
+		});
+	}
 
 
 	// 根据时间切换专题
 	function timeTab(){
+		for (var i = ztTime.length - 1; i >= 0; i--) {
+			if(nowTime >= ztTime[i]){
+				nowZT = i;
+				break;
+			}
+		};
+		lastZT = nowZT;
+		changeZT(nowZT);
+	}
+	function changeZT(now){
+		$('body').addClass('zt-body-'+(now+1));
+		var data = window.ztData[now];
 
+		document.title = data.top.title;
+		// 头部
+		$('.zt1-top-con h1').text(data.top.title);
+		$('.zt1-top-con p').text(data.top.aside);
+		$('.zt1-hot a').attr('href',data.top.src);
+		$('.zt1-hot-l h2').text(data.top.h2);
+		$('.zt1-hot-l div').text(data.top.p1);
+		$('.zt1-hot-l p').eq(0).text(data.top.p2);
+		$('.zt1-hot-l p').eq(1).text(data.top.price[0]);
+		$('.zt1-hot-l span').eq(0).text(data.top.price[1]);
+		$('.zt1-hot-l span').eq(1).text(data.top.price[2]);
+		$('.zt1-hot-font').text(data.top.text);
+		$('.zt1-hot-r p span').eq(1).text(data.top.p3);
+		// 评价
+		$('.zt1-evaluate a').attr('href',data.evaluate.src);
+		$('.zt1-evaluate .zt1-cell').each(function (index,ele){
+			$(this).find('div').eq(1).text(data.evaluate.text[index]);
+		});
+
+		// 建议搭配
+		$('.zt1-proposal h2').text(data.proposal.h2);
+		$('.zt1-proposal-cell').each(function (index,ele){
+			$(this).find('a').attr('href',data.proposal.text[index].src);
+			$(this).find('h3').text(data.proposal.text[index].h3);
+			$(this).find('p').text(data.proposal.text[index].p);
+		});
 	}
 
 
 	function init(){
+		timeTab();
 		countdown();
-
-		
+		animateAll();
 	}
 
 	init();
