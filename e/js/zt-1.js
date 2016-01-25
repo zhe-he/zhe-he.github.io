@@ -172,7 +172,7 @@ $(function (){
 		var t4 = $('.zt1-other li').eq(0).offset().top;
 		var h = $(window).height();
 		
-		_fn();
+		setTimeout(_fn,0);
 		$(window).on('scroll', _fn);
 
 		function _fn(){

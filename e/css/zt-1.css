@@ -802,35 +802,53 @@ html body {
 /*专题切换 end*/
 
 /*动画 start*/
-
 .zt1-time-crown{
-  -webkit-transition: top 3s;
-  transition: top 3s;
+  -webkit-transition: top 2.6s;
+  transition: top 2.6s;
+}
+.zt1-evaluate .zt1-cell{
+  visibility: hidden;
+}
+.zt1-proposal .zt1-proposal-cell .zt1-proposal-an{
+  visibility: hidden;
+}
+.zt1-proposal .zt1-proposal-cell .zt1-proposal-img{
+  visibility: hidden;
+}
+.zt1-other li{
+  visibility: hidden;
 }
 
+
 .zt1-evaluate.animate .zt1-cell:nth-of-type(2n-1){
+  visibility: visible;
   -webkit-animation:fadeInLeftBig 1s 0s ease both;
   -moz-animation:fadeInLeftBig 1s 0s ease both;
 }
 .zt1-evaluate.animate .zt1-cell:nth-of-type(2n){
+  visibility: visible;
   -webkit-animation:fadeInRightBig 1s 0s ease both;
   -moz-animation:fadeInRightBig 1s 0s ease both;
 }
 
 
 .zt1-proposal.animate .zt1-proposal-cell:nth-of-type(1) .zt1-proposal-img{
+  visibility: visible;
   -webkit-animation:fadeInDown 1s 0s ease both;
   -moz-animation:fadeInDown 1s 0s ease both;
 }
 .zt1-proposal.animate .zt1-proposal-cell:nth-of-type(1) .zt-proposal-an{
+  visibility: visible;
   -webkit-animation:fadeInUp 1s 1s ease both;
   -moz-animation:fadeInUp 1s 1s ease both;
 }
 .zt1-proposal.animate .zt1-proposal-cell:nth-of-type(2) .zt1-proposal-img{
+  visibility: visible;
   -webkit-animation:fadeInDown 1s 2s ease both;
   -moz-animation:fadeInDown 1s 2s ease both;
 }
 .zt1-proposal.animate .zt1-proposal-cell:nth-of-type(2) .zt-proposal-an{
+  visibility: visible;
   -webkit-animation:fadeInUp 1s 3s ease both;
   -moz-animation:fadeInUp 1s 3s ease both;
 }
@@ -851,6 +869,9 @@ html body {
   top: 7.81rem;
 }
 
+.zt1-other.animate li{
+  visibility: visible;
+}
 .zt1-other.animate li:nth-child(1){
   -webkit-animation:fadeInUp 1s 0s ease both;
   -moz-animation:fadeInUp 1s 0s ease both;
