@@ -1,0 +1,2 @@
+/*! built by `zhe-he` */
+!function(a,b){var c=a.documentElement,d="orientationchange"in window?"orientationchange":"resize",e=function(){var b=c.clientWidth||a.body.clientWidth;b&&(b>=750&&(b=750),c.style.fontSize=100*(b/750)+"px")};a.addEventListener&&(b.addEventListener(d,e,!1),e())}(document,window);
