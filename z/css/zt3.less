@@ -32,8 +32,8 @@ body,html{
 		color: @color1;
 	}
 	i{
-		-webkit-animation: star 2s linear 0s infinite alternate;
-    			animation: star 2s linear 0s infinite alternate;
+		-webkit-animation: star 2s linear 0s infinite;
+    			animation: star 2s linear 0s infinite;
 		position: absolute;
 		.bgs;
 		&:first-of-type{
@@ -42,8 +42,8 @@ body,html{
 			width: 0.24rem;
 			height: 0.22rem;
 			background-image: url(../images/top1.png);
-			-webkit-animation-delay: 0.5s;
-					animation-delay: 0.5s;
+			-webkit-animation-delay: -0.3s;
+					animation-delay: -0.3s;
 		}
 		&:last-of-type{
 			top: 2.5rem;
@@ -282,33 +282,18 @@ body,html{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @keyframes star{
-	0%{opacity:1} 
-	50%{opacity:0} 
-	100%{opacity:1}
+	0%{opacity:1;transform: scaleX(1) scaleY(1);}
+	20%{opacity:0.5;transform: scaleX(0.8) scaleY(0.8);} 
+	40%{opacity: 1;}
+	80%{opacity:1; transform: scaleX(1.2) scaleY(1.2);}
+	100%{opacity:1;transform: scaleX(1) scaleY(1);}
 }
 
 @-webkit-keyframes star{
-	0%{opacity:1}
-	50%{opacity:0}
-	100%{opacity:1}
+	0%{opacity:1;-webkit-transform: scaleX(1) scaleY(1);}
+	20%{opacity:0.5;-webkit-transform: scaleX(0.8) scaleY(0.8);}
+	40%{opacity:1;} 
+	80%{opacity:1;-webkit-transform: scaleX(1.2) scaleY(1.2);}
+	100%{opacity:1;-webkit-transform: scaleX(1) scaleY(1);}
 }
