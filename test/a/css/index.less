@@ -35,10 +35,10 @@ html,body{
 				position: absolute;
 				left: 50%;
 				top: 50%;
-				margin-top: -3.03rem;
+				margin-top: -3.33rem;
 				margin-left: -2.52rem;
 				width: 5.05rem;
-				height: 3.03rem;
+				height: 3.33rem;
 				.bgs;
 				background-image: url(../images/h1.png);
 			}
@@ -77,17 +77,8 @@ html,body{
 			 		animation: down 1.5s linear infinite;
 		}
 		
-		&:nth-child(2) > a{
-			display: block;
-			width: 100%;
-			&:first-of-type{
-				height: 60%;
-			}
-			&:last-of-type{
-				height: 40%;
-			}
-		}
-		&:nth-child(3) > a{
+
+		&:nth-child(2) > a,&:nth-child(3) > a{
 			display: block;
 			width: 100%;
 			height: 50%;
@@ -104,7 +95,7 @@ html,body{
 				position: absolute;
 				top: 50%;
 				left: 0;
-				margin-top: -5.69rem;
+				margin-top: -5.89rem;
 				width: 100%;
 
 				li{
@@ -194,8 +185,8 @@ html,body{
 }
 .loading > div > p:nth-of-type(1) {
 	position: relative;
-	width: 80%;
-	height: 0.8rem;
+	width: 50%;
+	height: 0.4rem;
 	margin: 0 auto;
 	border: 1px solid rgb(188, 23, 66);
 	border-radius: 0.4rem;
@@ -204,15 +195,15 @@ html,body{
 	position: absolute;
 	top: 0;
 	left: 0;
-	height: 0.8rem;
+	height: 0.4rem;
 	width: 0%;
-	min-width: 0.8rem !important;
+	min-width: 0.4rem !important;
 	background-color: rgb(188, 23, 66);
-	border-radius: 0.4rem;
+	border-radius: 0.2rem;
 }
 .loading > div > p:nth-of-type(2) {
-	font-size: 0.4rem;
-	line-height: 0.6rem;
+	font-size: 0.36rem;
+	line-height: 1rem;
 	text-align: center;
 	color: #000;
 }
@@ -240,10 +231,10 @@ html,body{
 	}
 	50% {
 		opacity: 0;
-		transform: translate(0, -1rem) rotate(180deg);
+		transform: translate(0, -0.8rem) rotate(180deg);
 	}
 	100% {
 		opacity: 0;
-		transform: translate(0, -1rem) rotate(180deg);
+		transform: translate(0, -0.8rem) rotate(180deg);
 	}
 }
