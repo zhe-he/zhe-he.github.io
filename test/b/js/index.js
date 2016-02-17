@@ -1,6 +1,9 @@
 $(function (){
 	var mySwiper = new Swiper('.swiper-container', {
-		direction : 'vertical'
+		direction : 'vertical',
+		onSlideChangeEnd: 	function (swiper){
+			window.location.hash = swiper.activeIndex;
+		}
 	});
 
 	// 预加载
@@ -16,6 +19,10 @@ $(function (){
 		for (var i = 0; i < allImgArr.length; i++) {
 			imgLoad(allImgArr[i],function (){
 				loading();
+
+				var hash = Number(window.location.hash.substr(1));
+				hash = isNaN(hash)?0:hash;
+				mySwiper.slideTo(hash, 0, false);
 			});
 			
 		};
