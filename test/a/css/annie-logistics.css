@@ -1,0 +1,130 @@
+html,
+body {
+  background-color: #fff;
+}
+header {
+  border-top: 1px solid #ededed;
+  padding: 0.3rem 0.4rem;
+}
+header .img {
+  float: left;
+  width: 0.9rem;
+  height: 0.9rem;
+  background: url(../images/expressPortrait.png) no-repeat;
+  background-size: 100% 100%;
+  margin-right: 0.4rem;
+}
+header .con {
+  float: left;
+  width: 5rem;
+}
+header .con h2 {
+  font-size: 0.26rem;
+  line-height: 0.33rem;
+  margin-bottom: 0.1rem;
+  color: #444444;
+}
+header .con p {
+  font-size: 0.24rem;
+  line-height: 0.27rem;
+  color: #8e8e8e;
+}
+header .con p:first-of-type {
+  margin-bottom: 0.14rem;
+}
+header .con p span {
+  color: #46c8a5;
+}
+section h2 {
+  height: 0.6rem;
+  line-height: 0.6rem;
+  color: #8e8e8e;
+  background-color: #f2f2f2;
+  text-indent: 0.3rem;
+  font-size: 0.24rem;
+}
+section .item {
+  position: relative;
+  padding-left: 0.9rem;
+  color: #8e8e8e;
+}
+section .item .item-con {
+  padding: 0.2rem 0.45rem 0.2rem 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+section .item .item-con a {
+  color: #92BAE2;
+}
+section .item h3 {
+  font-size: 0.28rem;
+  line-height: 0.38rem;
+}
+section .item p {
+  margin-top: 0.18rem;
+  font-size: 0.2rem;
+  line-height: 0.21rem;
+}
+section .item time:first-child {
+  margin-right: 0.14rem;
+}
+section .item.active {
+  color: #46c8a5;
+  padding-top: 0.1rem;
+}
+section .item > i {
+  position: absolute;
+  left: 0.44rem;
+}
+section .item > i:nth-of-type(1) {
+  z-index: 10;
+  top: 0.3rem;
+  width: 0.16rem;
+  height: 0.16rem;
+  margin-left: -0.08rem;
+  background-color: #ededed;
+  border-radius: 50%;
+}
+section .item > i:nth-of-type(2) {
+  z-index: 5;
+  top: 0;
+  margin-left: -1px;
+  width: 1px;
+  background-color: #ededed;
+  height: 100%;
+}
+section .item.active > i:nth-of-type(1) {
+  top: 0.3rem;
+  width: 0.3rem;
+  height: 0.3rem;
+  margin-left: -0.15rem;
+  background-color: #46c8a5;
+}
+section .item.active > i:nth-of-type(1):before {
+  content: "";
+  position: absolute;
+  top: 0.04rem;
+  left: 0.04rem;
+  width: 0.22rem;
+  height: 0.22rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+section .item.active > i:nth-of-type(1):after {
+  content: "";
+  position: absolute;
+  top: 0.08rem;
+  left: 0.08rem;
+  width: 0.14rem;
+  height: 0.14rem;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+section .item.active > i:nth-of-type(2) {
+  top: 0.3rem;
+}
+section .item:last-of-type > i:nth-of-type(2) {
+  height: 0.4rem;
+}
+section .item.active:last-of-type > i:nth-of-type(2) {
+  height: 0;
+}
