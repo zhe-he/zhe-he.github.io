@@ -23,7 +23,7 @@ $(function (){
 		$container.addClass('active');
 		mySwiper.slideTo(index,0);
 
-		$('body').css('overflow-y','hidden');
+		$('body').addClass('active');
 
 	}
 	// 关闭弹窗
@@ -31,8 +31,8 @@ $(function (){
 		var $a = $container.find('.button-close');
 		$a.on(Click, function (){
 			$container.removeClass('active');
-			
-			$('body').css('overflow-y','auto');
+
+			$('body').removeClass('active');
 		});
 	}
 

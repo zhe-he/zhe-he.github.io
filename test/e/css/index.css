@@ -5,6 +5,9 @@ body {
 i {
   font-style: normal;
 }
+body.active {
+  overflow: hidden;
+}
 .container {
   opacity: 0;
   z-index: -1;
@@ -20,14 +23,8 @@ i {
   z-index: 100;
 }
 .container.active .swiper-container {
-  -webkit-animation: container 1.5s ease-in-out;
-  animation: container 1.5s ease-in-out;
-}
-.container.active .button-prev,
-.container.active .button-next,
-.container.active .button-close {
-  -webkit-animation: show 0.6s 1s forwards;
-  animation: show 0.6s 1s forwards;
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
 .container .swiper-container {
   position: absolute;
@@ -38,6 +35,10 @@ i {
   height: 94%;
   border-radius: 0.16rem;
   background-color: #fffaf4;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7);
 }
 .container .swiper-container .swiper-slide {
   height: 100%;
@@ -126,7 +127,6 @@ i {
 }
 .container .button-prev,
 .container .button-next {
-  opacity: 0;
   position: absolute;
   top: 50%;
   margin-top: -0.2rem;
@@ -147,7 +147,6 @@ i {
   display: none;
 }
 .container .button-close {
-  opacity: 0;
   z-index: 10;
   position: absolute;
   top: 0.61rem;
@@ -159,8 +158,6 @@ i {
   background-image: url(../images/cancel.png);
 }
 body {
-  overflow-x: hidden;
-  overflow-y: auto;
   background: url(../images/background.png) repeat;
 }
 .top {
@@ -379,48 +376,4 @@ body {
 }
 .book-box .book-item:nth-of-type(10) .con-fl {
   background-image: url('../images/10.png');
-}
-@-webkit-keyframes container {
-  0% {
-    -webkit-transform: scaleX(0) scaleY(0) rotateX(360deg);
-  }
-  50% {
-    -webkit-transform: scaleX(0.5) scaleY(0.5) rotateX(0deg);
-  }
-  75% {
-    -webkit-transform: scaleX(0.5) scaleY(1) rotateX(0deg);
-  }
-  100% {
-    -webkit-transform: scaleX(1) scaleY(1) rotateX(0deg);
-  }
-}
-@keyframes container {
-  0% {
-    transform: scaleX(0) scaleY(0) rotateX(360deg);
-  }
-  50% {
-    transform: scaleX(0.5) scaleY(0.5) rotateX(0deg);
-  }
-  75% {
-    transform: scaleX(0.5) scaleY(1) rotateX(0deg);
-  }
-  100% {
-    transform: scaleX(1) scaleY(1) rotateX(0deg);
-  }
-}
-@-webkit-keyframes show {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes show {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
