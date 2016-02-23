@@ -23,7 +23,7 @@ $(function (){
 		$container.addClass('active');
 		mySwiper.slideTo(index,0);
 
-		$('body').on('touchstart',preventDefaultFn);
+		$('body').on('touchmove',preventDefaultFn);
 
 	}
 	// 关闭弹窗
@@ -32,7 +32,7 @@ $(function (){
 		$a.on(Click, function (){
 			$container.removeClass('active');
 
-			$('body').off('touchstart',preventDefaultFn);
+			$('body').off('touchmove',preventDefaultFn);
 		});
 	}
 	function preventDefaultFn(ev){
