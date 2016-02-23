@@ -23,7 +23,7 @@ $(function (){
 		$container.addClass('active');
 		mySwiper.slideTo(index,0);
 
-		$('body').addClass('active');
+		$('body').on('touchstart',preventDefaultFn);
 
 	}
 	// 关闭弹窗
@@ -32,8 +32,11 @@ $(function (){
 		$a.on(Click, function (){
 			$container.removeClass('active');
 
-			$('body').removeClass('active');
+			$('body').off('touchstart',preventDefaultFn);
 		});
+	}
+	function preventDefaultFn(ev){
+		ev.preventDefault();
 	}
 
 	// 创建html,填充数据

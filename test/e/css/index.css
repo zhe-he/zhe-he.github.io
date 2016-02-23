@@ -6,8 +6,7 @@ i {
   font-style: normal;
 }
 body.active {
-  height: 100%;
-  overflow: hidden;
+  
 }
 .container {
   opacity: 0;
