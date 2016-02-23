@@ -15,12 +15,7 @@ $(function (){
 		for (var i = 0; i < allImgArr.length; i++) {
 			imgLoad(allImgArr[i],function (){
 				loading();
-
-				var hash = Number(window.location.hash.substr(1));
-				hash = isNaN(hash)?0:hash;
-				mySwiper.slideTo(hash, 0, false);
 			});
-			
 		};
 
 		function loading(){
@@ -30,6 +25,10 @@ $(function (){
 			$text.text(t);
 			if (now === count) {
 				$('#loading').remove();
+
+				var hash = Number(window.location.hash.substr(1));
+				hash = isNaN(hash)?0:hash;
+				createSlide(hash);
 			};
 
 		}
@@ -91,7 +90,7 @@ $(function (){
 		for (var i = 0; i < data2.length; i++) {
 			str += '<li>\
 						<a href="'+data2[i].href+'">\
-							<img src="images/nine/small-'+(i+1)+'.jpg" />\
+							<div class="img"></div>\
 							<h5>'+data2[i].title+'</h5>\
 							<p><i>￥</i><i>'+data2[i].price+'</i><i>×'+data2[i].periods+'期</i></p>\
 						</a>\
@@ -135,20 +134,27 @@ $(function (){
 		slides[index].style.height = 'auto';
 	}
 
-	function init(){
-		createHtml();
+	function createSlide(curIndex){
+		curIndex = curIndex || 0;
 		mySwiper = new Swiper('.swiper-container', {
+			initialSlide: 	curIndex,
 			onSlideChangeEnd: 	function (swiper){
+				// window.scroll(0,0);
+				document.documentElement.scrollTop = document.body.scrollTop = 0;
 				window.location.hash = swiper.activeIndex;
 				setHeight(swiper);
-				if (swiper.activeIndex == swiper.slide.length-1) {
+				/*if (swiper.activeIndex == swiper.slides.length-1) {
 					swiper.slides[swiper.activeIndex].className = 'swiper-slide last-slide active';
-				};
+				};*/
 			},
 			onInit: 			function (swiper){
 				setHeight(swiper);
 			}
 		});
+	}
+
+	function init(){
+		createHtml();
 		preLoad();
 		setCenter();
 		showAll();

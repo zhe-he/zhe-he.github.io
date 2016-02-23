@@ -276,12 +276,20 @@ i{
 						float: right;
 					}
 
-					img{
-						display: block;
+					.img{
 						width: 3.3rem;
 						height: 3.3rem;
 						margin: 0 auto 0.1rem;
+						.bgs;
 					}
+					.for(12);
+					.for(@n, @i:1) when(@i <= @n){
+						&:nth-of-type(@{i}) .img{
+							background-image: url('../images/nine/small-@{i}.jpg');
+						}
+						.for(@n,@i+1);
+					}
+
 					h5{
 						overflow: hidden;
 						height: 0.34rem;

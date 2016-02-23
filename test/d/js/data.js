@@ -249,7 +249,7 @@ window.data = {
 				"href": 	"http://m.fenqiannie.com/weixin/mall/selfTimerProductDetails.shtml?productId=K6BTM0AG1P9UWJEO4Z0IDU&goodChoiceId=ISM56FK7Y3U7GKV14BBM0A"
 			},{
 				"title": 	"娇兰 赋妍紧致柔滑日霜（清新型）",
-				"price": 	"72",
+				"price": 	"105",
 				"periods": 	"12",
 				"href": 	"http://m.fenqiannie.com/weixin/mall/selfTimerProductDetails.shtml?productId=OJBJ10P1ZSUQHOCXNKG882&goodChoiceId=ISM56FK7Y3U7GKV14BBM0A"
 			},{
@@ -259,7 +259,7 @@ window.data = {
 				"href": 	"http://m.fenqiannie.com/weixin/mall/selfTimerProductDetails.shtml?productId=0SA7G3RGGXTPN6RVR3SVZ4&goodChoiceId=ISM56FK7Y3U7GKV14BBM0A"
 			},{
 				"title": 	"兰蔻 立体塑颜晚霜",
-				"price": 	"105",
+				"price": 	"72",
 				"periods": 	"12",
 				"href": 	"http://m.fenqiannie.com/weixin/mall/selfTimerProductDetails.shtml?productId=LII79P3QJUQTLDIR410P0G&goodChoiceId=ISM56FK7Y3U7GKV14BBM0A"
 			},{
