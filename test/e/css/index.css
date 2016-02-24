@@ -137,7 +137,8 @@ i {
 }
 .container .button-prev {
   left: 0.1rem;
-  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 .container .button-next {
   right: 0.1rem;
