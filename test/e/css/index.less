@@ -30,6 +30,7 @@ i{
 	}
 
 	.swiper-container{
+		z-index: 90;
 		position: absolute;
 		left: 50%;
 		top: 3%;
@@ -114,6 +115,7 @@ i{
 		
 	}
 	.button-prev,.button-next{
+		z-index: 100;
 		position: absolute;
 		top: 50%;
 		margin-top: -0.2rem;
@@ -130,7 +132,7 @@ i{
 		right: 0.1rem;
 	}
 	.swiper-button-disabled{
-		display: none;
+		opacity: 0;
 	}
 	.button-close{
 		z-index: 100;
@@ -141,6 +143,13 @@ i{
 		height: 0.29rem;
 		.bgs;
 		background-image: url(../images/cancel.png);
+	}
+	.mask{
+		position: absolute;
+		top: 0;
+		left:0;
+		right: 0;
+		bottom: 0;
 	}
 }
 

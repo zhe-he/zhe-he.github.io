@@ -29,7 +29,7 @@ $(function (){
 	}
 	// 关闭弹窗
 	function closeSwiper(){
-		var $a = $container.find('.button-close');
+		var $a = $container.find('.button-close,.mask');
 		$a.on(Click, function (){
 			$container.removeClass('active');
 
