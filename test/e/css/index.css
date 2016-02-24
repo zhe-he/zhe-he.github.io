@@ -115,7 +115,6 @@ i {
 }
 .container .swiper-container .swiper-slide footer p {
   width: 100%;
-  word-break: break-all;
   height: 91.70305677%;
   font-size: 0.24rem;
   line-height: 0.42rem;
@@ -146,7 +145,7 @@ i {
   display: none;
 }
 .container .button-close {
-  z-index: 10;
+  z-index: 100;
   position: absolute;
   top: 0.61rem;
   right: 0.84rem;
