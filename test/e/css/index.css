@@ -5,9 +5,7 @@ body {
 i {
   font-style: normal;
 }
-body.active {
-  
-}
+
 .container {
   opacity: 0;
   z-index: -1;

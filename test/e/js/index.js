@@ -2,7 +2,6 @@ $(function (){
 	var mySwiper; 	// 介绍页面弹窗
 	var $bookBox = $('#book-box'); 	// 书单盒子
 	var $container = $('#container'); // 弹窗盒子
-	var Click = 'ontouchstart' in window?'touchstart':'click';
 	var offsetArr = []; 	// 书单单元的位置信息
 
 	// 创建弹窗
@@ -20,21 +19,40 @@ $(function (){
 	}
 	// 显示弹窗
 	function showSwiper(index){
+		needMove();
 		$container.addClass('active');
 		mySwiper.slideTo(index,0);
 
-		$('body').on('touchmove',preventDefaultFn);
+		$('body').addClass('active').on('touchmove',preventDefaultFn);
 
 	}
 	// 关闭弹窗
 	function closeSwiper(){
 		var $a = $container.find('.button-close');
-		$a.on(Click, function (){
+		$a.on('click', function (){
 			$container.removeClass('active');
 
-			$('body').off('touchmove',preventDefaultFn);
+			$('body').removeClass('active').off('touchmove',preventDefaultFn);
 		});
 	}
+	// 弹窗中需要滑动的内容
+	function needMove(){
+		$p = $container.find('footer p');
+		$p.each(function (index,ele){
+			// 需要滑动    用系统自带滑动
+			if(ele.offsetHeight<ele.scrollHeight){
+				$(ele).on('touchstart',function (){
+					$('body').off('touchmove',preventDefaultFn);
+				}).on('touchmove',function (ev){
+
+				}).on('touchend',function (){
+					$('body').on('touchmove',preventDefaultFn);
+				});
+			}
+		});
+	}
+
+	// 阻止默认
 	function preventDefaultFn(ev){
 		ev.preventDefault();
 	}
@@ -69,10 +87,10 @@ $(function (){
 		var html = '<div class="book-item">\
 						<h3><span>${index}.${title}·</span><span>${address}</span></h3>\
 						<div class="con">\
-							<div class="con-fl js-detail"></div>\
+							<div class="con-fl"></div>\
 							<div class="con-fr">\
 								<h5>推荐理由：</h5>\
-								<p>${reason}<a class="js-detail" href="javascript:;">【点击查看简介】</a></p>\
+								<p>${reason}<a href="javascript:;">【点击查看简介】</a></p>\
 							</div>\
 						</div>\
 					</div>';
@@ -109,8 +127,7 @@ $(function (){
 			// 存储当前item的位置信息
 			offsetArr[index] = $(this).offset(); 
 
-			var $a = $(this).find('.js-detail');
-			$a.on(Click, function (){
+			$(ele).on('click', function (){
 				showSwiper(index);
 			});
 		});
@@ -120,7 +137,6 @@ $(function (){
 		createHtml();
 		createSwiper();
 		findDetail();
-		console.log(offsetArr);
 	}
 
 	init();
