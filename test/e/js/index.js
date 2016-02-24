@@ -3,6 +3,7 @@ $(function (){
 	var $bookBox = $('#book-box'); 	// 书单盒子
 	var $container = $('#container'); // 弹窗盒子
 	var offsetArr = []; 	// 书单单元的位置信息
+	var Click = 'ontouchstart' in window?'touchstart':'click';
 
 	// 创建弹窗
 	function createSwiper(){
@@ -29,7 +30,7 @@ $(function (){
 	// 关闭弹窗
 	function closeSwiper(){
 		var $a = $container.find('.button-close');
-		$a.on('click', function (){
+		$a.on(Click, function (){
 			$container.removeClass('active');
 
 			$('body').removeClass('active').off('touchmove',preventDefaultFn);

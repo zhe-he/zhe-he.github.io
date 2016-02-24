@@ -114,6 +114,7 @@ i {
   background-color: #d3b180;
 }
 .container .swiper-container .swiper-slide footer p {
+  width: 100%;
   word-break: break-all;
   height: 91.70305677%;
   font-size: 0.24rem;
