@@ -1,4 +1,4 @@
-//调用 viewPort(navigator.userAgent,设计图给的尺寸，不传为640)
+//调用 viewPort(navigator.userAgent,设计图给的尺寸，不传为750)
 (function (){
 
 var view_timer = null;
@@ -8,7 +8,7 @@ function viewPort(userAgent, pageWidth) {
     if (oView) {
         document.head.removeChild(oView);
     }
-    //设计尺寸的宽度，如果不给 默认为640
+    //设计尺寸的宽度，如果不给 默认为750
     if (!pageWidth) {
         pageWidth = 750;
     }
@@ -22,7 +22,7 @@ function viewPort(userAgent, pageWidth) {
         if (version > 2.3) {
             creat_meta.content = 'width=' + pageWidth + ', initial-scale = ' + scale + ',user-scalable=1, minimum-scale = ' + scale + ', maximum-scale = ' + scale + ', target-densitydpi=device-dpi';
         } else {
-            creat_meta.content = '"width=' + pageWidth + ', target-densitydpi=device-dpi';
+            creat_meta.content = 'width=' + pageWidth + ', target-densitydpi=device-dpi';
         }
         document.head.appendChild(creat_meta);
     } else {

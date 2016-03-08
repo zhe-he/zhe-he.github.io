@@ -94,7 +94,6 @@
 				this.mousehole[i].r = false;
 			};
 		},
-
 		setClientRect: 		function (){
 			var w = document.documentElement.clientWidth || document.body.clientWidth;
 			var h = document.documentElement.clientHeight || document.body.clientHeight;
@@ -146,6 +145,8 @@
 			var w = imgObject.width;
 			var h = imgObject.height;
 			if(w>this.canvas.width){
+				this.scale = this.canvas.width/w;
+				
 				h = this.canvas.width/w*h;
 				w = this.canvas.width;
 			}
@@ -177,8 +178,7 @@
 			var h = this.help.height*this.scale;
 			this.ctx.drawImage(this.help,this.canvas.width/2-w/2,this.canvas.height/2-h/2,w,h);
 		},
-		drawHammer: 		function (x,y){
-
+		drawHammer: 		function (x,y,scale){
 			if (!this.hammer) {
 				this.hammer = new Image();
 				this.hammer.src = this.img[1];
@@ -186,17 +186,15 @@
 			var w = this.hammer.width*this.scale;
 			var h = this.hammer.height*this.scale;
 
-			this.ctx.drawImage(this.hammer,x-w*1/4,y-h/2,w,h);
-		},
-		fnHammer: 			function (x,y,scale){
-			// 待改进 暂时移除
+			
+			var a = (-30+scale*90)*Math.PI/180;
 			this.ctx.save();
+			this.ctx.translate(x+w*79/98,y+h*66/77);
+			this.ctx.rotate(a); // -30~60
+			
+			this.ctx.translate(-x-w*79/98,-y-h*66/77);
 
-			this.ctx.translate(x,y);
-			this.ctx.rotate(-45+scale*90); // -45~45
-			this.ctx.translate(-x,-y);
-			this.drawHammer(x,y,scale);
-			//this.ctx.drawImage(this.hammer,x-w*1/4-w*3/4*scale,y-h/2+h/2*scale,w,h);
+			this.ctx.drawImage(this.hammer,x-w*19/98,y-h*11/77,w,h);
 			
 			this.ctx.restore();
 		},
@@ -285,7 +283,7 @@
 				this.clearMap();
 				this.drawBg();
 				this.drawCount();
-
+				cancelAnimationFrame(_this.baseTimer);
 				this.baseTimer = requestAnimationFrame(function (){
 					_this.base();
 				});
@@ -326,7 +324,7 @@
 						this.addScore(this.allMouse[i].type);
 					};
 				};
-				this.hammerArr.push({t:30,time:30,x:ev.pageX,y:ev.pageY});				
+				this.hammerArr.push({t:20,time:20,x:ev.pageX,y:ev.pageY});				
 			};
 		},
 		findMouse: 			function (index){
@@ -437,9 +435,9 @@
 				var die = this.allMouse[i].die;
 
 				if (die) {
-					s = 3;
+					var s = 3;
 				}else{
-					s = parseInt(status/10)%3;
+					var s = parseInt(status/10)%3;
 				};
 
 				if (status === 0) {
@@ -462,14 +460,14 @@
 				var x = this.hammerArr[i].x;
 				var y = this.hammerArr[i].y;
 				var t = --this.hammerArr[i].time;
-				//var T = this.hammerArr[i].t;
+				var T = this.hammerArr[i].t;
 
 				if (t<=0) {
 					this.hammerArr.splice(i,1);
 					i--;
 					continue;
 				};
-				this.drawHammer(x,y);
+				this.drawHammer(x,y,t/T);
 			};
 		},
 		base:　				function (){
@@ -509,4 +507,17 @@
 
 	window.Mole = Mole;
 })();
-	
+
+
+/*兼容 requestAnimation */
+window.requestAnimationFrame || (window.requestAnimationFrame = window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame 
+|| window.oRequestAnimationFrame || window.msRequestAnimationFrame || 
+function(callback) { 
+	return window.setTimeout(function() { 
+		return callback(+new Date()); 
+	}, 1000 / 60);
+});
+window.cancelAnimationFrame || (window.cancelAnimationFrame || window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame || window.oCancelAnimationFrame || window.msCancelAnimationFrame || 
+function(timeid) {
+	return clearTimeout(timeid); 
+});
