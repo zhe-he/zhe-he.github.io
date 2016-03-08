@@ -377,12 +377,22 @@
 			this.score = Math.round(this.score);
 			this.scoreScale = Math.max(Math.floor(this.scoreScale*10)/10,0.1);
 
+			
 			// 下一关
 			if (this.score >= this.needScore) {
-				this.gameMap();
-				this.ctx.fillText('恭喜过关，点击任意位置进入下一关！',this.canvas.width/2-200,this.canvas.height/2);
-				this._init(this.pass+1);
+				// 通关
+				if (this.pass == 5) {
+					this.gameMap();
+					this.ctx.fillText('恭喜通关，点击任意位置重新开始！',this.canvas.width/2-200,this.canvas.height/2);
+					this._init(1);
+				}else{
+					this.gameMap();
+					this.ctx.fillText('恭喜过关，点击任意位置进入下一关！',this.canvas.width/2-200,this.canvas.height/2);
+					this._init(this.pass+1);
+				};
+				
 			};
+
 		},
 		canCreateMouse: 	function (){
 			for (var i = 0; i < this.mousehole.length; i++) {
