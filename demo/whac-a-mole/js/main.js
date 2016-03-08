@@ -1,7 +1,7 @@
 /* 打地鼠 mole.js
  * by : zhe-he
  * e-mail: luanhong_feiguo@sina.com
- * veision: 1.0
+ * veision: 1.1
  */
 
 
@@ -310,9 +310,11 @@
 					};
 				},1000);
 			}else{
+				var pageX = ev.pageX;
+				var pageY = ev.pageY;
 				if (this._click === 'touchstart') {
-					ev.pageX = ev.targetTouches[0].pageX;
-					ev.pageY = ev.targetTouches[0].pageY;
+					pageX = ev.targetTouches[0].pageX;
+					pageY = ev.targetTouches[0].pageY;
 				};
 				var index = this.isKnock(ev.pageX,ev.pageY);
 				
@@ -324,7 +326,7 @@
 						this.addScore(this.allMouse[i].type);
 					};
 				};
-				this.hammerArr.push({t:20,time:20,x:ev.pageX,y:ev.pageY});				
+				this.hammerArr.push({t:20,time:20,x:pageX,y:pageY});				
 			};
 		},
 		findMouse: 			function (index){
