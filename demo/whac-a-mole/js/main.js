@@ -194,7 +194,7 @@
 			
 			this.ctx.translate(-x-w*79/98,-y-h*66/77);
 
-			this.ctx.drawImage(this.hammer,x-w*19/98,y-h*11/77,w,h);
+			this.ctx.drawImage(this.hammer,x-w*25/98,y-h*34/77,w,h);
 			
 			this.ctx.restore();
 		},
@@ -316,7 +316,7 @@
 					pageX = ev.targetTouches[0].pageX;
 					pageY = ev.targetTouches[0].pageY;
 				};
-				var index = this.isKnock(ev.pageX,ev.pageY);
+				var index = this.isKnock(pageX,pageY);
 				
 				if (index != -1) {
 					var i = this.findMouse(index);
