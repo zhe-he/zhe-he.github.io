@@ -12,6 +12,8 @@
 			throw Error('请输入canvans的id');
 		};
 		this.canvas = document.getElementById(id);
+		this.music = document.getElementById('bgmusic');
+
 		this.ctx = this.canvas.getContext('2d');
 
 		this.shuping = 'onorientationchange' in window ? 'orientationchange' : 'resize';
@@ -93,6 +95,17 @@
 			for (var i = 0; i < this.mousehole.length; i++) {
 				this.mousehole[i].r = false;
 			};
+
+			if (key === 5) {
+				this.music.getElementsByTagName('source')[0].src = 'sources/music.ogg';
+				this.music.getElementsByTagName('source')[1].src = 'sources/music.mp3';
+				this.music.load();
+				this.music.play();
+			}else{
+				this.music.currentTime = 0;
+				this.music.play();
+			};
+			
 		},
 		setClientRect: 		function (){
 			var w = document.documentElement.clientWidth || document.body.clientWidth;
@@ -197,6 +210,24 @@
 			this.ctx.drawImage(this.hammer,x-w*25/98,y-h*34/77,w,h);
 			
 			this.ctx.restore();
+		},
+		addMusic: 	function (srcArr){
+			var oMusic = document.createElement('audio');
+
+			for (var i = 0; i < srcArr.length; i++) {
+				var oSource = document.createElement('source');
+				oSource.src = srcArr[i];
+				oMusic.appendChild(oSource);
+			};
+			document.body.appendChild(oMusic);
+			oMusic.onloadeddata = function (){
+				this.onloadeddata = null;
+				this.play();
+			}
+			oMusic.onended = function (){
+				this.onended = null;
+				document.body.removeChild(oMusic);
+			}
 		},
 		drawMouse: 			function (type,status,x,y,index){
 			if (!this.mouse[type]) {
@@ -312,6 +343,9 @@
 			}else{
 				var pageX = ev.pageX;
 				var pageY = ev.pageY;
+
+				this.addMusic(["sources/hammer.wav"]);
+
 				if (this._click === 'touchstart') {
 					pageX = ev.targetTouches[0].pageX;
 					pageY = ev.targetTouches[0].pageY;
@@ -356,42 +390,50 @@
 				case "crazeMouse":
 				case 1:
 					this.score += 100*this.scoreScale;
+					this.addMusic(['sources/c4.ogg','sources/c4.mp3']);
 					break;
 				case "kingMouse":
 				case 2:
 					this.score += 500*this.scoreScale;
+					this.addMusic(['sources/d4.ogg','sources/d4.mp3']);
 					break;
 				case "cat":
 				case 3:
 					this.score -= 100*this.scoreScale;
+					this.addMusic(['sources/e4.ogg','sources/e4.mp3']);
 					break;
 				case "fairy":
 				case 0:
 					this.scoreScale*=1.2;
+					this.addMusic(['sources/f4.ogg','sources/f4.mp3']);
 					break;
 				case "rabbit":
 				case 4:
 					this.scoreScale/=2;
+					this.addMusic(['sources/g4.ogg','sources/g4.mp3']);
 					break;
 			}
 			this.score = Math.round(this.score);
 			this.scoreScale = Math.max(Math.floor(this.scoreScale*10)/10,0.1);
 
-			
 			// 下一关
 			if (this.score >= this.needScore) {
 				// 通关
 				if (this.pass == 5) {
 					this.gameMap();
 					this.ctx.fillText('恭喜通关，点击任意位置重新开始！',this.canvas.width/2-200,this.canvas.height/2);
+					this.music.getElementsByTagName('source')[0].src = 'sources/bg.ogg';
+					this.music.getElementsByTagName('source')[1].src = 'sources/bg.mp3';
+					this.music.load();
 					this._init(1);
 				}else{
 					this.gameMap();
 					this.ctx.fillText('恭喜过关，点击任意位置进入下一关！',this.canvas.width/2-200,this.canvas.height/2);
 					this._init(this.pass+1);
 				};
-				
 			};
+		},
+		mouseMusic: 		function (){
 
 		},
 		canCreateMouse: 	function (){
