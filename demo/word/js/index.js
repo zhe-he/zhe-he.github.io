@@ -35,7 +35,7 @@ myWeb.fn.ready(function (){
 			
 			_this.usenameVal = prompt('请输入姓名') || '';
 			if (_this.usenameVal.trim()==='') {
-				_this.usenameVal = '猴子派来的逗比';
+				_this.usenameVal = '游客';
 			};
 			_this.init();
 		}
@@ -155,11 +155,16 @@ myWeb.fn.ready(function (){
 				if (ev.shiftKey) {
 					//大写
 					letter = this.keyCode[code+'C'];
+					this.removeSpan(letter);
 				}else{
 					//小写
 					letter = this.keyCode[code+''];
+					this.removeSpan(letter);
+					//简单模式
+					letter = this.keyCode[code+'C'];
+					this.removeSpan(letter);
 				};
-				this.removeSpan(letter);
+				
 			};
 			
 		},
