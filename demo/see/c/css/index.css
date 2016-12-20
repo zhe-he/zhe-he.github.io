@@ -224,7 +224,7 @@
 
 .page-title{
 	position: absolute;
-	top: 2rem;
+	top: 1.75rem;
 	left: 50%;
 	width: 5.33rem;
 	margin-left: -2.67rem;
@@ -237,12 +237,12 @@
 }
 .page-title.on{
 	opacity: 1;
-	top: 1.25rem;
+	top: 0.9rem;
 }
 
 .page-next{
 	position: absolute;
-	bottom: 0.35rem;
+	bottom: 0.3rem;
 	left: 50%;
 	width: 5.36rem;
 	height: 2.57rem;
