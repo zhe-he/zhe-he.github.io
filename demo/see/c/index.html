@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<title>demo翻页</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/index.css">
+<script type="text/javascript" src="js/autosize.js"></script>
+</head>
+<body>
+	<audio src="Islands.mp3" preload loop id="music"></audio>
+	<a href="javascript:;" class="music"></a>
+
+	<div id="loading" class="loading">
+		<div>
+			<p><span class="load-x"></span></p>
+			<p>加载中 <span class="load-y">0</span>%</p>
+		</div>
+	</div>
+
+	<section class="page page1 hide">
+		<a class="page-next" href="javascript:;">open</a>
+	</section>
+
+	<section class="page page2 hide">
+		<div class="bg3">
+			<div class="box"></div>
+			<div class="box2"></div>
+		</div>
+		<div class="cube">
+			<div class="left"></div>
+			<div class="right"></div>
+			<div class="before"></div>
+			<div class="after"></div>
+			<div class="top"></div>
+			<div class="bottom"></div>
+		</div>
+	</section>
+	
+	<section class="page page3 hide">
+		<div class="book" id="book">
+			<div class="book-item"></div>
+			<div class="book-item"></div>
+			<div class="book-item"></div>
+			<div class="book-item"></div>
+			<div class="book-item"></div>
+			<div class="book-item"></div>
+			<div class="book-item"></div>
+			<div class="book-item"></div>
+			<div class="book-item"></div>
+			<div class="book-item"></div>
+			<div class="book-item"></div>
+		</div>
+		<div class="help"></div>
+	</section>
+
+	<script type="text/javascript" src="js/fastclick.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>
