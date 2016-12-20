@@ -12,7 +12,9 @@
 <script type="text/javascript" src="js/autosize.js"></script>
 </head>
 <body>
-	<audio src="Islands.mp3" preload loop id="music"></audio>
+	<audio preload loop id="music">
+		<source src="Islands.mp3" type="audio/mpeg">
+	</audio>
 	<a href="javascript:;" class="music"></a>
 
 	<div id="loading" class="loading">
@@ -23,7 +25,7 @@
 	</div>
 
 	<section class="page page1 hide">
-		<a class="page-next" href="javascript:;">open</a>
+		<a class="page-next" href="javascript:;"></a>
 	</section>
 
 	<section class="page page2 hide">
