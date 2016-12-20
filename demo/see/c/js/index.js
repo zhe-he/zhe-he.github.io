@@ -118,6 +118,24 @@ function _start(ev){
 	}
 }
 
+// 音乐
+var music = document.getElementById('music');
+var musicBtn = document.getElementsByClassName('music')[0];
+fnMusic();
+function fnMusic(){
+	
+	musicBtn.addEventListener('click',_fn,false);
+	
+	function _fn(){
+		if (musicBtn.className === 'music') {
+			musicBtn.className = 'music close';
+			music.pause();				
+		}else{
+			musicBtn.className = 'music';
+			music.play();			
+		}
+	}
+}
 
 
 var arrImg = ["images/music.png","images/bg1.jpg","images/bg2.jpg","images/bg3.jpg","images/book-b.jpg","images/box-t.png","images/book-b.png","images/book-f.png","images/book-l.png","images/book-r.png","images/hand.png","images/page1.png","images/page2.png","images/page3.png","images/page4.png","images/page5.png","images/page6.png","images/page7.png","images/page8.png","images/page9.png","images/page10.jpg"];
@@ -131,7 +149,6 @@ var oBox = document.querySelector('.box2');
 preLoad(arrImg,function (){
 	aPage[0].className = 'page page1';
 	document.getElementsByClassName('music')[0].style.display = 'block';
-	document.getElementById('music').play();
 });
 oNext.onclick = function (){
 	aPage[1].className = 'page page2';
@@ -190,19 +207,11 @@ function preLoad(arrImg,cb){
 }
 
 
-// 音乐
-fnMusic();
-function fnMusic(){
-	var music = document.getElementById('music');
-	var musicBtn = document.getElementsByClassName('music')[0];
-	musicBtn.onclick = function (){
-		if (this.className === 'music') {
-			this.className = 'music close';
-			music.pause();
 
-		}else{
-			this.className = 'music';
-			music.play();
-		}
-	}
+document.addEventListener('touchstart',_fnstart,false);
+document.addEventListener('click',_fnstart,false);
+function _fnstart(){
+	document.removeEventListener('touchstart',_fnstart,false);
+	document.removeEventListener('click',_fnstart,false);
+	musicBtn.click();
 }
