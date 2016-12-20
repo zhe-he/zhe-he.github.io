@@ -1,0 +1,25 @@
+<%include common/header.html%>
+    <article>
+        <h2 class="about_h">您现在的位置是：<a href="/">首页</a>><a href="1/">留言板</a></h2>
+        <div class="index_about">
+            <!-- 多说评论框 start -->
+            <div class="ds-thread" data-thread-key="messBoard" data-title="留言板" data-url="http://www.hezhe.com/messBoard.html"></div>
+
+        <script type="text/javascript">
+        var duoshuoQuery = {short_name:"hezhe"};
+            (function() {
+                var ds = document.createElement('script');
+                ds.type = 'text/javascript';ds.async = true;
+                ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                ds.charset = 'UTF-8';
+                (document.getElementsByTagName('head')[0] 
+                 || document.getElementsByTagName('body')[0]).appendChild(ds);
+            })();
+            </script>
+        </div>
+    </article>
+    <aside>
+        <%include common/recommend.html%>
+        <%include common/design.html%>
+    </aside>
+<%include common/footer.html%>

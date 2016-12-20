@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+	<title>swiper</title>
+	<link rel="stylesheet" type="text/css" href="/css/swiper.min.css">
+	<script type="text/javascript" src="/js/ajax.js"></script>
+	<script type="text/javascript" src="/js/fastclick.js"></script>
+	<script type="text/javascript" src="/js/swiper.min.js"></script>
+	<style type="text/css">
+		*{margin: 0;padding: 0; font-family: "微软雅黑","Microsoft Yahei";}
+		.tab{z-index: 10; position: fixed; top:0;left:0;width:100%;font-size: 18px;line-height: 40px;background-color: #eee;text-align: center;}
+		.tab .swiper-slide.active{color: lightblue;}
+
+		.box{padding-top: 40px;}
+		.item{padding: 10px 20px; border-bottom: 1px solid lightgreen;}
+		.item:last-of-type{border-bottom: none;}
+		.item h2{font-size: 14px; line-height: 30px; text-align: center;}
+		.imte p {font-size: 12px; line-height: 20px; text-align: justify;}
+		.loading{position: relative; width: 100px; margin: 0 auto; text-align: center; font-size: 14px;padding-bottom: 10px; line-height: 20px;}
+		.loading.active:after{content: "";position: absolute;top: 0;right: 0;width: 50px;height: 20px;background-color: #fff;-webkit-animation: loading 1.6s 0s ease both infinite;animation: loading 1.6s 0s ease both infinite;}
+		@-webkit-keyframes loading{0%{width: 50px;}100%{width: 0;}}
+		@keyframes loading{0%{width: 50px;}100%{width: 0;}}
+
+	</style>
+</head>
+<body>
+	<div class="tab swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide active">推荐</div>
+			<div class="swiper-slide">视频</div>
+			<div class="swiper-slide">热点</div>
+			<div class="swiper-slide">北京</div>
+			<div class="swiper-slide">娱乐</div>
+			<div class="swiper-slide">体育</div>
+			<div class="swiper-slide">社会</div>
+			<div class="swiper-slide">财经</div>
+			<div class="swiper-slide">科技</div>
+		</div>
+	</div>
+	<div class="box swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide active" data-hash="tuijian">
+				<p class="loading active">加载中。。。</p>
+			</div>
+			<div class="swiper-slide" data-hash="shiping">
+				<p class="loading active">加载中。。。</p>
+			</div>
+			<div class="swiper-slide" data-hash="redian">
+				<p class="loading active">加载中。。。</p>
+			</div>
+			<div class="swiper-slide" data-hash="beijing">
+				<p class="loading active">加载中。。。</p>
+			</div>
+			<div class="swiper-slide" data-hash="yule">
+				<p class="loading active">加载中。。。</p>
+			</div>
+			<div class="swiper-slide" data-hash="tiyu">
+				<p class="loading active">加载中。。。</p>
+			</div>
+			<div class="swiper-slide" data-hash="shehui">
+				<p class="loading active">加载中。。。</p>
+			</div>
+			<div class="swiper-slide" data-hash="caijing">
+				<p class="loading active">加载中。。。</p>
+			</div>
+			<div class="swiper-slide" data-hash="keji">
+				<p class="loading active">加载中。。。</p>
+			</div>
+		</div>
+	</div>
+	<script>
+		var tabs =document.querySelectorAll('.tab .swiper-slide'); 
+		var contents = document.querySelectorAll('.box .swiper-slide');
+		var loadings = document.querySelectorAll('.box .swiper-slide .loading');
+		
+		var hashArr = {"tuijian":0,"shiping":1,"redian":2,"beijing":3,"yule":4,"tiyu":5,"shehui":6,"caijing":7,"keji":8}
+		var Current = hashArr[window.location.hash] || 0;
+		var gType = [];
+		var Current = 0;
+		for (var i = 0; i < tabs.length; i++) {
+			gType[i] = {
+				"type": tabs[i].innerHTML,
+				"now": 0,
+				"page": 1,
+				"iReady": false,
+				// "lastNumer": 0
+			};
+
+			(function (i){
+				tabs[i].addEventListener('click',function (){
+					changeClass(tabs,this);
+					swiperBox.slideTo(i,300,true);
+					changeSwiperIndex(i);
+				},false);
+			})(i);
+		};
+
+		var swiperTab = new Swiper('.tab', {
+			slidesPerView : 5
+		});
+		var swiperBox = new Swiper('.box', {
+			onTransitionEnd: function (s){
+				changeClass(tabs,tabs[s.activeIndex]);
+				changeSwiperIndex(s.activeIndex);
+				setHeight(s);
+				Current = s.activeIndex;
+				addData();
+				document.documentElement.scrollTop = document.body.scrollTop = gType[s.activeIndex].lastNumer;
+			},
+			initialSlide: Current,
+			hashnav: true,
+			onTouchStart: function (s){
+				gType[s.activeIndex].lastNumer = document.documentElement.scrollTop || document.body.scrollTop;
+			},
+			onInit: function (s){
+				changeClass(tabs,tabs[s.activeIndex]);
+				changeSwiperIndex(s.activeIndex);
+				Current = s.activeIndex;
+				addData();
+			}
+		});
+		
+
+		addData();
+		window.addEventListener('scroll',addData);
+
+		function addData(){
+			var t = document.documentElement.scrollTop || document.body.scrollTop;
+			var H = document.documentElement.scrollHeight || document.body.scrollHeight;
+			var h = window.innerHeight;
+			if (H - (h + t) < 20 && !gType[Current].iReady) {
+				var now = Current;
+				gType[now].iReady = true;
+				ajax({
+					url: "/swiper/getData",
+					data: {
+						page: gType[now].page,
+						type: gType[now].type
+					},
+					success: function (data){
+						gType[now].page++;
+						data = JSON.parse(data);
+						if (data.data.length==0) {
+							loadings[now].classList.remove('active');
+							loadings[now].innerHTML = "暂无更多数据";
+						}else{
+							gType[now].iReady = false;
+							for (var i = 0; i < data.data.length; i++) {
+								putData(data.data[i],loadings[now]);
+							};
+						};
+					},
+					error: function (){
+						gType[now].iReady = false;
+					}
+				});
+			}
+		}
+		function putData(data,loading){
+			var div = document.createElement('div');
+			div.className = "item";
+			div.innerHTML = '<h2>'+data.title+'</h2><p>'+data.content+'</p>';
+			loading.parentNode.insertBefore(div,loading);
+		}
+
+		function changeClass(parent,children){
+			for (var j = 0; j < parent.length; j++) {
+				parent[j].classList.remove('active');
+			};
+			children.classList.add('active');
+		}
+		function changeSwiperIndex(index){
+			if (index>=2 && index<swiperTab.slides.length-2) {
+				swiperTab.slideTo(index-2,300);
+			}else if(index<2){
+				swiperTab.slideTo(0,300);
+			}else{
+				swiperTab.slideTo(swiperTab.slides.length-3,300);
+			};
+
+		}
+		// dropload
+		function setHeight(s){
+			for (var i = 0; i < s.slides.length; i++) {
+				s.slides[i].style.height = window.innerHeight - 40 + 'px';
+			};
+			s.slides[s.activeIndex].style.height = 'auto'; 
+		}
+	</script>
+</body>
+</html>

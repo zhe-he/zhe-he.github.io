@@ -108,7 +108,7 @@ a.readmore { background: #e41635; color: #fff; padding: 5px 10px; float: right; 
 .about_c p:nth-child(4) { background-position: 15px -70px }
 .about_c p:last-child { background-position: 15px -97px }
 .about_c p { display: block; padding-left: 40px; }
-.about_c p:hover { background: #222 }
+.about_c p:hover { background-color: #222 }
 .bdsharebuttonbox { margin: 20px; clear: both; }/*  */
 /*  */
 .tj_news h2, .links h2 { font-size: 16px; font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif; color: #FFF; }
