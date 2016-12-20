@@ -97,7 +97,7 @@ function _start(ev){
 					}
 					zIndex = aItem.length+1;
 					iNow = 0;
-				},500);
+				},1000);
 				
 
 			}
@@ -137,7 +137,7 @@ oNext.onclick = function (){
 	aPage[1].className = 'page page2';
 	oCube.className = 'cube active';
 	oBox.className = 'box2 active';
-	oCube.addEventListener('WebkitAnimationEnd',_cubefn,false);
+	oCube.addEventListener('animationend',_cubefn,false);
 	oCube.addEventListener('animationend',_cubefn,false);
 }
 
@@ -154,7 +154,6 @@ function _cubefn(){
 }
 
 
-
 function preLoad(arrImg,cb){
 	arrImg = arrImg || [];
 	var now = 0;
@@ -164,7 +163,7 @@ function preLoad(arrImg,cb){
 	var $loading = document.querySelector('#loading .load-x');
 	var $text = document.querySelector('#loading .load-y');
 	for (var i = 0; i < arrImg.length; i++) {
-		imgLoad(arrImg[0],loading);
+		imgLoad(arrImg[i],loading);
 	};
 	if (arrImg.length == 0) {
 		oLoad.parentNode && oLoad.parentNode.removeChild(oLoad);
