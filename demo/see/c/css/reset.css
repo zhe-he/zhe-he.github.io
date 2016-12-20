@@ -20,8 +20,11 @@ input, button, select, textarea {
   border-radius: 0px; }
 
 
-
+html,body{
+  height: 100%;
+}
 body {
+  overflow: hidden;
   max-width: 750px;
   margin: 0 auto;
   font-family: Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial, STHeiti; }

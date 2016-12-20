@@ -80,24 +80,35 @@ function _start(ev){
 			}
 			aItem[iNow].style.WebkitTransform = 'rotateY('+endX+'deg)';
 			aItem[iNow].style.transform = 'rotateY('+endX+'deg)';
-			aItem[iNow].style.WebkitTransitionDuration = '0.3s';
-			aItem[iNow].style.transitionDuration = '0.3s';
+			aItem[iNow].style.WebkitTransitionDuration = '1s';
+			aItem[iNow].style.transitionDuration = '1s';
 			aItem[iNow].style.zIndex = zIndex++;
 			endX===-180?iNow++:'';
 
 			if (iNow === aItem.length) {
 				setTimeout(function (){
-					for (var i = 1; i < aPage.length; i++) {
-						aPage[i].className = aPage[i].className + ' hide';
+					for (var i = aItem.length - 1; i >= 0; i--) {
+						
+						aItem[i].style.WebkitTransitionDuration = '0.25s';
+						aItem[i].style.transitionDuration = '0.25s';
+
+						(function (i){
+							var t = (aItem.length-1-i)*0.15;
+							setTimeout(function (){
+								aItem[i].style.WebkitTransform = 'rotateY(0deg)';
+								aItem[i].style.transform = 'rotateY(0deg)';
+								aItem[i].style.zIndex = zIndex++;
+
+								if(i===0){
+									oBook.addEventListener('touchstart',_start, false);
+								}
+							},t*1000)
+						})(i);
 					}
-					for (var i = 0; i < aItem.length; i++) {
-						aItem[i].style.zIndex = aItem.length-i;
-						aItem[i].style.WebkitTransform = 'rotateY(0deg)';
-						aItem[i].style.transform = 'rotateY(0deg)';
-					}
-					zIndex = aItem.length+1;
+
+					oBook.removeEventListener('touchstart',_start, false);
 					iNow = 0;
-				},1000);
+				},1300);
 				
 
 			}
@@ -110,8 +121,8 @@ function _start(ev){
 			}
 			aItem[iNow-1].style.WebkitTransform = 'rotateY('+endX+'deg)';
 			aItem[iNow-1].style.transform = 'rotateY('+endX+'deg)';
-			aItem[iNow-1].style.WebkitTransitionDuration = '0.3s';
-			aItem[iNow-1].style.transitionDuration = '0.3s';
+			aItem[iNow-1].style.WebkitTransitionDuration = '1s';
+			aItem[iNow-1].style.transitionDuration = '1s';
 			aItem[iNow-1].style.zIndex = zIndex++;
 			endX===0?iNow--:'';
 		}
@@ -138,29 +149,44 @@ function fnMusic(){
 }
 
 
-var arrImg = ["images/music.png","images/bg1.jpg","images/bg2.jpg","images/bg3.jpg","images/book-b.jpg","images/box-t.png","images/book-b.png","images/book-f.png","images/book-l.png","images/book-r.png","images/hand.png","images/page1.png","images/page2.png","images/page3.png","images/page4.png","images/page5.png","images/page6.png","images/page7.png","images/page8.png","images/page9.png","images/page10.jpg"];
+var arrImg = ["images/music.png","images/bg1.jpg","images/bg2.jpg","images/bg3.jpg","images/book-b.jpg","images/box-t.png","images/book-b.png","images/book-f.jpg","images/book-l.png","images/book-r.png","images/hand.png","images/page1.png","images/page2.png","images/page3.png","images/page4.png","images/page5.png","images/page6.png","images/page7.png","images/page8.png","images/page9.png","images/page10.jpg","images/page-next.png","images/page-title.png"];
 
 var aPage = document.getElementsByClassName('page');
 var oNext = document.querySelector('.page-next');
 var oCube = document.querySelector('.cube');
 var oHelp = document.querySelector('.help');
 var oBox = document.querySelector('.box2');
+var oBg2 = document.querySelector('.bg2');
 
 preLoad(arrImg,function (){
 	aPage[0].className = 'page page1';
 	document.getElementsByClassName('music')[0].style.display = 'block';
+	setTimeout(function (){
+		document.getElementsByClassName('page-title')[0].className = 'page-title on';
+	},30);
 });
 oNext.onclick = function (){
 	aPage[1].className = 'page page2';
 	oCube.className = 'cube active';
 	oBox.className = 'box2 active';
-	oCube.addEventListener('animationend',_cubefn,false);
+	oCube.addEventListener('WebkitAnimationEnd',_cubefn,false);
 	oCube.addEventListener('animationend',_cubefn,false);
 }
 
 function _cubefn(){
 	oCube.removeEventListener('WebkitAnimationEnd',_cubefn,false);
 	oCube.removeEventListener('animationend',_cubefn,false);
+
+
+	oBg2.className = 'bg2 on';
+	oBg2.addEventListener('WebkitTransitionEnd',_fnbg2,false);
+	oBg2.addEventListener('transitionend',_fnbg2,false);
+	
+}
+
+function _fnbg2(){
+	oBg2.removeEventListener('WebkitTransitionEnd',_fnbg2,false);
+	oBg2.removeEventListener('transitionend',_fnbg2,false);
 
 	aPage[2].className = 'page page3';
 	oHelp.className = 'help active';
@@ -177,7 +203,6 @@ function preLoad(arrImg,cb){
 	var count = arrImg.length;
 
 	var oLoad = document.getElementById('loading');
-	var $loading = document.querySelector('#loading .load-x');
 	var $text = document.querySelector('#loading .load-y');
 	for (var i = 0; i < arrImg.length; i++) {
 		imgLoad(arrImg[i],loading);
@@ -189,7 +214,6 @@ function preLoad(arrImg,cb){
 	function loading(){
 		now++;
 		var t = Math.floor(now/count*100);
-		$loading.style.width = t + '%';
 		$text.innerHTML = t;
 		if (now === count) {
 			oLoad.parentNode && oLoad.parentNode.removeChild(oLoad);
