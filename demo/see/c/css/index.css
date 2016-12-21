@@ -50,7 +50,7 @@
 .book-item:nth-child(7){
 	background-image: url(../images/page6.png);
 }
-.book-item:nth-child(0){
+.book-item:nth-child(8){
 	background-image: url(../images/page7.png);
 }
 .book-item:nth-child(9){
@@ -60,6 +60,9 @@
 	background-image: url(../images/page9.png);
 }
 .book-item:nth-child(11){
+	background-image: url(../images/page10.png);
+}
+.book-item:nth-child(12){
 	background-image: url(../images/page10.jpg);
 }
 
