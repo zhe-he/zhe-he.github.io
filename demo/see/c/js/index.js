@@ -149,7 +149,7 @@ function fnMusic(){
 }
 
 
-var arrImg = ["images/music.png","images/bg1.jpg","images/bg2.jpg","images/bg3.jpg","images/box-b.png","images/book-b.jpg","images/box-t.png","images/book-b.png","images/book-f.jpg","images/book-l.png","images/book-r.png","images/hand.png","images/page1.png","images/page2.png","images/page3.png","images/page4.png","images/page5.png","images/page6.png","images/page7.png","images/page8.png","images/page9.png","images/page10.png","images/page10.jpg","images/page-next.png","images/page-title.png"];
+var arrImg = ["images/b-logo.png","images/music.png","images/bg1.jpg","images/bg2.jpg","images/bg3.jpg","images/box-b.png","images/book-b.jpg","images/box-t.png","images/book-b.png","images/book-f.jpg","images/book-l.png","images/book-r.png","images/hand.png","images/page1.png","images/page2.png","images/page3.png","images/page4.png","images/page5.png","images/page6.png","images/page7.png","images/page8.png","images/page9.png","images/page10.png","images/page10.jpg","images/page-next.png","images/page-title.png"];
 
 var aPage = document.getElementsByClassName('page');
 var oNext = document.querySelector('.page-next');
