@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+	<title>伟星时代之光</title>
+	<link rel="stylesheet" type="text/css" href="css/car.css">
+	<script type="text/javascript" src="js/autosize.js"></script>
+	<script type="text/javascript" src="js/fastclick.js"></script>
+</head>
+<body>
+	<div id="loading" class="loading">
+		<div>
+			<p><span class="preCon"></span></p>
+			<p>加载中 <span class="preNum">0</span>%</p>
+		</div>
+	</div>
+	<audio src="sources/car.mp3" preload loop id="music"></audio>
+	<audio src="sources/success.mp3" preload id="gameMusic"></audio>
+	<audio src="sources/peng.mp3" preload id="gameMusic2"></audio>
+	<a href="javascript:;" id="music-btn" class="music"></a>
+
+	<div id="ad" class="ad">
+		<img src="images/ad.jpg">
+	</div>
+	<div class="game-gz">
+		<a class="start js-start" href="javascript:;"></a>
+		<a class="close js-start" href="javascript:;"></a>
+	</div>
+	<canvas id="myGame"></canvas>
+
+	<div class="share-mask hide"></div>
+	<div class="share hide">
+		<div class="share-arrow">
+			<p>您已经集齐了<i class="js-sharefont">0</i>个字段<br/>转发或分享朋友圈可获取<i class="js-sharefont">0</i>元红包</p>
+		</div>
+		<a class="restart a_c" href="javascript:;">继续挑战</a>
+		<div class="share-bag">
+			<span><i class="js-sharefont">0</i>元</span>
+		</div>
+	</div>
+	<div class="mobile-prompt hide">
+		<div class="mobile-box">
+			<div class="mobile-item">
+				<input id="username" name="username" type="tel" maxlength="11" >
+				<span>电话：</span>
+			</div>
+			<div class="mobile-item">
+				<input id="yzm" name="yzm" type="text" placeholder="请输入验证码">
+				<span id="sign-yzm" class="sign-yzm a_c">获取验证码</span>
+			</div>
+			<a id="mobile-btn" class="mobile-btn a_c" href="javascript:;">领奖</a>
+		</div>
+	</div>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="js/ajax.js"></script>
+	<script type="text/javascript" src="js/car.js"></script>
+
+	<script type="text/javascript">
+		// shareSuccess 函数名请勿更改 
+
+		var shareData = {
+			title: document.title, // 分享标题
+            desc: '我在伟星时代之光，星光极速挑战中.....快来挑战我吧', // 分享描述
+            link: window.location.href,// 分享链接
+            imgUrl: '', // 分享图标
+            success: shareSuccess, 	// 此处函数名请勿更改 
+            cancel: function () {}
+		}
+		wx.config({
+	        debug: false,
+	        appId: "<?php echo $signPackage['appId'];?>",
+		    timestamp: "<?php echo $signPackage['timestamp'];?>",
+		    nonceStr: "<?php echo $signPackage['nonceStr'];?>",
+		    signature: "<?php echo $signPackage['signature'];?>",
+	        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo']
+	    });
+	    wx.ready(function(){
+			wx.onMenuShareTimeline(shareData);
+			wx.onMenuShareAppMessage(shareData);
+			wx.onMenuShareQQ(shareData);
+			wx.onMenuShareWeibo(shareData);
+		});
+
+	</script>
+</body>
+</html>
