@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,initial-scale=1.0">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+	<title>一文鸡</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/chicken.css">
+	<script type="text/javascript" src="js/fastclick.js"></script>
+	<script type="text/javascript" src="js/autosize.js"></script>
+</head>
+<body>
+	
+	<article v-cloak id="chicken" class="main">
+		<header class="top">
+			<a href="javascript:alert('设计缺乏游戏规则，请ui设计');"></a>
+			<a @click="isTuijian=true" href="javascript:;"></a>
+		</header>
+		<div class="tian">
+			<a href="javascript:;" class="wawa"></a>
+			<ul class="tian-m">
+				<li @click="mai(item)" :class="item.active?'active':''" v-for="(item,index) in tian">
+					<span></span>
+					<i :class="'numji-'+item.numji">
+						<i></i>
+					</i>
+				</li>
+			</ul>
+			<a href="javascript:;" class="gril"></a>
+		</div>
+		<nav class="menu">
+			<a href="javascript:;">
+				<i></i>
+				<p>鸡 ×{{j_data.ji}}</p>
+			</a>
+			<a href="javascript:;">
+				<i></i>
+				<p>蛋 ×{{j_data.dan}}</p>
+			</a>
+			<a href="javascript:;">
+				<i></i>
+				<p>地 ×{{j_data.di}}</p>
+			</a>
+			<a @click="show_menu_cz(1)" href="javascript:;">
+				<i></i>
+				<p>充值</p>
+			</a>
+			<a @click="show_menu_cz(2)" href="javascript:;">
+				<i></i>
+				<p>提现</p>
+			</a>
+		</nav>
+
+		<section class="c-ad">
+			<i></i>
+		</section>
+		
+		<div @click="isMenuCz=0" :class="['menu-cz-mask',isMenuCz>0?'':'hide']"></div>
+		<div :class="['menu-cz',isMenuCz>0?'':'hide']">
+			<a @click="isMenuCz=0" class="menu-close" href="javascript:;"></a>
+			<nav class="menu-nav">
+				<a @click="isMenuCz=item" v-for="(item,index) in 2" :class="isMenuCz==item?'active':''" href="javascript:;"></a>
+			</nav>
+			<div class="menu-box">
+				<section :class="['cz-box',isMenuCz==1?'':'hide']">
+					<a v-for="(item,index) in 3" @click="cz(index)" href="javascript:;"></a>
+				</section>
+				<section :class="['tx-box',isMenuCz==2?'':'hide']">
+					<div class="count">
+						<span>{{a_tixian.me}}</span>
+						<span>{{a_tixian.friend}}</span>
+						<span>{{a_tixian.all}}</span>
+					</div>
+					<a @click="tixian()" class="a_c" href="javascript:;"></a>
+				</section>
+			</div>
+		</div>
+
+		<div @click="isTuijian=false" :class="['tuijian',isTuijian?'':'hide']"></div>
+
+	
+		<!--你的鸡已不会生蛋了~将告别你~-->
+		<div :class="['chicken-t',a_message.isClose?'hide':'']">
+			<div @click="a_message.isClose=true" class="t-mask"></div>
+			<div :class="[a_message.isStatus==1?'t-success':'t-error']">
+				<p>{{a_message.message}}</p>
+				<a @click="a_message.isClose=true" class="a_c" href="javascript:;"></a>
+			</div>
+		</div>
+
+	</article>
+	
+
+
+
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="js/vue-resource.js"></script>
+	<script type="text/javascript" src="js/chicken.js"></script>
+	<script type="text/javascript">
+		var shareData = {
+			title: document.title, // 分享标题
+            desc: '', // 分享描述
+            link: window.location.href,// 分享链接
+            imgUrl: '', // 分享图标
+            success: function () {},
+            cancel: function () {}
+		};
+		wx.config({
+	        debug: false,
+	        appId: "",
+		    timestamp: "",
+		    nonceStr: "",
+		    signature: "",
+	        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage','onMenuShareQQ','onMenuShareWeibo']
+	    });
+	    wx.ready(function(){
+			wx.onMenuShareTimeline(shareData);
+			wx.onMenuShareAppMessage(shareData);
+			wx.onMenuShareQQ(shareData);
+			wx.onMenuShareWeibo(shareData);
+		});
+
+	</script>
+</body>
+</html>
