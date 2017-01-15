@@ -16,7 +16,7 @@
 	
 	<article v-cloak id="chicken" class="main">
 		<header class="top">
-			<a href="javascript:alert('设计缺乏游戏规则，请ui设计');"></a>
+			<a @click="isGuize=true" href="javascript:;"></a>
 			<a @click="isTuijian=true" href="javascript:;"></a>
 		</header>
 		<div class="tian">
@@ -59,7 +59,7 @@
 		</section>
 		
 		<div @click="isMenuCz=0" :class="['menu-cz-mask',isMenuCz>0?'':'hide']"></div>
-		<div :class="['menu-cz',isMenuCz>0?'':'hide']">
+		<div :class="['menu-cz',isMenuCz>0?'active':'']">
 			<a @click="isMenuCz=0" class="menu-close" href="javascript:;"></a>
 			<nav class="menu-nav">
 				<a @click="isMenuCz=item" v-for="(item,index) in 2" :class="isMenuCz==item?'active':''" href="javascript:;"></a>
@@ -80,9 +80,19 @@
 		</div>
 
 		<div @click="isTuijian=false" :class="['tuijian',isTuijian?'':'hide']"></div>
+		
+		<div @click="isGuize=false" :class="['z-guize-mask',isGuize?'':'hide']"></div>
+		<div :class="['z-guize',isGuize?'active':'']">
+			<div class="z-guize-con">
+				<p>1、你得充值后才能开始我们的游戏之旅；</p>
+				<p>2、首先你得兑换了蛋（1元兑换1个蛋，买蛋数量无上限），且完成开地（10个蛋兑换1块地，最多10块地，地买后永久使用），买鸡养鸡（100个蛋兑换1只鸡，1块地最多2只鸡，每只鸡每天生5个蛋，每只鸡最多生150蛋）；</p>
+				<p>3、游戏玩家通过每天鸡生蛋自动获利（1只鸡每天5个蛋），及推荐小伙伴加入游戏系统奖励（每推荐一个小伙伴自动获取其一级下线每天的生蛋总量10%），获取收入。</p>
+				<p>4、已获得的收入按10的倍数进行提现。</p>
+			</div>
+			<a @click="isGuize=false" class="a_c z-guize-btn" href="javascript:;"></a>
+		</div>
 
 	
-		<!--你的鸡已不会生蛋了~将告别你~-->
 		<div :class="['chicken-t',a_message.isClose?'hide':'']">
 			<div @click="a_message.isClose=true" class="t-mask"></div>
 			<div :class="[a_message.isStatus==1?'t-success':'t-error']">

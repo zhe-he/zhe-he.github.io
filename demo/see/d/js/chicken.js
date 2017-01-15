@@ -19,6 +19,7 @@ new Vue({
 			isClose: true
 		},
 		isMenuCz: 0,
+		isGuize: false, 
 		isTuijian: false,
 		j_data: {
 			ji: 8,
@@ -59,6 +60,7 @@ new Vue({
 					var num2 = 3;
 					_this.j_data.ji -= num2;
 					_this.a_message.isClose = false;
+					_this.a_message.isStatus = 2;
 					_this.a_message.message = '你的鸡已不会生蛋了，将告别你';
 				});
 			},2000);
