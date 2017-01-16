@@ -14,23 +14,23 @@ body{
 	position: absolute;
 	top: 0;
 	left: 0;
-	width: 4.64rem;
-	height: 3.04rem;
+	width: 4.39rem;
+	height: 2.79rem;
 	background: url(../images/guize.png) no-repeat;
 	background-size: 100% 100%;
 }
 .top > a{
 	position: absolute;
-	width: 0.63rem;
-	height: 0.48rem;
+	width: 1.02rem;
+	height: 0.8rem;
 }
 .top > a:nth-child(1){
-	top: 1.32rem;
-	left: 0.24rem;
+	top: 1.14rem;
+	left: 0.18rem;
 }
 .top > a:nth-child(2){
-	top: 1.22rem;
-	left: 3.69rem;
+	top: 1.02rem;
+	left: 3.37rem;
 }
 
 .tian{
@@ -193,6 +193,33 @@ body{
 	background: url(../images/jiwo.png) no-repeat;
 	background-size: 100% 100%;
 }
+.tian-m li.active em{
+	display: none;
+	position: absolute;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+.tian-m li.active em.active{
+	display: block;
+}
+.tian-m li.active em:nth-of-type(2){
+	left: 0.42rem;
+	top: -0.46rem;
+	width: 0.62rem;
+	height: 0.46rem;
+	background-image: url(../images/dan_l.png);
+}
+.tian-m li.active em:nth-of-type(1){
+	left: 1.11rem;
+	top: -0.48rem;
+	width: 0.64rem;
+	height: 0.48rem;
+	background-image: url(../images/dan_r.png);
+}
+.tian-m li.active em:nth-of-type(1):last-of-type{
+	left: 0.9rem;
+}
+
 .tian > .gril{
 	position: absolute;
 	top: 5.39rem;
@@ -234,12 +261,12 @@ body{
 	background-repeat: no-repeat;
 	background-position: center center;
 }
-.menu > a:nth-child(1) > i{
+.menu > a:nth-child(2) > i{
 	height: 0.57rem;
 	background-size: 0.54rem 0.55rem;
 	background-image: url(../images/s_ji.png);
 }
-.menu > a:nth-child(2) > i{
+.menu > a:nth-child(1) > i{
 	height: 0.52rem;
 	background-size: 0.4rem 0.5rem;
 	background-image: url(../images/s_dan.png);
@@ -303,9 +330,9 @@ body{
 	animation:bounceIn 0.5s 0s ease both;
 }
 .t-success{
-	margin-top: -0.86rem;
-	height: 1.72rem;
-	padding-top: 0.78rem;
+	margin-top: -0.96rem;
+	height: 1.91rem;
+	padding-top: 0.74rem;
 	background-image: url(../images/success-a.png);
 }
 .t-error{
@@ -366,73 +393,70 @@ body{
 }
 .menu-cz .menu-nav > a{
 	position: absolute;
-	left: 0.26rem;
-	width: 1.41rem;
-	height: 0.43rem;
+	left: 4.87rem;
+	width: 1.06rem;
+	height: 0.32rem;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
 .menu-cz .menu-nav > a:nth-child(1){
-	top: 2.47rem;
+	top: 2.61rem;
 	background-image: url(../images/cz-btn1.png);
 }
 .menu-cz .menu-nav > a.active:nth-child(1){
 	background-image: url(../images/cz-btn2.png);
 }
 .menu-cz .menu-nav > a:nth-child(2){
-	top: 3.01rem;
+	top: 2.98rem;
 	background-image: url(../images/tx-btn1.png);
 }
 .menu-cz .menu-nav > a.active:nth-child(2){
 	background-image: url(../images/tx-btn2.png);
 }
-.menu-box{
+.menu-alldan{
 	position: absolute;
-	top: 0.87rem;
-	left: 1.74rem;
-	width: 4.49rem;
-	height: 2.59rem;
-}
-.menu-box > section{
-	height: 100%;
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-}
-.cz-box{
-	background-image: url(../images/chongzhi.jpg);
-}
-.cz-box > a{
-	float: left;
-	width: 33.33%;
-	height: 100%;
-}
-.tx-box{
-	background-image: url(../images/tixian.jpg);
-}
-.tx-box > .count{
-	width: 1.69rem;
-	padding-top: 0.22rem;
-}
-.tx-box > .count > span{
-	display: block;
-	width: 1.21rem;
-	margin-left: 0.39rem;
-	height: 0.68rem;
-	line-height: 0.6rem;
-	margin-bottom: 0.07rem;
-	font-size: 0.24rem;
+	top: 2.31rem;
+	left: 1.8rem;
+	width: 1.45rem;
+	height: 0.58rem;
+	padding-top: 0.4rem;
+	line-height: 0.37rem;
 	color: #ffd314;
 	text-align: center;
+	border-radius: 3px;
+	font-size: 0.22rem;
+	text-indent: -0.1rem;
+	background:#a51f24 url(../images/s-dan.png) 0.98rem 0.45rem no-repeat;
+	background-size: 0.22rem;
 }
-.tx-box > a{
+.menu-z-all{
 	position: absolute;
-	top: 1.97rem;
-	left: 2.49rem;
-	width: 1.3rem;
-	height: 0.4rem;
-	background: url(../images/tx-btn.png) no-repeat;
+	top: 1.98rem;
+	left: 2.21rem;
+	width: 0.61rem;
+	height: 0.57rem;
+	background: url(../images/z-all.png) no-repeat;
 	background-size: 100% 100%;
 }
+.menu-fill{
+	position: absolute;
+	top: 2.64rem;
+	left: 3.78rem;
+	width: 1.04rem;
+	height: 0.64rem;
+	padding: 0.1rem 0.2rem;
+	line-height: 0.44rem;
+	color: #ffd314;
+	background-color: #a51f24;
+	border-radius: 3px;
+	font-size: 0.22rem;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	text-align: center;
+	cursor: none;
+	border: none;
+}
+
 
 .tuijian{
 	z-index: 1100;
@@ -442,7 +466,35 @@ body{
 	bottom: 0;
 	right: 0;
 	background: rgba(0, 0, 0, 0.9) url(../images/tuijian.png) no-repeat center 0.42rem;
-	background-size: 5.9rem;
+	background-size: 5.88rem;
+}
+.tuijian-f{
+	position: absolute;
+	top: 4.12rem;
+	left: 1.25rem;
+	width: 4.1rem;
+}
+.tuijian-f > li{
+	float: left;
+	width: 0.79rem;
+	margin-right: 0.3rem;
+}
+.tuijian-f > li:nth-child(4n){
+	margin-right: 0;
+}
+.tuijian-f > li img{
+	display: block;
+	height: 0.79rem;
+}
+.tuijian-f > li p{
+	white-space:nowrap; 
+	overflow:hidden; 
+	text-overflow:ellipsis;
+	height: 0.34rem;
+	line-height: 0.34rem;
+	font-size: 0.2rem;
+	color: #c2000c;
+	text-align: center;
 }
 
 [v-cloak]{
@@ -492,7 +544,7 @@ body{
 	background-size: 100% 100%;
 }
 .z-guize-con{
-	padding-top: 2rem;
+	padding-top: 1.65rem;
 	margin-left: 0.7rem;
 	width: 4.7rem;
 	font-size: 0.24rem;
@@ -549,3 +601,126 @@ transform:scale(1.02)}
 75%{transform:translateX(-1%) rotate(-1deg)}
 100%{transform:translateX(0%)}
 }
+
+
+/* 加载中 start*/
+.v-loading {
+	z-index: 2000;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+}
+
+.spinner {
+  -webkit-animation: rotator 1.4s linear infinite;
+          animation: rotator 1.4s linear infinite;
+}
+
+@-webkit-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+
+@keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+          animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@-webkit-keyframes colors {
+  0% {
+    stroke: #4285F4;
+  }
+  25% {
+    stroke: #DE3E35;
+  }
+  50% {
+    stroke: #F7C223;
+  }
+  75% {
+    stroke: #1B9A59;
+  }
+  100% {
+    stroke: #4285F4;
+  }
+}
+
+@keyframes colors {
+  0% {
+    stroke: #4285F4;
+  }
+  25% {
+    stroke: #DE3E35;
+  }
+  50% {
+    stroke: #F7C223;
+  }
+  75% {
+    stroke: #1B9A59;
+  }
+  100% {
+    stroke: #4285F4;
+  }
+}
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}
+/* 加载中 end */
