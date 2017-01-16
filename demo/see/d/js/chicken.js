@@ -55,7 +55,7 @@ new Vue({
 			data: {
 				"user_id": user_id
 			},
-			type: "post",
+			type: "get",
 			success: function (data){
 				data = eval('('+data+')');
 				_this.j_data = _this.copy(data.j_data);
@@ -84,7 +84,7 @@ new Vue({
 			data: {
 				"user_id": user_id
 			},
-			type: "post",
+			type: "get",
 			success: function (data){
 				data = eval('('+data+')');
 				_this.s_friend = data.data.slice(0,8);
@@ -124,7 +124,7 @@ new Vue({
 						"num_di": index,
 						"num_ji": index2
 					},
-					type: "post",
+					type: "get",
 					success: function(data){
 						data = eval('('+data+')');
 						if (!data.msg) {
@@ -158,7 +158,7 @@ new Vue({
 									"user_id": user_id,
 									"buy_ji": 1
 								},
-								type: "post",
+								type: "get",
 								success: function (data){
 									data = eval('('+data+')');
 									if (!data.msg) {
@@ -185,7 +185,7 @@ new Vue({
 								"user_id": user_id,
 								"buy_di": 1
 							},
-							type: "post",
+							type: "get",
 							success: function (data){
 								data = eval('('+data+')');
 								if (!data.msg) {
@@ -243,7 +243,7 @@ new Vue({
 							"user_id": user_id,
 							"money": this.c_money
 						},
-						type: "post",
+						type: "get",
 						success: function (data){
 							data = eval('('+data+')');
 							if (!data.msg) {
@@ -273,7 +273,7 @@ new Vue({
 							"user_id": user_id,
 							"money": this.c_money
 						},
-						type: "post",
+						type: "get",
 						success: function (data){
 							data = eval('('+data+')');
 							if (!data.msg) {
