@@ -133,6 +133,7 @@ function _start(ev){
 var music = document.getElementById('music');
 var musicBtn = document.getElementsByClassName('music')[0];
 fnMusic();
+music.play();
 function fnMusic(){
 	
 	musicBtn.addEventListener('click',_fn,false);
@@ -232,11 +233,6 @@ function preLoad(arrImg,cb){
 }
 
 
-
-document.addEventListener('touchstart',_fnstart,false);
-document.addEventListener('click',_fnstart,false);
-function _fnstart(){
-	document.removeEventListener('touchstart',_fnstart,false);
-	document.removeEventListener('click',_fnstart,false);
-	musicBtn.click();
-}
+document.addEventListener("WeixinJSBridgeReady", function () {  
+    music.play();
+}, false);
