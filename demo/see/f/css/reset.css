@@ -3,7 +3,10 @@
 html {
   -webkit-text-size-adjust: 100%;
   font-size: 20px; }
-*{margin: 0; padding: 0;-webkit-tap-highlight-color: transparent;}
+*{margin: 0; padding: 0;-webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
 a { text-decoration: none; }
   
 a[href^="javascript"]{-webkit-touch-callout: none;}

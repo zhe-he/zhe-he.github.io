@@ -2,136 +2,86 @@ require('../../css/index.scss');
 import $ from 'zepto';
 import Swiper from 'swiper';
 $(function (){
+	var autoplay = true;
 	var mySwiper = null;
-	var timer = null;
-	var timer2 = null;
-	var iNow = 0;
-	var iNow2 = 0;
-	var sbox = $('.main-box').get(0);
-	var disH = sbox.scrollHeight - sbox.offsetHeight;
-	var $item = $('.box > *');
 
-	$('#page_box').one('click',function (){
-		$('.x_white').remove();
-		$('#page_box .after').addClass('active');
-
-		setTimeout(function (){
-			$('.page_index').animate({opacity:0},{complete:function (){
-				$('.page_index').remove();
-				page2();
-			}});
-		},600);
-	});
-
-	function page2(){
-		timer = setInterval(_fnTimer,16.7);
-
-		sbox.addEventListener('touchstart',function (){
-			clearInterval(timer);
-		},false);
-		sbox.addEventListener('touchend',function (){
-
-		},false);
-	}
-
-	function page3(){
-		music2.play();
-		var s = '在这个家园^我们珍视每个人、每件小事^每个特别的日子^每一片温柔的晨光、夕辉^每一滴闪光的雨水^^但以我美好的光阴^和用心陈酿的幸福^去爱你';
-		clearInterval(timer2);
-
-		timer2 = setInterval(function (){
-
-			iNow2++;
-			var text = s.substr(0,iNow2).replace(/\^/g,'<br/>');
-			if (iNow2 == s.length) {
-				iNow2 = 0;
-				clearInterval(timer2);
-				$('.js-page3-end').addClass('active');
-				music2.pause();
-			}else{
-				text = s.substr(0,iNow2).replace(/\^/g,'<br/>') + '|';
-			}
-			$('#page3').html(text);
-		},100+Math.random()*100);
-	}
-
-	sbox.addEventListener('scroll',function (){
-		$item.each(function (index,ele){
-			var h = $(window).height();
-			var t = $(this).offset().top;
-			if (t<=h*2/3) {
-				$(this).addClass('active');
+	function createSwiper(){
+		mySwiper = new Swiper('.page_swiper', {
+			effect : 'fade',
+			direction: 'vertical',
+			initialSlide: 0,
+			onSlideChangeEnd: function(swiper){
+				anim(swiper);
+			},
+			onInit: function (swiper){
+				anim(swiper);
+			},
+			onTouchStart: function (swiper){
+				if(swiper.activeIndex > 0)
+				autoplay = false;
 			}
 		});
-
-		if (sbox.scrollTop>=disH-1) {
-			if (!mySwiper) {
-				mySwiper = new Swiper('.page_swiper', {
-					direction: 'vertical',
-
-					onSlideChangeEnd: function(swiper){
-						if (swiper.activeIndex==1) {
-							page3();
-						}else if(swiper.activeIndex==2){
-							sbox.scrollTop = 0;
-							swiper.slideTo(0,0);
-							swiper.disableTouchControl();
-
-							$item.removeClass('active');
-							iNow = 0;
-							clearInterval(timer);
-							timer = setInterval(_fnTimer,16.7);
-						}else if(swiper.activeIndex==0){
-
-							music2.pause();
-							iNow2 = 0;
-							$('.js-page3-end').removeClass('active');
-							$('#page3').html('');
-
-							swiper.disableTouchControl();
-						}
-					},
-					onTouchStart: function (swiper){
-						if(swiper.activeIndex==2){
-							sbox.scrollTop = 0;
-							swiper.slideTo(0,0);
-							swiper.disableTouchControl();
-						}
-					}
-				});
-			}
-			mySwiper.enableTouchControl();
+	}
+	function anim(swiper){
+		if (swiper.activeIndex == swiper.slides.length -1) {
+			swiper.slideTo(0);
+			swiper.slides.eq(0).addClass('active');
+			return;
 		}
 
-	});
 
-	$item.eq($item.length-1).on('animationend webkitAnimationEnd',function (){
-		$('.end').addClass('active');
-	});
+		swiper.slides.removeClass('active');
+		swiper.slides.eq(swiper.activeIndex).addClass('active');
 
-	function _fnTimer(){
-		iNow++;
-		if (iNow>=disH) {
-			clearInterval(timer);
-			$item.addClass('active');
+		if (swiper.activeIndex == 1) {
+			swiper.lockSwipeToPrev();
+		}else{
+			swiper.unlockSwipeToPrev();
+		}
+		
+		if (swiper.activeIndex == 0) {
+			swiper.lockSwipes();
+			autoplay = true;
+			$('.page_box').one('click',function (){
+				var $x_white = $(this).find('.x_white');
+				var $after = $(this).find('.after');
 
+				$x_white.addClass('x_white_end');
+				$x_white.on('animationend webkitAnimationEnd',_fnend);
+				$after.on('animationend webkitAnimationEnd',_fnend2);
+
+				function _fnend(){
+					$x_white.off('animationend',_fnend);
+					$x_white.off('webkitAnimationEnd',_fnend);
+					$after.addClass('active');
+				}
+				function _fnend2(){
+					$after.off('animationend',_fnend2);
+					$after.off('webkitAnimationEnd',_fnend2);
+					mySwiper.unlockSwipes();
+					mySwiper.lockSwipeToPrev();
+					mySwiper.slideTo(1);
+					mySwiper.slides.eq(1).addClass('active');
+				}
+			});
+		}else{
+			$('.page_box .x_white').removeClass('x_white_end');
+			$('.page_box .after').removeClass('active');
+		}
+	}
+	$('.box_end').on('animationend webkitAnimationEnd',function (){
+		if (autoplay) {
 			mySwiper.slideNext();
 		}
-		sbox.scrollTop = iNow;
-	}
-
-	function rnd(m,n){
-		return (Math.random()*(n-m)+m+1)|0;
-	}
-
+	});
 
 
 
 	// 音乐
 	var music = document.getElementById('music');
-	var music2 = document.getElementById('music2');
 	var musicBtn = document.getElementsByClassName('music')[0];
-
+	music.play();
+	fnMusic();
 	function fnMusic(){
 		musicBtn.addEventListener('click',_fn,false);
 		function _fn(){
@@ -145,9 +95,9 @@ $(function (){
 		}
 	}
 	// 预加载
-	var arrImg = ['assets/images/bg1.jpg','assets/images/b-logo.png','assets/images/just_4.png','assets/images/just_5.png','assets/images/just_6.png','assets/images/just_7.png','assets/images/just_8.png','assets/images/l_end.png','assets/images/p_end.png','assets/images/p_p2.png','assets/images/p_t.png','assets/images/xinfeng.png'];
+	var arrImg = ['assets/images/bg1.jpg','assets/images/just_4.png','assets/images/just_5.png','assets/images/just_6.png','assets/images/just_7.png','assets/images/just_8.png','assets/images/l_end.png','assets/images/p_end.png','assets/images/p_p2.png','assets/images/p_t.png','assets/images/p2_1_2.png','assets/images/p2_2_2.png','assets/images/p2_2_3.png','assets/images/p2_3.png','assets/images/p2_4_3.png','assets/images/p2_5.png','assets/images/p2_5_2.png','assets/images/p2_5_3.png','assets/images/p2_6_3.png','assets/images/p2_7_1.png','assets/images/p2_7_2.png','assets/images/p2_8.png','assets/images/p3_2.png','assets/images/p3_4.png','assets/images/p3_5.png','assets/images/p3_6.png','assets/images/p3_7.png','assets/images/xinfeng.png'];
 	preLoad(arrImg,function (){
-		$('.js-pre').addClass('active');
+		createSwiper();
 	});
 
 	function preLoad(arrImg,cb){
@@ -186,7 +136,7 @@ $(function (){
 	}
 
 	document.addEventListener("WeixinJSBridgeReady", function () {  
-	    music2.load();
+	    music.play();
 	}, false);
 
 });
