@@ -19,6 +19,7 @@ $(function (){
 			onTouchStart: function (swiper){
 				if(swiper.activeIndex > 0)
 				autoplay = false;
+				$('.arrow').addClass('active');
 			}
 		});
 	}
@@ -42,6 +43,7 @@ $(function (){
 		if (swiper.activeIndex == 0) {
 			swiper.lockSwipes();
 			autoplay = true;
+			$('.arrow').removeClass('active');
 			$('.page_box').one('click',function (){
 				var $x_white = $(this).find('.x_white');
 				var $after = $(this).find('.after');
@@ -71,7 +73,9 @@ $(function (){
 	}
 	$('.box_end').on('animationend webkitAnimationEnd',function (){
 		if (autoplay) {
-			mySwiper.slideNext();
+			setTimeout(function (){
+				mySwiper.slideNext();
+			},300);
 		}
 	});
 
@@ -95,7 +99,7 @@ $(function (){
 		}
 	}
 	// 预加载
-	var arrImg = ['assets/images/bg1.jpg','assets/images/just_4.png','assets/images/just_5.png','assets/images/just_6.png','assets/images/just_7.png','assets/images/just_8.png','assets/images/l_end.png','assets/images/p_end.png','assets/images/p_p2.png','assets/images/p_t.png','assets/images/p2_1_2.png','assets/images/p2_2_2.png','assets/images/p2_2_3.png','assets/images/p2_3.png','assets/images/p2_4_3.png','assets/images/p2_5.png','assets/images/p2_5_2.png','assets/images/p2_5_3.png','assets/images/p2_6_3.png','assets/images/p2_7_1.png','assets/images/p2_7_2.png','assets/images/p2_8.png','assets/images/p3_2.png','assets/images/p3_4.png','assets/images/p3_5.png','assets/images/p3_6.png','assets/images/p3_7.png','assets/images/xinfeng.png'];
+	var arrImg = ['./assets/images/bg1.jpg','./assets/images/just_4.png','./assets/images/just_5.png','./assets/images/just_6.png','./assets/images/just_7.png','./assets/images/just_8.png','./assets/images/l_end.png','./assets/images/p_end.png','./assets/images/p_p2.png','./assets/images/p_t.png','./assets/images/p2_1_2.png','./assets/images/p2_2_2.png','./assets/images/p2_2_3.png','./assets/images/p2_3.png','./assets/images/p2_4_3.png','./assets/images/p2_5.png','./assets/images/p2_5_2.png','./assets/images/p2_5_3.png','./assets/images/p2_6_3.png','./assets/images/p2_7_1.png','./assets/images/p2_7_2.png','./assets/images/p2_8.png','./assets/images/p3_2.png','./assets/images/p3_4.png','./assets/images/p3_5.png','./assets/images/p3_6.png','./assets/images/p3_7.png','./assets/images/xinfeng.png'];
 	preLoad(arrImg,function (){
 		createSwiper();
 	});
