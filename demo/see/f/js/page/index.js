@@ -2,89 +2,77 @@ require('../../css/index.scss');
 import $ from 'zepto';
 import Swiper from 'swiper';
 $(function (){
-	var autoplay = true;
 	var mySwiper = null;
 
 	function createSwiper(){
 		mySwiper = new Swiper('.page_swiper', {
-			effect : 'fade',
-			direction: 'vertical',
 			initialSlide: 0,
+			direction: 'vertical',
 			onSlideChangeEnd: function(swiper){
-				anim(swiper);
+				fnTab(swiper);
 			},
 			onInit: function (swiper){
-				anim(swiper);
+				fnTab(swiper);
 			},
 			onTouchStart: function (swiper){
-				if(swiper.activeIndex > 0)
-				autoplay = false;
-				$('.arrow').addClass('active');
+				
 			}
 		});
 	}
-	function anim(swiper){
-		if (swiper.activeIndex == swiper.slides.length -1) {
-			swiper.slideTo(0);
-			swiper.slides.eq(0).addClass('active');
-			return;
-		}
 
+	function fnTab(swiper){
+		var ac = swiper.activeIndex;
 
 		swiper.slides.removeClass('active');
-		swiper.slides.eq(swiper.activeIndex).addClass('active');
+		swiper.slides.eq(ac).addClass('active');
 
-		if (swiper.activeIndex == 1) {
-			swiper.lockSwipeToPrev();
-		}else{
-			swiper.unlockSwipeToPrev();
-		}
-		
-		if (swiper.activeIndex == 0) {
+
+		if(ac==0 || ac==1 || ac ==10){
 			swiper.lockSwipes();
-			autoplay = true;
-			$('.arrow').removeClass('active');
-			$('.page_box').one('click',function (){
-				var $x_white = $(this).find('.x_white');
-				var $after = $(this).find('.after');
+		}else if(ac==2){
+			swiper.unlockSwipes();
+			swiper.lockSwipeToPrev();
+		}else if(ac>2 && ac<9){
+			swiper.unlockSwipes();
+		}else if(ac==11){
+			swiper.unlockSwipes();
+			swiper.lockSwipeToPrev();
+		}
 
-				$x_white.addClass('x_white_end');
-				$x_white.on('animationend webkitAnimationEnd',_fnend);
-				$after.on('animationend webkitAnimationEnd',_fnend2);
+		if (swiper.activeIndex == 12) {
+			$('#xinfeng2').removeClass('end');
+			$('#xinfeng3').addClass('end');
+			swiper.unlockSwipes();
+			swiper.slideTo(0,0);
+		}
 
-				function _fnend(){
-					$x_white.off('animationend',_fnend);
-					$x_white.off('webkitAnimationEnd',_fnend);
-					$after.addClass('active');
-				}
-				function _fnend2(){
-					$after.off('animationend',_fnend2);
-					$after.off('webkitAnimationEnd',_fnend2);
-					mySwiper.unlockSwipes();
-					mySwiper.lockSwipeToPrev();
-					mySwiper.slideTo(1);
-					mySwiper.slides.eq(1).addClass('active');
-				}
-			});
-		}else{
-			$('.page_box .x_white').removeClass('x_white_end');
-			$('.page_box .after').removeClass('active');
+		if (swiper.activeIndex == 10) {
+			setTimeout(function (){
+				$('#xinfeng3').removeClass('end');
+			},500);
 		}
 	}
-	$('.box_end').on('animationend webkitAnimationEnd',function (){
-		if (autoplay) {
-			setTimeout(function (){
-				mySwiper.slideNext();
-			},300);
-		}
+
+	$('#xinfeng').on('animationend webkitAnimationEnd',function (){
+		mySwiper.unlockSwipes();
+		mySwiper.slideTo(1,0);
 	});
-
-
+	$('#xinfeng2').on('animationend webkitAnimationEnd',function (){
+		$(this).addClass('end');
+		setTimeout(function (){
+			mySwiper.unlockSwipes();
+			mySwiper.slideTo(2,0);
+		},500);
+	});
+	$('#xinfeng3').on('animationend webkitAnimationEnd',function (){
+		mySwiper.unlockSwipes();
+		mySwiper.slideTo(11,0);
+	});
 
 	// 音乐
 	var music = document.getElementById('music');
 	var musicBtn = document.getElementsByClassName('music')[0];
-	music.play();
+	// music.play();
 	fnMusic();
 	function fnMusic(){
 		musicBtn.addEventListener('click',_fn,false);
@@ -98,8 +86,9 @@ $(function (){
 			}
 		}
 	}
+
 	// 预加载
-	var arrImg = ['./assets/images/bg1.jpg','./assets/images/just_4.png','./assets/images/just_5.png','./assets/images/just_6.png','./assets/images/just_7.png','./assets/images/just_8.png','./assets/images/l_end.png','./assets/images/p_end.png','./assets/images/p_p2.png','./assets/images/p_t.png','./assets/images/p2_1_2.png','./assets/images/p2_2_2.png','./assets/images/p2_2_3.png','./assets/images/p2_3.png','./assets/images/p2_4_3.png','./assets/images/p2_5.png','./assets/images/p2_5_2.png','./assets/images/p2_5_3.png','./assets/images/p2_6_3.png','./assets/images/p2_7_1.png','./assets/images/p2_7_2.png','./assets/images/p2_8.png','./assets/images/p3_2.png','./assets/images/p3_4.png','./assets/images/p3_5.png','./assets/images/p3_6.png','./assets/images/p3_7.png','./assets/images/xinfeng.png'];
+	var arrImg = ['./assets/images/l_end.png','./assets/images/bg0.jpg','./assets/images/bg1.jpg','./assets/images/bg2.jpg','./assets/images/font1.png','./assets/images/font2.png','./assets/images/font3.png','./assets/images/font4.png','./assets/images/font5.png','./assets/images/font6.png','./assets/images/font7.png','./assets/images/font8.png','./assets/images/xinfeng1.png','./assets/images/xinfeng2.png','./assets/images/xinfeng3.png'];
 	preLoad(arrImg,function (){
 		createSwiper();
 	});
