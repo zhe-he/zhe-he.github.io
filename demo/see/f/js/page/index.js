@@ -1,7 +1,10 @@
 require('../../css/index.scss');
 import $ from 'zepto';
 import Swiper from 'swiper';
+
+
 $(function (){
+	
 	var mySwiper = null;
 
 	function createSwiper(){
@@ -13,9 +16,6 @@ $(function (){
 			},
 			onInit: function (swiper){
 				fnTab(swiper);
-			},
-			onTouchStart: function (swiper){
-				
 			}
 		});
 	}
@@ -102,7 +102,7 @@ $(function (){
 	}
 
 	// 预加载
-	var arrImg = ['./assets/images/l_end.png','./assets/images/bg0.jpg','./assets/images/bg1.jpg','./assets/images/bg2.jpg','./assets/images/font1.png','./assets/images/font2.png','./assets/images/font3.png','./assets/images/font4.png','./assets/images/font5.png','./assets/images/font6.png','./assets/images/font7.png','./assets/images/font8.png','./assets/images/font_end.png','./assets/images/xinfeng1.png','./assets/images/xinfeng2.png','./assets/images/xinfeng3.png'];
+	var arrImg = ['./assets/images/l_end.png','./assets/images/bg0.jpg','./assets/images/bg1.jpg','./assets/images/bg2.jpg','./assets/images/font1.png','./assets/images/font2.png','./assets/images/font3.png','./assets/images/font4.png','./assets/images/font5.png','./assets/images/font6.png','./assets/images/font7.png','./assets/images/font8.png','./assets/images/xinfeng1.png','./assets/images/xinfeng2.png','./assets/images/xinfeng3.png'];
 	// arrImg = [];
 	preLoad(arrImg,function (){
 		createSwiper();

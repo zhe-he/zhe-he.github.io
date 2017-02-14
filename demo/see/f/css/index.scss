@@ -5,6 +5,8 @@
 }
 html,body{
 	height: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 
 
@@ -17,10 +19,9 @@ html,body{
 	z-index: 990;
 	position: fixed;
 	top: 0;
-	left: 50%;
-	width: 7.5rem;
+	left: 0;
+	width: 100%;
 	height: 100%;
-	margin-left: -3.75rem;
 	background-color: #fcecd5;
 }
 .loading > div{
