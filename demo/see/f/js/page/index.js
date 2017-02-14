@@ -72,7 +72,7 @@ $(function (){
 	// 音乐
 	var music = document.getElementById('music');
 	var musicBtn = document.getElementsByClassName('music')[0];
-	// music.play();
+	music.play();
 	fnMusic();
 	function fnMusic(){
 		musicBtn.addEventListener('click',_fn,false);
