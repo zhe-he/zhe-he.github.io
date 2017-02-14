@@ -55,14 +55,16 @@ $(function (){
 
 	$('#xinfeng').on('animationend webkitAnimationEnd',function (){
 		mySwiper.unlockSwipes();
-		mySwiper.slideTo(1,0);
+		$(this).one('click',function (){
+			mySwiper.slideTo(1,0);
+		});
 	});
 	$('#xinfeng2').on('animationend webkitAnimationEnd',function (){
 		$(this).addClass('end');
 		setTimeout(function (){
 			mySwiper.unlockSwipes();
 			mySwiper.slideTo(2,0);
-		},500);
+		},1000);
 	});
 	$('#xinfeng3').on('animationend webkitAnimationEnd',function (){
 		mySwiper.unlockSwipes();
