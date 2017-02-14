@@ -276,9 +276,9 @@ html,body{
 			.xinfeng{
 				transform: rotateY(180deg);
 			}
+			
 			&.active{
 				.xinfeng{
-					transform: rotateY(180deg);
 					animation:fei2 2s 0.5s ease both;
 				}
 			}
