@@ -1,0 +1,372 @@
+@mixin bg ($name,$x:100%,$y:100%) {
+	background-image: url('../images/'+$name);
+	background-repeat: no-repeat;
+	background-size: $x $y;
+}
+@mixin ps($w,$h){
+	position: absolute;
+	left: 50%;
+	width: #{$w}rem;
+	height: #{$h}rem;
+	margin-left: -#{$w/2}rem;
+}
+
+html,body{
+	overflow: hidden;
+	height: 100%;
+}
+body{
+	position: relative;
+}
+
+.hide{
+	display: none;
+}
+
+
+.loading{
+	z-index: 990;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fcecd5;
+}
+.loading > div{
+	position: absolute;
+	top: 50%;
+	left: 0;
+	-webkit-transform: translate3d(0,-50%,0);
+	transform: translate3d(0,-50%,0);
+	width: 100%;
+}
+
+.loading  > div > p{
+	font-size: 0.4rem;
+	line-height: 0.8rem;
+	text-align: center;
+	color: #fff;
+}
+.load-img{
+	position: relative;
+	width: 1.7rem;
+	height: 2.51rem;
+	margin: 0 auto;
+	background: url(../images/l_end.png) no-repeat;
+	background-size: 100% 100%;
+	
+}
+.load-img > div{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fcecd5;
+}
+
+@-webkit-keyframes loadimg{
+	0%{height: 100%;}
+	100%{height: 0;}
+}
+
+
+
+.music{
+    z-index: 990;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 60px;
+    height: 60px;
+    background: url(../images/music.png) no-repeat;
+    background-size: 60px;
+    -webkit-animation: r3 2s linear infinite;
+    -webkit-transform: scaleX(0.4) scaleY(0.4);
+            transform: scaleX(0.4) scaleY(0.4);
+}
+.music.close{
+    background-position: 0 -83px;
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+}
+
+@-webkit-keyframes r3{
+  0%{ -webkit-transform:rotate(0deg) scaleX(0.4) scaleY(0.4);}
+  100%{ -webkit-transform:rotate(360deg) scaleX(0.4) scaleY(0.4);}
+}
+
+.page{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #d6b299;
+	width: 100%;
+	height: 100%;
+
+	.icon1{
+		@include ps(7.28,2.47);
+		top: 0.38rem;
+		@include bg('happy.png'); 
+	}
+	.icon2{
+		position: absolute;
+		top: 2.06rem;
+		right: 0.62rem;
+		width: 1.62rem;
+		height: 0.41rem;
+		@include bg('sign.png');
+	}
+	.icon3{
+		@include ps(5.85,0.82);
+		bottom: 0.83rem;
+		@include bg('logo_b.png');
+	}
+	.icon4{
+		@include ps(2.76,1.62);
+		bottom: 0.4rem;
+		@include bg('juke.png');
+	}
+	
+	
+	.yinyue-box1{
+		left: 0;
+		top: 3.02rem;
+		width: 2.11rem;
+		height: 0.74rem;
+		i{
+			@include bg('yinyue.png',2.11rem,100%);
+		}
+	}
+	.yinyue-box2{
+		right: 0;
+		bottom: 1.29rem;
+		width: 2.95rem;
+		height: 1.09rem;
+		i{
+			@include bg('yinyue2.png',2.95rem,100%);
+		}
+	}
+	.yinyue-box{
+		position: absolute;
+		overflow: hidden;
+		> i{
+			display: block;
+			width: 400%;
+			height: 100%;
+			background-repeat: repeat-x;
+			animation: yinyue 5s 0s linear both infinite;
+		}
+	}
+
+	.main1{
+		position: absolute;
+		top: 50%;
+		left: 0;
+		width: 100%;
+		margin-top: -3.2rem;
+		
+		p{
+			height: 0.75rem;
+			background-position: center center;
+		}
+		$w: 3.65rem 1.77rem 6.17rem 3.17rem 5.56rem 3.04rem 5.98rem;
+		$h: 0.51rem 0.49rem 0.49rem 0.51rem 0.49rem 0.5rem 0.5rem;
+		@for $i from 1 through 7{
+			p:nth-of-type(#{$i}){
+
+				@include bg('f_#{$i}.png',nth($w,$i),nth($h,$i));
+			}
+		}
+		> a{
+			display: block;
+			width: 5.19rem;
+			height: 1.61rem;
+			margin-top: 0.44rem;
+			margin-left: 1.07rem;
+			@include bg('button.jpg');
+		}
+	}
+
+	.main2{
+		position: absolute;
+		left: 0;
+		top: 50%;
+		margin-top: -4.17rem;
+		width: 6.36rem;
+		height: 8.5rem;
+		.pan{
+			position: absolute;
+			top: 1.32rem;
+			left: 2.56rem;
+			width: 2.39rem;
+			height: 2.39rem;
+			@include bg('cangpian1.png');
+
+			animation: rotate 3s 0s linear both infinite;
+		}
+		.main-bg{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			@include bg('main-bg.png');
+		}
+		.icon{
+			opacity: 0;
+			position: absolute;
+			top: 1.44rem;
+			left: 5.77rem;
+			width: 1.71rem;
+			height: 1.11rem;
+			@include bg('zuo_jian.png');
+			&.show{
+ 				animation:flash 2s 0s ease both 2;
+			}
+
+		}
+
+		> .anniu{
+			position: absolute;
+			top: 5.54rem;
+			left: 2.94rem;
+			width: 1.43rem;
+			height: 1.44rem;
+			@include bg('anniu.png');
+		}
+	}
+}
+.main3{
+	display: none;
+}
+.page3{
+	.page-o,.main-bg{
+		opacity: 0.5;
+	}
+	.main3{
+		display: block;
+		position: absolute;
+		bottom: 1.53rem;
+		left: 50%;
+		margin-left: -3.04rem;
+		width: 6.08rem;
+		height: 5.58rem;
+		box-sizing: border-box;
+		@include bg('white-b.png');
+		padding-top: 0.2rem;
+		p{
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 1.3rem;
+			background-position: center center;
+		}
+		$w: 2.87rem 1.83rem 1.67rem 1.61rem;
+		$h: 0.8rem 0.85rem 0.85rem 0.84rem;
+		@for $i from 1 to 5{
+			p:nth-of-type(#{$i}){
+				top: #{(0.2+1.3*($i/1-1))}rem;
+				@include bg('e_#{$i}.png',nth($w,$i),nth($h,$i));
+			}
+		}
+		input{
+			display: block;
+			border: none;
+			padding: 0;
+			width: 100%;
+			height: 1.3rem;
+			line-height: 1.3rem;
+			text-align: center;
+			font-size: 0.76rem;
+			color: #fff;
+			background: transparent;
+			&:nth-of-type(2){
+				font-size: 0.3rem;
+			}
+		}
+	}
+	.end{
+		position: absolute;
+		bottom: 0.23rem;
+		right: 0.26rem;
+		width: 1.39rem;
+		height: 0.72rem;
+		@include bg('end.png');
+	}
+}
+.back{
+	position: absolute;
+	top: 0.18rem;
+	left: 0.15rem;
+	width: 1.01rem;
+	height: 0.63rem;
+	@include bg('zuo_jian.png');
+}
+.jingxi{
+	z-index: 10;
+	position: absolute;
+	right: 0.22rem;
+	bottom: 0.24rem;
+	width: 1.39rem;
+	height: 0.72rem;
+	@include bg('jingxi.png');
+}
+.main4{
+	@include ps(8.36,8.36);
+	top: 50%;
+	margin-top: -4.18rem;
+	animation: rotate 8s 0s linear infinite;
+
+	@for $i from 1 to 4{
+		&.cangpian#{$i}{
+			@include bg('cangpian#{$i}.png');
+		}
+	}
+}
+.main5{
+	position: absolute;
+	left: 0;
+	bottom: 0.68rem;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+
+	> p{
+		&:nth-of-type(1){
+			height: 1rem;
+			font-size: 0.76rem;
+			line-height: 1rem;
+		}
+		&:nth-of-type(2){
+			height: 1.53rem;
+			font-size: 0.82rem;
+			line-height: 1.53rem;
+		}
+		&:nth-of-type(3){
+			height: 0.71rem;
+			margin-top: 0.36rem;
+			font-size: 0.56rem;
+			line-height: 0.71rem;
+		}
+		&:nth-of-type(4){
+			height: 0.75rem;
+			line-height: 0.75rem;
+			font-size: 0.54rem;
+		}
+	}
+}
+
+@-webkit-keyframes yinyue{
+	0%{-webkit-transform: translate3d(0,0,0);}
+	100%{-webkit-transform: translate3d(-50%,0,0);}
+}
+@-webkit-keyframes rotate{
+	0%{-webkit-transform: rotate(0deg);}
+	100%{-webkit-transform: rotate(360deg);}
+}
+@-webkit-keyframes flash{
+	0%,50%,100%{opacity: 0;}
+	25%,75%{opacity: 1;}
+}
