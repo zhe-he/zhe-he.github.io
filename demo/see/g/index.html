@@ -8,84 +8,103 @@
     <meta content="telephone=no" name="format-detection">
     <script type="text/javascript" src="./assets/js/common.js"></script>
 	<script type="text/javascript" src="./assets/js/index.js"></script>
-	<title>住你生日快乐</title>
+	<title>为Ta设计生日惊喜</title>
 </head>
 <body>
-	<!--
-	<img src="./assets/images/static/b-logo2.jpg" style="position:absolute;top:0;left:0;width: 300px;z-index:-1;opacity:0" />
-	<audio preload loop id="music">
-		<source src="./ben.mp3" type="audio/mpeg">
-	</audio>
-	<a href="javascript:;" class="music"></a>
-
 	<div id="loading" class="loading">
 		<div>
 			<div class="load-img"><div></div></div>
 			<p><span class="load-y">0</span>%</p>
 		</div>
 	</div>
-	-->
-	
-	<div class="page page1 hide">
-		<div class="icon1"></div>
-		<div class="icon2"></div>
-		<div class="icon3"></div>
-		<div class="main1">
-			<p></p>
-			<p></p>
-			<p></p>
-			<p></p>
-			<p></p>
-			<p></p>
-			<p></p>
-			<a class="a_c" href="javascript:;"></a>
-		</div>
-	</div>
-	<div class="page page2 hide page3">
-		<div class="page-o">
+
+	<article id="main">
+		
+		<img :src="'./assets/images/cangpian'+(music/1+1)+'.png'" style="position:absolute;top:0;left:0;width: 300px;z-index:-1;opacity:0" />
+		<audio preload loop id="music">
+			<source :src="'./music'+(music/1+1)+'.mp3'" type="audio/mpeg">
+		</audio>
+		<a href="javascript:;" class="music close"></a>
+		
+		
+		<div class="page page1 hide">
 			<div class="icon1"></div>
 			<div class="icon2"></div>
-			<div class="icon4"></div>
-			<div class="yinyue-box yinyue-box1"><i></i></div>
-			<div class="yinyue-box yinyue-box2"><i></i></div>
+			<div class="icon3"></div>
+			<div class="main1">
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+				<a class="js-shownext a_c" href="javascript:;"></a>
+			</div>
 		</div>
-		
-		<div class="main2">
-			<article class="pan">
-				<section>
-					<div></div>
-				</section>
-			</article>
-			<div class="main-bg"></div>
-			<div class="icon show"></div>
-			<a href="anniu a_c"></a>
+		<div class="page page2 hide">
+			<div class="page-o">
+				<div class="icon1"></div>
+				<div class="icon2"></div>
+				<div class="icon4"></div>
+				<div class="yinyue-box yinyue-box1"><i></i></div>
+				<div class="yinyue-box yinyue-box2"><i></i></div>
+			</div>
+			
+			<div class="main2">
+				<article class="pan swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide"></div>
+						<div class="swiper-slide"></div>
+						<div class="swiper-slide"></div>
+						<div class="swiper-slide"></div>
+						<div class="swiper-slide"></div>
+						<div class="swiper-slide"></div>
+					</div>
+				</article>
+				<div class="main-bg"></div>
+				<div class="icon js-touch"></div>
+				<a class="anniu a_c" href="javascript:;"></a>
+			</div>
+
+			<div id="main3" class="main3">
+				<input maxlength="6" v-model="your" type="text">
+				<input :style="{'font-size':fontsize+'rem'}" maxlength="20" v-model="zhufu" type="text">
+				<input maxlength="6" v-model="my" type="text">
+				<input maxlength="11" v-model="date" type="text">
+				<p></p>
+				<p></p>
+				<p></p>
+				<p></p>
+			</div>
+			<a class="end a_c" href="javascript:;"></a>
 		</div>
 
-		<div class="main3">
-			<input maxlength="6" type="text">
-			<input maxlength="20" type="text">
-			<input maxlength="6" type="text">
-			<input maxlength="12" type="text">
-			<p></p>
-			<p class="hide"></p>
-			<p></p>
-			<p class="hide"></p>
-		</div>
-		<a class="end a_c" href="javascript:;"></a>
-	</div>
+		<div class="page page4 hide">
+			<div class="icon1"></div>
+			<a class="a_c back" href="javascript:;"></a>
 
-	<div class="page page4">
-		<div class="icon1"></div>
-		<a class="a_c back" href="javascript:;"></a>
-		<a class="a_c jingxi" href="javascript:;"></a>
-
-		<div class="main4 cangpian1"></div>
-		<div class="main5">
-			<p>祝 二黑</p>
-			<p>生日快乐 健康长寿</p>
-			<p>微微</p>
-			<p>2017年2月16日</p>
+			<div :class="['main4','cangpian'+(music/1+1)]"></div>
+			<div class="main5">
+				<p>祝 {{your}}</p>
+				<p :style="{'font-size':fontsize+'rem'}">{{zhufu}}</p>
+				<p>{{my}}</p>
+				<p>{{date}}</p>
+			</div>
 		</div>
-	</div>
+
+		<div class="page page5 hide">
+			<div class="icon1"></div>
+			<a class="a_c jingxi" href="javascript:;"></a>
+
+			<div :class="['main4','cangpian'+(music/1+1)]"></div>
+			<div class="main5">
+				<p>祝 {{your}}</p>
+				<p :style="{'font-size':fontsize+'rem'}">{{zhufu}}</p>
+				<p>{{my}}</p>
+				<p>{{date}}</p>
+			</div>
+		</div>
+	</article>
 </body>
 </html>

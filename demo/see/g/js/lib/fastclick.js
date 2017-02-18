@@ -443,7 +443,10 @@
 
 		// Prevent phantom clicks on fast double-tap (issue #36)
 		if ((event.timeStamp - this.lastClickTime) < this.tapDelay) {
-			event.preventDefault();
+			var target = event.target || event.srcElement;
+			if(target.tagName.toLowerCase() !== 'input'){
+				event.preventDefault();
+			}
 		}
 
 		return true;
@@ -527,6 +530,7 @@
 
 		// Prevent phantom clicks on fast double-tap (issue #36)
 		if ((event.timeStamp - this.lastClickTime) < this.tapDelay) {
+
 			this.cancelNextClick = true;
 			return true;
 		}

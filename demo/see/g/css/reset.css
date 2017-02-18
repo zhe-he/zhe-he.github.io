@@ -4,8 +4,7 @@ html {
   -webkit-text-size-adjust: 100%;
   font-size: 20px; }
 *{margin: 0; padding: 0;-webkit-tap-highlight-color: transparent;
-  -webkit-user-select: none;
-  user-select: none;
+  
 }
 a { text-decoration: none; }
   
@@ -15,22 +14,16 @@ i,em,b,strong{
   font-weight: normal;
 }
 input, textarea, select {
-  outline: none; }
+   }
 
 input, button, select, textarea {
   -webkit-appearance: none;
   appearance: none;
   border-radius: 0px; }
 
-@font-face
-{
-  font-family: hkfont;
-  src: url('hk.ttf')
-}
-
 
 body {
-  font-family: hkfont, Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial, STHeiti; }
+  font-family: Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial, STHeiti; }
 
 li {
   list-style: none; }
