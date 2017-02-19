@@ -3,11 +3,14 @@ import $ from 'zepto';
 import Swiper from 'swiper';
 import Vue from 'vue';
 
+
+
 $(function (){
 	var mySwiper;
 	var myVue;
-	var music,musicBtn;
-
+	var $music,musicBtn;
+	var CURNOW = 0;
+	var timex = 30; // 因为想更快，而不是为了快，用户感觉快比实际快更重要，故开定时让用户看见快的过程而不是快的结果
 	function createVue(){
 		
 
@@ -39,7 +42,7 @@ $(function (){
 			mounted: function (){
 				this.$nextTick(()=>{
 					effect();
-
+					// CURNOW
 					var x = window.location.hash.substr(1);
 					if (x) {
 
@@ -52,19 +55,16 @@ $(function (){
 						$('.page5').removeClass('hide');
 						setTitle('你有一封来自'+this.my+'的祝福');
 
-						music.play();
-						musicBtn.className = 'music';
-						document.addEventListener("WeixinJSBridgeReady", function () {  
-						    music.play();
-						}, false);
+						CURNOW = arr[4]-0+1;
+						$music.get(CURNOW).play();
 					}else{
 						$('.page1').removeClass('hide').addClass('active');
 
-						music.load();
-						document.addEventListener("WeixinJSBridgeReady", function () {  
-						    music.load();
-						}, false);
+						$music.get(0).play();
 					}
+
+
+
 				});
 			},
 			methods: {
@@ -77,6 +77,7 @@ $(function (){
 
 	function fnLoop(swiper){
 		myVue.music = swiper.activeIndex%3;
+		CURNOW = myVue.music+1;
 		if (swiper.activeIndex==0) {
 			swiper.slideTo(3,0);
 		}else if(swiper.activeIndex==5){
@@ -86,7 +87,9 @@ $(function (){
 
 	function effect(){
 		$('.js-shownext').on('click',function (){
-			page2();
+			setTimeout(function (){
+				page2();
+			},timex);
 		});
 
 		$('.anniu').on('click',function (){
@@ -108,55 +111,70 @@ $(function (){
 			});
 		});
 		$('.end').on('click',function (){
-			var t1 = myVue.your.trim();
-			var t2 = myVue.zhufu.trim();
-			var t3 = myVue.my.trim();
-			var t4 = myVue.date.trim();
-			if (!t1) {
-				alert('请填写您的祝福对象');
-				return ;
-			}
-			if(!t2){
-				alert('请填写您的祝福语');
-				return ;
-			}
-			if(!t3){
-				alert('请签上您的大名');
-				return ;
-			}
-			if(!t4){
-				alert('请填写祝福的日期');
-				return ;
-			}
-			$('.page2').removeClass('page3').addClass('hide');
-			$('.page4').removeClass('hide');
+			setTimeout(function (){
+				var t1 = myVue.your.trim();
+				var t2 = myVue.zhufu.trim();
+				var t3 = myVue.my.trim();
+				var t4 = myVue.date.trim();
+				if (!t1) {
+					alert('请填写您的祝福对象');
+					return ;
+				}
+				if(!t2){
+					alert('请填写您的祝福语');
+					return ;
+				}
+				if(!t3){
+					alert('请签上您的大名');
+					return ;
+				}
+				if(!t4){
+					alert('请填写祝福的日期');
+					return ;
+				}
+				$('.page2').removeClass('page3').addClass('hide');
+				$('.page4').removeClass('hide');
 
-			document.title = '你有一封来自'+t3+'的祝福';
-			window.location.hash = '#'+encodeURIComponent(t1+'--||--'+t2+'--||--'+t3+'--||--'+t4+'--||--'+myVue.music);
+				document.title = '你有一封来自'+t3+'的祝福';
+				window.location.hash = '#'+encodeURIComponent(t1+'--||--'+t2+'--||--'+t3+'--||--'+t4+'--||--'+myVue.music);
+			},timex);
 		});
 
 		$('.back').on('click',function (){
-			$('.page4').addClass('hide');
-			$('.page2').removeClass('hide');
+			setTimeout(function (){
+				$('.page4').addClass('hide');
+				$('.page2').removeClass('hide');
+
+			},timex);
 		});
 		$('.jingxi').on('click',function (){
-			$('.page1').removeClass('hide').addClass('active');
-			$('.page5').remove();
-			
-			music.pause();
-			window.location.hash = '#';
-			myVue.your = '';
-			myVue.zhufu = '';
-			myVue.my = '';
-			myVue.date = '';
-			myVue.music = 0;
+			setTimeout(function (){
 
-			setTitle('为Ta设计生日惊喜');
+				$('.page1').removeClass('hide').addClass('active');
+				$('.page5').remove();
+
+				window.location.hash = '#';
+				myVue.your = '';
+				myVue.zhufu = '';
+				myVue.my = '';
+				myVue.date = '';
+				myVue.music = 0;
+				CURNOW = 0;
+				setMusic(CURNOW);
+
+				setTitle('为Ta设计生日惊喜');
+
+			},timex);
+		});
+		$('.fenxiang').on('click',function (){
+			setTimeout(function (){
+				alert('点击右上角，发送给微信好友吧~');
+			},timex);
 		});
 
 
 		// 音乐
-		music = document.getElementById('music');
+		$music = $('.js-music');
 		musicBtn = document.getElementsByClassName('music')[0];
 		fnMusic();
 		function fnMusic(){
@@ -164,13 +182,22 @@ $(function (){
 			function _fn(){
 				if (musicBtn.className === 'music') {
 					musicBtn.className = 'music close';
-					music.pause();				
+
+					setMusic();				
 				}else{
 					musicBtn.className = 'music';
-					music.load();
-					music.play();			
+					
+					setMusic(CURNOW);		
 				}
 			}
+		}
+	}
+	function setMusic(now,end){
+		$music.each(function (index,ele){
+			ele.pause();
+		});
+		if (!end && now > -1) {
+			$music.get(now).play();
 		}
 	}
 
@@ -179,8 +206,8 @@ $(function (){
 		$('.page2').removeClass('hide');
 		$('.js-touch').addClass('show');
 
-		music.load();
-		music.play();
+		
+		setMusic(CURNOW);
 		musicBtn.className = 'music';
 		mySwiper = new Swiper('.pan', {
 			initialSlide: 3,
@@ -189,13 +216,9 @@ $(function (){
 			},
 			onSlideChangeEnd: function (swiper){
 				fnLoop(swiper);
+
 				if (musicBtn.className == 'music') {
-					music.pause();
-					setTimeout(function (){
-						music.load();
-						music.play();
-					},16.7)
-					
+					setMusic(CURNOW);
 				}
 				
 			}
@@ -204,7 +227,7 @@ $(function (){
 
 
 	// 预加载
-	var arrImg = ['./assets/images/anniu.png','./assets/images/bg.jpg','./assets/images/button.jpg','./assets/images/cangpian1.png','./assets/images/cangpian2.png','./assets/images/cangpian3.png','./assets/images/e_1.png','./assets/images/end.png','./assets/images/f_1.png','./assets/images/f_3.png','./assets/images/f_5.png','./assets/images/f_7.png','./assets/images/happy.png','./assets/images/jingxi.png','./assets/images/l_end.png','./assets/images/logo_b.png','./assets/images/main-bg.png','./assets/images/white-b.png','./assets/images/yinyue2.png','./assets/images/zuo_jian.png'];
+	var arrImg = ['./assets/images/anniu.png','./assets/images/bg.jpg','./assets/images/button.jpg','./assets/images/cangpian1.png','./assets/images/cangpian2.png','./assets/images/cangpian3.png','./assets/images/e_1.png','./assets/images/end.png','./assets/images/f_1.png','./assets/images/f_3.png','./assets/images/f_5.png','./assets/images/f_7.png','./assets/images/happy.png','./assets/images/jingxi.png','./assets/images/l_end.png','./assets/images/logo_b.png','./assets/images/main-bg.png','./assets/images/white-b.png','./assets/images/yinyue2.png','./assets/images/zuo_jian.png','./assets/images/share_btn.png'];
 	preLoad(arrImg,function (){
 		createVue();
 	});
@@ -259,5 +282,27 @@ $(function (){
 	}
 
 	
-
+	document.addEventListener('touchstart',oncefn,false);
+	function oncefn(){
+		document.removeEventListener('touchstart',oncefn,false);
+		basefn();
+	}
+	function basefn(){
+		var x = window.location.hash.substr(1);
+		var curnow = 0;
+		if (x) {
+			var arr = decodeURIComponent(x).split('--||--');
+			curnow = arr[4]-0+1;
+		}
+		var $music = $('.js-music');
+		$music.get(curnow).play();
+		for (var i = 0; i < 4; i++) {
+			if (i!==curnow) {
+				$music.get(i).load();
+			}
+		}
+	}
+	document.addEventListener("WeixinJSBridgeReady",function(){
+		basefn();
+	});
 });

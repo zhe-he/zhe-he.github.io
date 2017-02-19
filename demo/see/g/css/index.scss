@@ -236,12 +236,13 @@ body{
 			opacity: 0;
 			position: absolute;
 			top: 1.44rem;
-			left: 5.77rem;
-			width: 1.71rem;
-			height: 1.11rem;
+			left: 5.25rem;
+			width: 2.22rem;
+			height: 1.44rem;
 			@include bg('zuo_jian.png');
+			pointer-events: none;
 			&.show{
- 				animation:flash 2s 0s ease both 2;
+ 				animation:runl 2s 0s ease both 3;
 			}
 
 		}
@@ -331,9 +332,9 @@ body{
 	left: 0.15rem;
 	width: 1.01rem;
 	height: 0.63rem;
-	@include bg('zuo_jian.png');
+	@include bg('goback.png');
 }
-.jingxi{
+.jingxi,.fenxiang{
 	z-index: 10;
 	position: absolute;
 	right: 0.22rem;
@@ -341,6 +342,9 @@ body{
 	width: 1.39rem;
 	height: 0.72rem;
 	@include bg('jingxi.png');
+}
+.fenxiang{
+	@include bg('share_btn.png');
 }
 .main4{
 	@include ps(8,8);
@@ -395,9 +399,15 @@ body{
 	0%{-webkit-transform: rotate(0deg);}
 	100%{-webkit-transform: rotate(360deg);}
 }
-@-webkit-keyframes flash{
-	0%,50%,100%{opacity: 0;}
-	25%,75%{opacity: 1;}
+@-webkit-keyframes runl{
+	0%{
+		opacity:1;
+		-webkit-transform:translateX(0);
+	}
+	100%{
+		opacity:0;
+		-webkit-transform:translateX(-20px);
+	}
 }
 
 .page1.active{
@@ -408,7 +418,7 @@ body{
 			}
 		}
 		> a{
-			-webkit-animation:bounceIn 2s 10.5s ease both;
+			-webkit-animation:bounceIn 1.3s 0s ease both;
 		}
 	}
 }

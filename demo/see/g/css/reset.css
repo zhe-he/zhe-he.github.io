@@ -23,7 +23,7 @@ input, button, select, textarea {
 
 
 body {
-  font-family: Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial, STHeiti; }
+  font-family: "楷体","KaiTi","华文楷体","STKaiti","Microsoft Yahei","微软雅黑"; }
 
 li {
   list-style: none; }
@@ -64,5 +64,7 @@ a.a_c{
   transform: scale(1);
 }
 a.a_c:active{
-  transform: scale(0.95);
+  opacity: 1 !important;
+  animation: none !important;
+  transform: scale(0.95) !important;
 }
