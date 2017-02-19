@@ -11,9 +11,9 @@ $(function (){
 	var $music,musicBtn;
 	var CURNOW = 0;
 	var timex = 30; // 因为想更快，而不是为了快，用户感觉快比实际快更重要，故开定时让用户看见快的过程而不是快的结果
+	
 	function createVue(){
-		
-
+	
 		myVue = new Vue({
 			el: '#main',
 			data: {
@@ -24,6 +24,18 @@ $(function (){
 				music: 0
 			},
 			computed: {
+				zhufu1: function (){
+					var t = this.zhufu;
+					return t.substr(0,9);
+				},
+				zhufu2: function (){
+					var t = this.zhufu;
+					if (t.length<=9) {
+						return '';
+					}else{
+						return t.substr(9);
+					}
+				},
 				fontsize: function (){
 					var max = 16;
 					var min = 6;
@@ -176,7 +188,7 @@ $(function (){
 		});
 		$('.fenxiang').on('click',function (){
 			setTimeout(function (){
-				alert('点击右上角，发送给微信好友吧~');
+				alert('点击右上角，分享您的祝福');
 			},timex);
 		});
 

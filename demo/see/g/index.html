@@ -81,7 +81,7 @@
 
 			<div id="main3" class="main3">
 				<input maxlength="6" v-model="your" type="text">
-				<input :style="{'font-size':fontsize+'rem'}" maxlength="20" v-model="zhufu" type="text">
+				<input :style="{'font-size':fontsize+'rem'}" maxlength="19" v-model="zhufu" type="text">
 				<input maxlength="6" v-model="my" type="text">
 				<input maxlength="11" v-model="date" type="text">
 				<p></p>
@@ -100,12 +100,12 @@
 			<div :class="['main4','cangpian'+(music/1+1)]"></div>
 			<div class="main5">
 				<p>祝 {{your}}</p>
-				<p :style="{'font-size':fontsize+'rem'}">{{zhufu}}</p>
+				<p>{{zhufu1}}<br/>{{zhufu2}}</p>
 				<p>{{my}}</p>
 				<p>{{date}}</p>
 			</div>
 		</div>
-
+ 
 		<div class="page page5 hide">
 			<div class="icon1"></div>
 			<a class="a_c jingxi" href="javascript:;"></a>
@@ -113,7 +113,7 @@
 			<div :class="['main4','cangpian'+(music/1+1)]"></div>
 			<div class="main5">
 				<p>祝 {{your}}</p>
-				<p :style="{'font-size':fontsize+'rem'}">{{zhufu}}</p>
+				<p>{{zhufu1}}<br/>{{zhufu2}}</p>
 				<p>{{my}}</p>
 				<p>{{date}}</p>
 			</div>
