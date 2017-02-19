@@ -91,6 +91,14 @@ $(function (){
 				page2();
 			},timex);
 		});
+		$('.js-shownext1').on('animationend webkitAnimationEnd',shownext1);
+		function shownext1(){
+			$('.js-shownext1').off('animationend',shownext1);
+			$('.js-shownext1').off('webkitAnimationEnd',shownext1);
+
+			$('.js-shownext1').remove();
+			$('.js-shownext2').css({opacity:1});
+		}
 
 		$('.anniu').on('click',function (){
 			$('.page2').addClass('page3');

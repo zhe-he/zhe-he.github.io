@@ -417,8 +417,8 @@ body{
 				-webkit-animation:fadeInUp 1.5s #{1.5*($i/1-1)}s ease both;
 			}
 		}
-		> a{
-			-webkit-animation:bounceIn 1.3s 0s ease both;
+		> .js-shownext1{
+			-webkit-animation:bounceIn 1.3s 10.5s ease both;
 		}
 	}
 }

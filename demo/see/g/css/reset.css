@@ -64,7 +64,5 @@ a.a_c{
   transform: scale(1);
 }
 a.a_c:active{
-  opacity: 1 !important;
-  animation: none !important;
   transform: scale(0.95) !important;
 }
