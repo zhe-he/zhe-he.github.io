@@ -18,6 +18,9 @@ function Roast(id){
 		name:'top',
 		img:"images/main_top.png",
 	},{
+		name:'top2',
+		img:"images/main-top.jpg",
+	},{
 		name:'zhaji',
 		img:"images/main_zhaji.png"
 	}];
@@ -74,13 +77,14 @@ Roast.prototype = {
 	},
 	drawTop: function (){
 		this.ctx.drawImage(this.src.top,0,0);
-		this.ctx.save();
+		this.ctx.drawImage(this.src.top2,0,0);
+		/*this.ctx.save();
 		var txt = '雅居乐万科·热橙 | KFC';
 		this.ctx.font="28px/28px sans-serif, Tahoma, Helvetica";
 		var x = this.ctx.canvas.width/2 - this.ctx.measureText(txt).width/2;
 		this.ctx.fillStyle = '#ffffff';
 		this.ctx.fillText(txt,x,51);
-		this.ctx.restore();
+		this.ctx.restore();*/
 	},
 	drawBt: function (){
 		var y = this.ctx.canvas.height - this.src.bt.height;
@@ -201,18 +205,72 @@ Roast.prototype = {
 
 
 
+preLoading(function (){
+	music.play();
+})
 
 
 
 
 
-window.addEventListener('DOMContentLoaded',function (){
-
+var oA = document.querySelector('.page_btn1');
+oA.addEventListener('click',function (){
+	document.getElementById('main').className = '';
 	new Roast('main');
+});
+
+document.addEventListener("WeixinJSBridgeReady", function () {  
+    music.play();
+}, false);
 
 
+// 预加载
+function preLoading(cb){
+	var preload = document.querySelector('#loading');
+	var preCon = document.querySelector('#loading .preCon');
+	var preNum = document.querySelector('#loading .preNum');
+	var iNow = 0;
+	var allImg = ["images/bg.jpg","images/main_bg.jpg","images/main_bt.png","images/main_clock.png","images/main_cloud.png","images/main_ji.png","images/main_top.png","images/main_zhaji.png","images/main-top.jpg","images/music.png","images/zhuoji.png"];
 
-},false);
+	for (var i = 0; i < allImg.length; i++) {
+		var src = allImg[i];
+		fnLoad(src, function (){
+			var number = Math.floor(++iNow/allImg.length*100);
+			preNum.innerHTML = number;
+			preCon.style.width = number + '%';
+			if (iNow == allImg.length) {
+				preload.parentNode && preload.parentNode.removeChild(preload);
+				cb && cb();
+			}
+		})
+	};
+
+	function fnLoad(src,callback){
+		var img = new Image();
+		img.onload = function (){
+			this.onload = null;
+			callback && callback();
+		}
+		img.onerror = function (){
+			this.onerror = null;
+			callback && callback();
+		}
+		img.src = src;
+	}
+}
+// 音乐
+var music = document.getElementById('music');
+var musicBtn = document.getElementById('music-btn');
+
+musicBtn.onclick = function (){
+	if(/close/.test(this.className)){
+		this.className = 'music';
+		music.play();
+	}else{
+		this.className = 'music close';
+		music.pause();
+	}
+}
 
 
 

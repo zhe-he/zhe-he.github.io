@@ -4,10 +4,125 @@ html,body{
 body{
 	position: relative;
 }
-#main{
+.hide{
+	display: none;
+}
+.page1,#main{
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+.page1{
+	background: url(../images/bg.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.page-top{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0.76rem;
+	background: url(../images/main-top.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.page_btn1{
+	position: absolute;
+	bottom: 0.92rem;
+	left: 1.24rem;
+	width: 4.83rem;
+	height: 1.19rem;
+	background: url(../images/zhuoji.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.loading{
+  z-index: 10000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+.loading > div{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -70px;
+  height: 140px;
+  width: 100%;
+  
+}
+.loading > div > p:nth-of-type(1){
+  position: relative;
+  width: 80%;
+  height: 20px;
+  margin: 0 auto;
+  border: 1px solid #0C9FC7;
+  border-radius: 10px;
+}
+.loading > div > p:nth-of-type(1) span{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 0%;
+  min-width: 20px !important;
+  background-color: #0C9FC7;
+  border-radius: 10px;
+}
+.loading > div > p:nth-of-type(2){
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+  color: #000;
+}
+.music{
+  z-index: 10000;
+  position: absolute;
+  top: 0.1rem;
+  right: 0.05rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  background: url(../images/music.png) no-repeat;
+  background-size: 0.6rem;
+  -webkit-animation: rotate1 2s linear infinite;
+  animation: rotate1 2s linear infinite;
+  -webkit-transform: scaleX(0.7) scaleY(0.7);
+  transform: scaleX(0.7) scaleY(0.7);
+}
+.music.close{
+  background-position: 0 -0.83rem;
+  -webkit-animation: none;
+  animation: none;
+}
+
+@-webkit-keyframes rotate1{
+0%{-webkit-transform: rotate(0deg) scaleX(0.7) scaleY(0.7)}
+100%{-webkit-transform: rotate(360deg) scaleX(0.7) scaleY(0.7)}
+}
+@keyframes rotate1{
+0%{transform: rotate(0deg) scaleX(0.7) scaleY(0.7)}
+100%{transform: rotate(360deg) scaleX(0.7) scaleY(0.7)}
 }
