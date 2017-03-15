@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<script type="text/javascript" src="js/autosize.js"></script>
+	<script type="text/javascript" src="js/ajax.js"></script>
 	<script type="text/javascript" src="js/fastclick.js"></script>
 </head>
 <body>
@@ -22,13 +23,26 @@
 	
 	<audio src="index.mp3" preload loop id="music"></audio>
 	<a href="javascript:;" id="music-btn" class="music"></a>
-	<div class="page1">
+	<div class="page1 page">
 		<div class="page-top"></div>
 		<a class="a_c page_btn1" href="javascript:;"></a>
 	</div>
+	<div class="page2 page hide">
+		<a class="a_c page_btn2" href="javascript:;"></a>
+	</div>
 
-	<canvas class="hide" id="main"></canvas>
-
+	<canvas id="main"></canvas>
+	
+	<div class="page3 page hide">
+		<p class="page3-title"></p>
+		<p class="page3-img"></p>
+		<a class="close"></a>
+		<nav class="page3-nav">
+			<a class="a_c share" href="javascript:;"></a>
+			<a class="a_c restart" href="javascript:;"></a>
+		</nav>
+		<a href="tel:3208-2888" class="tel"></a>
+	</div>
 
 	<script type="text/javascript" src="js/index.js"></script>
 </body>

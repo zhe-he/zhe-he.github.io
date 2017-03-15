@@ -6,25 +6,40 @@ function Roast(id){
 		name: 'bt',
 		img:"images/main_bt.png"
 	},{
+		name: 'dabo',
+		img: "images/dabo.png"
+	},{
+		name: 'play',
+		img: "images/menu_play.png"
+	},{
+		name: 'more',
+		img: "images/menu_more.png"
+	},{
 		name:'clock',
-		img:"images/main_clock.png",
+		img:"images/main_clock.png"
+	},{
+		name:'clock2',
+		img:"images/main_clock2.png"
 	},{
 		name:'cloud',
-		img:"images/main_cloud.png",
+		img:"images/main_cloud.png"
 	},{
 		name:'ji',
-		img:"images/main_ji.png",
+		img:"images/main_ji.png"
 	},{
 		name:'top',
-		img:"images/main_top.png",
+		img:"images/main_top.png"
 	},{
 		name:'top2',
-		img:"images/main-top.jpg",
+		img:"images/main-top.jpg"
 	},{
 		name:'zhaji',
 		img:"images/main_zhaji.png"
 	}];
+	this.isStart = false;
 	this.srcCount = 0;
+	this.createStep = 10;
+	this.score = 0;
 	this.src = {}; 	// 图片对象
 	this.ji = []; 	// 所有的鸡
 	this.gameTime = 60; 
@@ -101,6 +116,24 @@ Roast.prototype = {
 		this.ctx.fillText(gameTime,258,this.ctx.canvas.height-114);
 		this.ctx.restore();
 	},
+	drawClock2: function (){
+		var y = this.ctx.canvas.height - this.src.clock2.height - 62;
+		var x = 65;
+		var y2 = this.ctx.canvas.height - this.src.play.height - 53;
+		var x2 = 209;
+		this.ctx.drawImage(this.src.clock2,x,y);
+		this.ctx.drawImage(this.src.play,x2,y2);
+	},
+	drawDabo: function (){
+		var x = (this.ctx.canvas.width - this.src.dabo.width)/2;
+		var y = (this.ctx.canvas.height - this.src.dabo.height)/2 - 80;
+		this.ctx.drawImage(this.src.dabo,x,y);
+	},
+	drawMore: function (){
+		var x = (this.ctx.canvas.width - this.src.more.width)/2;
+		var y = (this.ctx.canvas.height - this.src.more.height)/2 - 80;
+		this.ctx.drawImage(this.src.more,x,y);
+	},
 	toDou: function (n){
 		return n<10?'0'+n:''+n;
 	},
@@ -163,43 +196,98 @@ Roast.prototype = {
 		});
 	},
 	checkTime: function (){
-		this.createJi();
+		if (this.gameTime>=2) {
+			this.createJi();
+		}else{
+			sendScore && sendScore(this.score);
+		}
 		if(!--this.gameTime){
 			clearInterval(this.gameTimer);
 			requestAnimationFrame(function (){
-				cancelAnimationFrame(this.baseTimer)
+				cancelAnimationFrame(this.baseTimer);
+
+				var t = oPage3.className.replace('hide','');
+				oPage3.className = t;
 			}.bind(this));
 		}
 	},
 	kill: function (ev){
-		if (!this.gameTime) {return}
 		var touch = ev.targetTouches[0];
 		var scale = 720/window.innerWidth;
 		var x = touch.pageX*scale;
 		var y = touch.pageY*scale;
-		for (var i = this.ji.length-1; i >= 0; i--) {
-			if (x >= this.ji[i].a && x <= this.ji[i].c && y >= this.ji[i].b && y<= this.ji[i].d ) {
-				this.ji[i].dieTime = 50;
-				break;
-			}	
+
+		if (!this.isStart) {
+			if(this.gameTime==60){
+				var a = 209;
+				var b = window.innerHeight*scale-327;
+				var c = 477;
+				var d = window.innerHeight*scale-53;
+				if (x >= a && x <= c && y >= b && y<= d) {
+					this.start();
+				}
+			}
+		}else{
+			for (var i = this.ji.length-1; i >= 0; i--) {
+				if (x >= this.ji[i].a && x <= this.ji[i].c && y >= this.ji[i].b && y<= this.ji[i].d ) {
+					this.score++;
+					this.ji[i].dieTime = 50;
+					break;
+				}	
+			}
 		}
+		
 	},
 	start: function (){
+		this.isStart = true;
 		this.gameTimer = setInterval(this.checkTime.bind(this),1000);
 		this.base();
-		this.main.addEventListener('touchstart',this.kill.bind(this),false);
 	},
 	base: function (){
-		this.drawBg();
-		this.drawCloud();
-		this.drawJi();
-		this.drawTop();
-		this.drawBt();
-		this.drawClock();
+
+		if ( (this.gameTime <= 40 && this.gameTime >= 38) ||
+			 (this.gameTime <= 20 && this.gameTime >= 18) ||
+			 (this.gameTime <= 8 && this.gameTime >= 6)
+			) {
+			this.drawBg();
+			this.drawCloud();
+			this.drawMore();
+			this.drawTop();
+			this.drawBt();
+			this.drawClock();
+		}else{
+			if ( (this.gameTime<=38 && this.gameTime>=34) || 
+				 (this.gameTime<=18 && this.gameTime>=14) ||
+				 (this.gameTime<=6 && this.gameTime>=2)
+				) {
+				if(!--this.createStep){
+					this.createStep = 10;
+					this.createJi();
+				}
+			}
+
+			this.drawBg();
+			this.drawCloud();
+			this.drawJi();
+			this.drawTop();
+			this.drawBt();
+			this.drawClock();
+		}
+		
 		this.baseTimer = requestAnimationFrame(this.base.bind(this));
 	},
+	drawDefault: function (){
+		this.drawBg();
+		this.drawCloud();
+		this.drawTop();
+		this.drawBt();
+		this.drawClock2();
+		this.drawDabo();
+	},
 	init: function(){
-		this.start();
+		this.main.addEventListener('touchstart',this.kill.bind(this),false);
+		this.drawDefault();
+
 	}
 };
 
@@ -207,17 +295,66 @@ Roast.prototype = {
 
 preLoading(function (){
 	music.play();
+	new Roast('main');
 })
 
 
+var oA1 = document.querySelector('.page_btn1');
+var oA2 = document.querySelector('.page_btn2');
+var oMain = document.getElementById('main');
+var oPage2 = document.querySelector('.page2');
+var oPage3 = document.querySelector('.page3');
+var oRestart = document.querySelector('.restart');
+var oClose = document.querySelector('.page3 .close');
+var oShare = document.querySelector('.page3 .share');
 
-
-
-var oA = document.querySelector('.page_btn1');
-oA.addEventListener('click',function (){
-	document.getElementById('main').className = '';
-	new Roast('main');
+oA1.addEventListener('click',function (){
+	oPage2.className = 'page2 page';
 });
+oA2.addEventListener('click',function (){
+	oMain.className = 'show';
+});
+
+oShare.addEventListener('click',function(){
+	alert('点击右上角，分享给好友~');
+});
+oRestart.onclick = oClose.onclick = function (){
+	window.location.reload();
+};
+
+// 分数
+function sendScore(score){
+	sendScore = null;
+	ajax({
+		url: '/test.txt',
+		type: 'POST',
+		data: {
+			score: score
+		},
+		success: function (data){
+			data = eval('('+data+')');
+			if (data.err_code==0) {
+				_succ(data.data);
+			}else{
+				// 服务器错误可以直接对应最小的奖励 小徒弟
+				_faild();
+			}
+		},
+		error: function (err){
+			// alert('网络不稳定');
+			// 网络失败可以直接对应最小的奖励 小徒弟
+			_faild();
+		}
+	});
+
+	function _faild(){
+		oPage3.className = 'page3 page status1 hide';
+	}
+	function _succ(type){
+		oPage3.className = 'page3 page hide status'+type;
+	}
+}
+
 
 document.addEventListener("WeixinJSBridgeReady", function () {  
     music.play();
@@ -230,8 +367,7 @@ function preLoading(cb){
 	var preCon = document.querySelector('#loading .preCon');
 	var preNum = document.querySelector('#loading .preNum');
 	var iNow = 0;
-	var allImg = ["images/bg.jpg","images/main_bg.jpg","images/main_bt.png","images/main_clock.png","images/main_cloud.png","images/main_ji.png","images/main_top.png","images/main_zhaji.png","images/main-top.jpg","images/music.png","images/zhuoji.png"];
-
+	var allImg = ["images/bg.jpg","images/bg3.jpg","images/bg2.jpg","images/come.png","images/dabo.png","images/end_font1.png","images/end_img1.png","images/main-top.jpg","images/main_bg.jpg","images/main_bt.png","images/main_clock.png","images/main_clock2.png","images/main_cloud.png","images/main_ji.png","images/main_top.png","images/main_zhaji.png","images/menu_more.png","images/menu_play.png","images/music.png","images/restart.png","images/share.png","images/zhuoji.png"];
 	for (var i = 0; i < allImg.length; i++) {
 		var src = allImg[i];
 		fnLoad(src, function (){
@@ -271,7 +407,6 @@ musicBtn.onclick = function (){
 		music.pause();
 	}
 }
-
 
 
 window.requestAnimationFrame || (window.requestAnimationFrame = window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame 
