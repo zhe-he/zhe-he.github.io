@@ -10,3 +10,5 @@
 ### 接口位置 	
 js/index.js 搜索方法名 `sendScore` 	
 	
+
+come.png bg.jpg end_img2.png

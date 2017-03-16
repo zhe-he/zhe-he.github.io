@@ -42,7 +42,7 @@ function Roast(id){
 	this.score = 0;
 	this.src = {}; 	// 图片对象
 	this.ji = []; 	// 所有的鸡
-	this.gameTime = 60; 
+	this.gameTime = 30; 
 	this.gameTimer = null;
 	this.main = document.getElementById(id);
 	this.ctx = this.main.getContext('2d');
@@ -196,7 +196,7 @@ Roast.prototype = {
 		});
 	},
 	checkTime: function (){
-		if (this.gameTime>=2) {
+		if (this.gameTime>=1) {
 			this.createJi();
 		}else{
 			sendScore && sendScore(this.score);
@@ -212,13 +212,14 @@ Roast.prototype = {
 		}
 	},
 	kill: function (ev){
+		ev.preventDefault();
 		var touch = ev.targetTouches[0];
 		var scale = 720/window.innerWidth;
 		var x = touch.pageX*scale;
 		var y = touch.pageY*scale;
 
 		if (!this.isStart) {
-			if(this.gameTime==60){
+			if(this.gameTime==30){
 				var a = 209;
 				var b = window.innerHeight*scale-327;
 				var c = 477;
@@ -245,9 +246,9 @@ Roast.prototype = {
 	},
 	base: function (){
 
-		if ( (this.gameTime <= 40 && this.gameTime >= 38) ||
-			 (this.gameTime <= 20 && this.gameTime >= 18) ||
-			 (this.gameTime <= 8 && this.gameTime >= 6)
+		if ( (this.gameTime <= 17 && this.gameTime >= 15) ||
+			 (this.gameTime <= 10 && this.gameTime >= 9) ||
+			 (this.gameTime <= 5 && this.gameTime >= 4)
 			) {
 			this.drawBg();
 			this.drawCloud();
@@ -256,9 +257,9 @@ Roast.prototype = {
 			this.drawBt();
 			this.drawClock();
 		}else{
-			if ( (this.gameTime<=38 && this.gameTime>=34) || 
-				 (this.gameTime<=18 && this.gameTime>=14) ||
-				 (this.gameTime<=6 && this.gameTime>=2)
+			if ( (this.gameTime<=15 && this.gameTime>=11) || 
+				 (this.gameTime<=9 && this.gameTime>=6) ||
+				 (this.gameTime<=4 && this.gameTime>=1)
 				) {
 				if(!--this.createStep){
 					this.createStep = 10;
@@ -286,6 +287,9 @@ Roast.prototype = {
 	},
 	init: function(){
 		this.main.addEventListener('touchstart',this.kill.bind(this),false);
+		this.main.addEventListener('touchmove',function (ev){
+			ev.preventDefault();
+		},false);
 		this.drawDefault();
 
 	}

@@ -22,6 +22,9 @@ body{
   opacity: 1;
   z-index: auto;
 }
+.page1,.page2{
+  height: 12.8rem;
+}
 .page1{
 	background: url(../images/bg.jpg) no-repeat;
 	background-size: 100% 100%;
@@ -58,7 +61,7 @@ body{
   background-size: 100% 100%;
 }
 .page3{
-  height: 15rem;
+  height: 20rem;
   background: url(../images/bg3.jpg) no-repeat;
   background-size: 100% 100%;
 }
@@ -139,10 +142,10 @@ body{
 
 .page3 .tel{
   position: absolute;
-  bottom: 1.11rem;
-  left: 3.3rem;
-  width: 2.7rem;
-  height: .54rem;
+  top: 14.1rem;
+  left: 2.13rem;
+  width: 3.72rem;
+  height: .6rem;
 }
 
 
