@@ -22,9 +22,6 @@ body{
   opacity: 1;
   z-index: auto;
 }
-.page1,.page2{
-  height: 12.8rem;
-}
 .page1{
 	background: url(../images/bg.jpg) no-repeat;
 	background-size: 100% 100%;
