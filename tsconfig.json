@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "sourceMap": false,
+    "newLine": "LF",
+     "typeRoots": [
+        "node_modules/@types"
+     ]
+  }
+}

@@ -1,4 +1,6 @@
+*.log
 node_modules
-**/_dev
-upload
+.DS_Store
+*.diff
 *.zip
+www

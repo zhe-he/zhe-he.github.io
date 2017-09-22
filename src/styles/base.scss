@@ -1,0 +1,218 @@
+$yellow: #e09504;
+$lightyellow: #fdd8a6;
+$blue: #7560f9;
+$origin: #ff4f1a;
+
+@mixin bg($img,$x:100%,$y:100%){
+	background-repeat: no-repeat;
+	background-image: url('../../images/#{$img}');
+	background-size: $x $y;
+}
+@mixin bg2($img,$x:100%,$y:100%,$complete:false){
+	background-repeat: no-repeat;
+	@if $complete{
+		background-image: url('../../images/#{$img}');
+		background-image: -webkit-image-set(
+		url('../../images/#{$img}') 2x,
+		url('../../images/#{$img}') 3x);
+	} @else {
+		background-image: url('../../images/#{$img}@2x.png');
+		background-image: -webkit-image-set(
+		url('../../images/#{$img}@2x.png') 2x,
+		url('../../images/#{$img}@3x.png') 3x);
+	}
+	background-size: $x $y;
+}
+@mixin common-fixed($top:0){
+	position: fixed;
+	top: $top;
+	left: 50%;
+	width: 7.5rem;
+	margin-left: -3.75rem;
+}
+@mixin eps{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+// 1px 的解决方案
+$line_color: #e5e4e3;
+$radiuswidth: 0.04rem;
+$ui_value: 1px solid $line_color;
+%ui-border{
+	border: $ui_value;
+}
+%ui-border-n{
+	border: 0;
+}
+%ui-border-t{
+	border-top: $ui_value;
+}
+%ui-border-r{
+	border-right: $ui_value;
+}
+%ui-border-b{
+	border-bottom: $ui_value;
+}
+%ui-border-l{
+	border-left: $ui_value;
+}
+%ui-border-tb{
+	border-top: $ui_value;
+	border-bottom: $ui_value;
+}
+%ui-border-radius{
+	border: $ui_value;
+	border-radius: $radiuswidth;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2){
+	%ui-border,%ui-border-t,%ui-border-r,%ui-border-b,%ui-border-l,%ui-border-tb,%ui-border-radius{
+		border: 0;
+	}
+	%ui-border{
+		position: relative;
+		&:after{
+			z-index: 10;
+			content: "";
+		    width: 100%;
+		    height: 100%;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+			background-image: linear-gradient(to top, transparent 0%, transparent 50%, $line_color 100%),linear-gradient(to right, transparent 0%, transparent 50%, $line_color 100%),linear-gradient(to bottom, transparent 0%, transparent 50%, $line_color 100%),linear-gradient(to left, transparent 0%, transparent 50%, $line_color 100%);
+		    background-size: 100% 1px,1px 100%,100% 1px,1px 100%;
+		    background-repeat: no-repeat;
+		    background-position: top,right,bottom,left;
+		    padding: 1px;
+		    box-sizing: border-box;
+		    pointer-events: none;
+		}
+	}
+	%ui-border-radius{
+		position: relative;
+		&:before{
+			content: "";
+		    width: 200%;
+		    height: 200%;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    border: $ui_value;
+		    transform: scale(0.5);
+		    transform-origin: 0 0;
+		    padding: 1px;
+		    box-sizing: border-box;
+		    border-radius: $radiuswidth*2;
+		    pointer-events: none;
+		}
+	}
+	%ui-border-t{
+		background-repeat: repeat-x;
+	    background-position: left top;
+	    background-image: linear-gradient(to top, transparent 0%, transparent 50%, $line_color 100%);
+	    background-size: 100% 1px;
+	}
+	%ui-border-r{
+		background-repeat: repeat-y;
+	    background-position: right top;
+	    background-image: linear-gradient(to right, transparent 0%, transparent 50%, $line_color 100%);
+	    background-size: 1px 100%;
+	}
+	%ui-border-b{
+		background-repeat: repeat-x;
+	    background-position: left bottom;
+	    background-image: linear-gradient(to bottom, transparent 0%, transparent 50%, $line_color 100%);
+	    background-size: 100% 1px;
+	}
+	%ui-border-l{
+		background-repeat: repeat-y;
+	    background-position: left top;
+	    background-image: linear-gradient(to left, transparent 0%, transparent 50%, $line_color 100%);
+	    background-size: 1px 100%;
+	}
+	%ui-border-tb{
+		background-image: linear-gradient(to top, transparent 0%, transparent 50%, $line_color 100%),linear-gradient(to bottom, transparent 0%, transparent 50%, $line_color 100%);
+    	background-position: top,bottom;
+    	background-repeat: repeat-x;
+    	background-size: 100% 1px;
+	}
+	%ui-border-n{
+		background: none;
+	}
+}
+@media screen and (-webkit-min-device-pixel-ratio: 3){
+	%ui-border,%ui-border-t,%ui-border-r,%ui-border-b,%ui-border-l,%ui-border-tb,%ui-border-radius{
+		border: 0;
+	}
+	%ui-border{
+		position: relative;
+		&:after{
+			z-index: 10;
+			content: "";
+		    width: 100%;
+		    height: 100%;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+			background-image: linear-gradient(to top, transparent 0%, transparent 66.66%, $line_color 100%),linear-gradient(to right, transparent 0%, transparent 66.66%, $line_color 100%),linear-gradient(to bottom, transparent 0%, transparent 66.66%, $line_color 100%),linear-gradient(to left, transparent 0%, transparent 66.66%, $line_color 100%);
+		    background-size: 100% 1px,1px 100%,100% 1px,1px 100%;
+		    background-repeat: no-repeat;
+		    background-position: top,right,bottom,left;
+		    padding: 1px;
+		    box-sizing: border-box;
+		    pointer-events: none;
+		}
+	}
+	%ui-border-radius{
+		position: relative;
+		&:before{
+			content: "";
+		    width: 300%;
+		    height: 300%;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    border: $ui_value;
+		    transform: scale(0.333333);
+		    transform-origin: 0 0;
+		    padding: 1px;
+		    box-sizing: border-box;
+		    border-radius: $radiuswidth*3;
+		    pointer-events: none;
+		}
+	}
+	%ui-border-t{
+		background-repeat: repeat-x;
+	    background-position: left top;
+	    background-image: linear-gradient(to top, transparent 0%, transparent 66.66%, $line_color 100%);
+	    background-size: 100% 1px;
+	}
+	%ui-border-r{
+		background-repeat: repeat-y;
+	    background-position: right top;
+	    background-image: linear-gradient(to right, transparent 0%, transparent 66.66%, $line_color 100%);
+	    background-size: 1px 100%;
+	}
+	%ui-border-b{
+		background-repeat: repeat-x;
+	    background-position: left bottom;
+	    background-image: linear-gradient(to bottom, transparent 0%, transparent 66.66%, $line_color 100%);
+	    background-size: 100% 1px;
+	}
+	%ui-border-l{
+		background-repeat: repeat-y;
+	    background-position: left top;
+	    background-image: linear-gradient(to left, transparent 0%, transparent 66.66%, $line_color 100%);
+	    background-size: 1px 100%;
+	}
+	%ui-border-tb{
+		background-image: linear-gradient(to top, transparent 0%, transparent 66.66%, $line_color 100%),linear-gradient(to bottom, transparent 0%, transparent 66.66%, $line_color 100%);
+    	background-position: top,bottom;
+    	background-repeat: repeat-x;
+    	background-size: 100% 1px;
+	}
+	%ui-border-n{
+		background: none;
+	}
+}

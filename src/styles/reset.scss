@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/* CSS Document */
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+html{
+  text-size-adjust: 100%;
+  font-family: sans-serif, Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", Arial, STHeiti; 
+}
+a{
+  color: #444;
+  text-decoration: none; 
+}
+a[href^="javascript"]{-webkit-touch-callout: none;}
+i,em,b,strong{
+  font-style: normal;
+  font-weight: normal;
+}
+input, textarea, select {
+  outline: none; 
+}
+input, button, select, textarea {
+  appearance: none;
+  border-radius: 0px; 
+}
+li {
+  list-style: none; 
+}
+img {
+  border: none; 
+}
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: block; 
+}
+.clearfix {
+  *zoom: 1; 
+}
+
+a.a_c{
+  transform: scale(1,1);
+}
+a.a_c:active{
+  transform: scale(0.95,0.95);
+}

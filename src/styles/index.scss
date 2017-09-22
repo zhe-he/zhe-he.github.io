@@ -1,0 +1,15 @@
+.flex{
+	display: flex;
+	box-align: center;
+	align-items: center;
+	.flex-child{
+		display: block;
+		flex: 1;
+	} 
+}
+
+.flex2{
+	@extend .flex;
+	box-orient: vertical;
+	flex-direction: column;
+}
