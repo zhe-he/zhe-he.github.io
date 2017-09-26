@@ -29,8 +29,10 @@ li {
     list-style: none; 
 }
 img {
+    display: block;
     border: none; 
 }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
 .clearfix:after {
     clear: both;
     content: "";

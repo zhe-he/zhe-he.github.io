@@ -1,7 +1,7 @@
 <template>
     <div class="ibody">
         <common-nav></common-nav>
-        <article>
+        <article class="main-l">
             <div class="banner">
                 <ul class="texts">
                     <p>The best life is use of willing attitude, a happy-go-lucky life. </p>
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </article>
-        <aside>
+        <aside class="main-r">
             <common-introduce></common-introduce>
             
             <div class="tj_news">
@@ -46,7 +46,3 @@
         <!-- 清除浮动 --> 
     </div>
 </template>
-
-<style>
-        @import "../styles/index.css";
-</style>

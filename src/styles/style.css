@@ -16,7 +16,6 @@
 .newblog figure { float: right; width: 25%; overflow: hidden; }
 .newblog figure img { width: 100%; margin: auto; -moz-transition: all 0.5s; -webkit-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s; }
 .newblog figure:hover img { -moz-transform: scale(1.1); -webkit-transform: scale(1.1); -o-transform: scale(1.1); -ms-transform: scale(1.1); }
-a.readmore { color: #f55f77; margin-left: 10px; font-weight: bold }
 .autor { color: #8c8d8d; line-height: 26px; background: url(../../images/5794.png) no-repeat left; padding-left: 25px }
 .autor a { color: #0f9c7c; font-weight: bold }
 .autor span { margin: 0 5px 0 0; }
@@ -34,22 +33,7 @@ a.readmore { color: #f55f77; margin-left: 10px; font-weight: bold }
 .rnav3 { background: #0f9c7c }
 .rnav4 { background: #46ce14 }
 .rnav li a:hover { background: rgba(255,255,255,0.2); -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg); }
-.ph_news h2 { font-size: 16px; font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif; color: #FFF; }
-.ph_news h2 p { height: 40px; line-height: 40px; width: 100px; padding: 0 0 0 30px; border-radius: 0 20px 20px 0; text-shadow: rgba(0,0,0,.65) 1px 1px; background: #0f9c7c }
-.ph_news ul { margin: 10px }
-.ph_news li { white-space: nowrap; text-overflow: ellipsis; overflow: hidden; width: 100%; color: #cdcbcb; line-height: 24px; height: 24px; }
-.ph_news li a { color: #cdcbcb; }
-.ph_news li a:hover, .pl_n dd a:hover { text-decoration: underline }
-.ph_n li span { margin-right: 10px; font-family: "Î¢ÈíÑÅºÚ"; color: #FFF; background: #404040; padding: 0 5px }
-.ph_n li span.num1, .ph_n li span.num2, .ph_n li span.num3 { background: #f16b17 }
-/* ×îÐÂÆÀÂÛ */
-.pl_n dl { display: block; overflow: hidden; margin-bottom: 12px; color: #cdcbcb; }
-.pl_n dd { line-height: 22px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden }
-.pl_n dd a { color: #555454 }
-.pl_n time { color: #066; margin-left: 10px }
-.pl_n dt { float: left; }
-.pl_n dt img { width: 50px; height: 50px; margin-right: 10px; border-radius: 50%; transition: all 1s }
-.pl_n dt img:hover { -webkit-transform: rotate(360deg); -ms-transform: rotate(30deg); -moz-transform: rotate(30deg); -o-transform: rotate(30deg); transform: rotate(30deg); }
+
 .index_about { margin: 20px }
 .c_titile { font-size: 22px; margin: 20px 0; text-align: center; font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif; }
 .box_c { color: #999; text-align: center }

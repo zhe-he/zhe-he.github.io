@@ -1,0 +1,147 @@
+@import "./index.scss";
+.ibody { 
+    background: url(../images/bg.png) repeat-y; 
+    width: 1000px; 
+    margin: auto; 
+    box-shadow: -2px -1px 5px #666; 
+}
+.head { 
+    position: relative; 
+    background: url(../images/ibodybg.png) top right no-repeat;
+    h1 { 
+        padding: 15px 0 0 80px; 
+        font-size: 22px; 
+    } 
+    h2 { 
+        margin: 20px 80px; 
+        color: #8e8d8d;
+    }
+}
+.topnav{
+    background-color: rgba(0,0,0,0.8); 
+    line-height: 48px; 
+    padding-left: 80px;
+    a{
+        display: inline-block; 
+        font-size: 18px; 
+        color: #FFF; 
+        padding: 0 20px; 
+        transition: all 1s;
+        &:hover,&.router-link-active{
+            background-color: #e41635;
+        }
+    }
+}
+.main-l { 
+    width: 73%; 
+    float: left; 
+    background: url(../images/ibodybg.png) 560px -147px no-repeat; 
+}
+.main-r { 
+    width: 27%; 
+    background: url(../images/ibodybg.png) -170px -147px no-repeat #000; 
+    float: right; 
+}
+.logo { 
+    background: url(../images/logo.png) no-repeat #000 center; 
+    width: 145px; 
+    height: 145px; 
+    border-radius: 50%; 
+    position: absolute; 
+    left: -72px; 
+    top: 40px; 
+    box-shadow: 0px 2px 2px #414141; 
+    &:hover { 
+        background: url(../images/home.png) no-repeat #000 center; 
+    }
+    a { 
+        width: 100%; 
+        height: 100%; 
+        display: block; 
+    }
+}
+
+@media screen and (max-width:823px) {
+    .ibody { 
+        background: url(../images/ms8.png) top right no-repeat #FFF; 
+        width: 90%; 
+        margin: auto; 
+        box-shadow: 0px 2px 5px #666; 
+    }
+    .main-l { 
+        float: none; 
+        width: 100%;
+        background: #fff 
+    }
+    .head { 
+        background: url(../images/ms8.png) top right no-repeat #FFF; 
+    }
+    .main-r, .dateview { 
+        display: none; 
+    }
+    .topnav { 
+        padding-left: 0; 
+        text-align: center; 
+    }
+    .topnav a { 
+        padding: 0 5px; 
+    }
+    .banner { 
+        height: 130px; 
+        font-size: 12px; 
+    }
+
+    .blogs:after { 
+        background: none; 
+    }
+    .autor span { 
+        margin: 0 5px; 
+    }
+    .blogs figure { 
+        width: 35%; 
+    }
+    .blogs ul { 
+        width: 62%; 
+    }
+}
+@media screen and (max-width:598px) {
+    .head h1, .head h2, { 
+        display: none;
+    }
+    .topnav { 
+        line-height: 40px; 
+        background-color: #FFF; 
+    }
+    .topnav a { 
+        display: block; 
+        background-color: #323232; 
+        clear: both; 
+        margin-bottom: 2px;
+    }
+    .logo { 
+        position: static; 
+        margin: 0 auto 10px; 
+    }
+}
+@media screen and (max-width:480px) {
+    .banner, .bloglist h2, .blogs figure img, .newblog figure img, .newblog .autor { 
+        display: none; 
+    }
+    .newblog:after { 
+        background: none;
+    }
+    .autor span { 
+        margin: 0; 
+    }
+    .blogs ul, .newblog ul { 
+        width: 100%; 
+        float: none; 
+    }
+    .blogs { 
+        margin: 0 10px 10px 10px; 
+        &:figure { 
+            width: 100%; 
+            float: none; 
+        }
+    }
+}

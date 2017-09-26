@@ -10,12 +10,10 @@
     </div>
 </template>
 
-<style>
+<style lang="scss">
     @import "./styles/reset.scss";
-    @import "./styles/index.scss";
-    @import "./styles/base.css";
     @import "./styles/style.css";
-    @import "./styles/media.css";
+    @import "./styles/media.scss";
 </style>
 <script type="text/javascript">
     import msg from './modules/msg';

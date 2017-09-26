@@ -1,7 +1,7 @@
 <template>
     <div class="ibody">
     <common-nav></common-nav>
-    <article>
+    <article class="main-l">
         <h2 class="about_h">您现在的位置是：<a href="/">首页</a>><a href="1/">模板分享</a>><a href="1/">个人博客模板</a></h2>
         <div class="template">
             <h3>
@@ -19,15 +19,7 @@
         </div>
         <common-page></common-page>
     </article>
-    <aside>
-        <common-rnav></common-rnav>
-        <div class="ph_news">
-            <common-article type="hot"></common-article>
-            <common-article type="suggest"></common-article>
-            <common-discuss></common-discuss>
-        </div>
-        <copyright></copyright>
-    </aside>
+    <common-aside></common-aside>
     <div class="clear"></div>
-        </div>
+    </div>
 </template>

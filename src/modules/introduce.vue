@@ -15,7 +15,7 @@
     </div>
 </template>
 
-<style type="text/css">
+<style lang="scss">
     .avatar { margin: 10px auto; width: 160px; height: 160px; border-radius: 50%; overflow: hidden; }
     .avatar a { display: block; padding-top: 100px; width: 160px; height: 60px; background: url(../../images/head.png) no-repeat; background-size: 100% 100%; }
     .avatar a span { display: block; margin-top: 63px; padding-top: 8px; width: 160px; height: 55px; text-align: center; line-height: 20px; color: #fff; background: rgba(0, 0, 0, .5); transition: margin-top .2s ease-in-out; }
@@ -30,5 +30,7 @@
     .about_c p:nth-child(4) { background-position: 15px -70px }
     .about_c p:last-child { background-position: 15px -97px }
     .about_c p:hover { background: #222 }
-
+    
+    .topspaceinfo { background: #e41635; padding: 40px 20px; color: #fff; text-shadow: 1px 1px rgba(0,0,0,.3); }
+    .topspaceinfo h1 { font-size: 16px; line-height: 40px; font-weight: bold; }
 </style>
