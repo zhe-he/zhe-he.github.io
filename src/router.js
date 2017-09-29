@@ -6,10 +6,7 @@ const pageNew = r => require(['./views/new'], r);
 const newlist = r => require(['./views/newlist'], r);
 const share = r => require(['./views/share'], r);
 
-const topic = r => require.ensure([], () => r(require('./views/topic/index.vue')), 'group-topic');
-const topicRen = r => require.ensure([], () => r(require('./views/topic/rendering.vue')), 'group-topic');
-const topicCom = r => require.ensure([], () => r(require('./views/topic/components.vue')), 'group-topic');
-const topicPro = r => require.ensure([], () => r(require('./views/topic/props-v-state.vue')), 'group-topic');
+// const topic = r => require.ensure([], () => r(require('./views/topic/index.vue')), 'group-topic');
 
 const routes = [{
     path: '/',
@@ -44,22 +41,6 @@ const routes = [{
     meta: {
         keepAlive: true
     }
-},{
-    path: '/topic',
-    component: topic,
-    meta: {
-        keepAlive: false
-    },
-    children: [{
-        path: '',
-        component: topicRen
-    },{
-        path: 'components',
-        component: topicCom
-    },{
-        path: 'props-v-state',
-        component: topicPro
-    }],
 }];
 
 

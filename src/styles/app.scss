@@ -1,0 +1,106 @@
+@import "./base";
+body { 
+    font-size: 12px; 
+    background-color: nth($color_yb,1);
+    color: nth($color_yb,2);
+}
+.flex{
+    display: flex;
+    box-align: center;
+    align-items: center;
+    .flex-child{
+        display: block;
+        flex: 1;
+    } 
+}
+.flex2{
+    @extend .flex;
+    box-orient: vertical;
+    flex-direction: column;
+}
+.clear { 
+    clear: both; 
+}
+.blank { 
+    height: 5px; 
+    overflow: hidden; 
+    width: 100%;
+    margin: auto; 
+    clear: both 
+}
+
+.about_h { 
+    font-size: 12px; 
+    color: nth($color_yb,3); 
+    line-height: 30px; 
+    height: 30px; 
+    border-bottom: nth($color_yb,5) 1px solid; 
+    padding-left: 60px; 
+    margin: 20px; 
+    background: url(../images/5849.png) 40px 5px no-repeat;
+    a { 
+        color: nth($color_yb,3); 
+        margin: 0 5px; 
+        &:hover { color: nth($color_arr,1); }
+    }
+}
+.dateview { 
+    position: absolute; 
+    left: -135px; 
+    top: -3px; 
+    z-index: 1; 
+    color: nth($color_yb,1);
+}
+.readmore { 
+    background-color: nth($color_arr,1); 
+    color: #fff; 
+    padding: 5px 10px; 
+    float: right; 
+    margin: 20px 0 0 0; 
+}
+.autor{
+    height: 26px; 
+    line-height: 26px; 
+}
+.autor1 { 
+    overflow: hidden; 
+    clear: both; 
+    margin: 10px 0 0 0; 
+    display: inline-block; 
+    color: #838383; 
+    background: #f6f6f6; 
+    width: 100%;
+    span { 
+        margin: 0 10px; 
+        a { color: #759b08; }
+    }
+}
+.autor2 { 
+    color: #8c8d8d; 
+    background: url(../images/5794.png) no-repeat left; 
+    padding-left: 25px;
+    a { 
+        color: nth($color_arr,3);
+        font-weight: bold 
+    }
+    span { margin: 0 5px 0 0; }
+}
+
+.bloglist h2 { 
+    border-bottom: nth($color_yb,2) 2px solid; 
+    margin: 0 8px 20px 8px; 
+    height: 26px; 
+    overflow: hidden; 
+    line-height: 28px; 
+    letter-spacing: 2px;
+    p { 
+        background-color: nth($color_yb,2); 
+        width: 180px; 
+        color: #fff; 
+        text-align: center; 
+        box-shadow: #999 4px 5px 1px; 
+        span { 
+            color: nth($color_arr,5);
+        }
+    }
+}

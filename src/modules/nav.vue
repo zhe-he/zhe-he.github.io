@@ -7,8 +7,8 @@
             <router-link to="/index">首页</router-link>
             <router-link to="/about">关于我</router-link>
             <router-link to="/newlist">慢生活</router-link>
-            <router-link to="/share">模板分享</router-link>
-            <router-link to="/new">模板主题</router-link>
+            <router-link to="/share">程序人生</router-link>
+            <router-link to="/new">文章详情</router-link>
         </nav>
     </header>
 </template>

@@ -1,9 +1,11 @@
-@import "./index.scss";
+@import "./base";
+@import "./index";
+
 .ibody { 
     background: url(../images/bg.png) repeat-y; 
     width: 1000px; 
     margin: auto; 
-    box-shadow: -2px -1px 5px #666; 
+    box-shadow: -2px -1px 5px nth($color_yb,3); 
 }
 .head { 
     position: relative; 
@@ -14,7 +16,7 @@
     } 
     h2 { 
         margin: 20px 80px; 
-        color: #8e8d8d;
+        color: nth($color_yb,4);
     }
 }
 .topnav{
@@ -28,7 +30,7 @@
         padding: 0 20px; 
         transition: all 1s;
         &:hover,&.router-link-active{
-            background-color: #e41635;
+            background-color: nth($color_arr,1);
         }
     }
 }
@@ -66,7 +68,7 @@
         background: url(../images/ms8.png) top right no-repeat #FFF; 
         width: 90%; 
         margin: auto; 
-        box-shadow: 0px 2px 5px #666; 
+        box-shadow: 0px 2px 5px nth($color_yb,3); 
     }
     .main-l { 
         float: none; 
