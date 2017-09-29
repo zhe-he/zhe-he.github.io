@@ -7,7 +7,7 @@
                 <h2 class="c_titile">标题</h2>
                 <p class="box_c"><span class="d_time">发布时间：yyyy-mm-dd</span><span>编辑：xxx</span><span>浏览（390）</span><span>评论览（14）</span></p>
                 <ul class="infos">
-                    <p>文字文字文字文字：<img src="../../images/color.jpg" alt="主色调"></p>
+                    <p>文字文字文字文字：<img src="images/tmp/color.jpg" alt="主色调"></p>
                 </ul>
                 <div class="keybq">
                     <p><span>关键字词</span>：黑色,个人博客,时间轴,响应式</p>

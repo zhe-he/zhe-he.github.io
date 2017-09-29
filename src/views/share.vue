@@ -8,13 +8,13 @@
                 <p><span>xxx</span>分享</p>
                 <router-link to="/" class="more">更多>></router-link></h3>
             <ul>
-                <li v-for="i in 8" :key="i"><router-link to="/"><img src="../../images/t00.jpg"></router-link><span>标题</span></li>
+                <li v-for="i in 8" :key="i"><router-link to="/"><img src="images/tmp/t00.jpg"></router-link><span>标题</span></li>
             </ul>
             <h3>
                 <p><span>xxx</span>分享</p>
                 <router-link to="/" class="more">更多>></router-link></h3>
             <ul>
-                <li v-for="i in 8" :key="i"><router-link to="/"><img src="../../images/01.jpg"></router-link><span>标题</span></li>
+                <li v-for="i in 8" :key="i"><router-link to="/"><img src="images/tmp/01.jpg"></router-link><span>标题</span></li>
             </ul>
         </div>
         <common-page></common-page>

@@ -15,7 +15,7 @@
                 </h2>
                 <div class="pl_n">
                     <dl v-for="i in 5" :key="i">
-                        <dt><img src="../../images/s8.jpg"> </dt>
+                        <dt><img src="images/tmp/s8.jpg"> </dt>
                         <dt> </dt>
                         <dd>DanceSmile
                             <time>49分钟前</time>
@@ -26,7 +26,7 @@
                 <h2>
                     <p>最近访客</p>
                     <ul>
-                        <img src="../../images/vis.jpg">
+                        <img src="images/tmp/vis.jpg">
                     </ul>
                 </h2>
             </div>
