@@ -1,0 +1,47 @@
+@charset "utf-8";
+/*==============================css reset start==============================*/
+*{margin:0;padding:0;}
+article,aside,footer,header,hgroup,nav,section,audio,canvas,video {display: block;}
+html {font-size: 100px;font-family: 'Microsoft Yahei','微软雅黑';color:#333;}
+body{font-size: 0.4rem; word-break: break-all;}
+textarea {resize:none;}
+img {border:0;vertical-align: top;}
+ul,ol,li {list-style:none;}
+html a{text-decoration:none;outline:none; color: #333;}
+button,input,select,textarea {vertical-align:middle;outline:none;}
+button,input[type="button"],input[type="reset"],input[type="submit"] {cursor:pointer;}
+.clearfix:after,.clearfix:before{content: "";display: table;}
+.clearfix:after{clear: both;}
+.clearfix{zoom:1;}
+.clear{clear: both;}
+.ellipsis { white-space:nowrap; text-overflow:ellipsis; overflow:hidden}
+.fl{float:left;}
+.fr{float:right;}
+.hide{display:none;}
+.show{display: block;}
+body{
+	position: relative;
+	color: #333;
+	margin: 0 auto;
+	max-width: 640px;
+}
+sup,sub{
+	line-height: 12px;
+}
+html,body{
+	min-height: 100%;
+}
+/*旧版safari不允许设置search,替换成普通框*/
+input[type="search"]{-webkit-appearance: textfield;}
+/*ios 长按出现的默认菜单，禁止*/
+a[href^="javascript"]{-webkit-touch-callout: none;}
+/* 去除iphone ipad 设备默认按钮样式 */
+input[type="button"], input[type="submit"], input[type="reset"] {
+  -webkit-appearance: none;
+  border-radius: 0; 
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+}

@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>分块运动 --zhe-he</title>
+<style>
+*{margin:0; padding:0;}
+body{background:url("img/bg.jpg") center top fixed;}
+input{width:100px; height:30px; position:absolute; top:100px; left:50%; margin-left:-50px; background:#00F; color:#FF0;}
+#div1{ width:800px; height:300px; background:url(img/0.jpg) no-repeat; margin:100px auto; position:relative;}
+#div1 span{position: absolute; background-image: url(img/4.jpg);}
+
+h1{background: #000; font-size: 16px; line-height: 40px; text-align: center; color: #fff;}
+p{text-align:center; padding:10px 0; color:green;}
+p a{color:green; text-decoration:none;}
+p a:hover{text-decoration:underline;}
+
+</style>
+<script src="move.js"></script>
+<script>
+window.onload=function ()
+{
+	var oBox=document.getElementById('div1'),
+		oBtn=document.getElementById('btn1');
+
+	var C=12,J=21;
+	for (var c = 0; c < C; c++) {
+		for (var j = 0; j < J; j++) {
+			var oSpan=document.createElement('span');
+			oSpan.style.width=oBox.offsetWidth/J+'px';
+			oSpan.style.height=oBox.offsetHeight/C+'px';
+			oSpan.style.top=c*oBox.offsetHeight/C+'px';
+			oSpan.style.left=j*oBox.offsetWidth/J+'px';
+			oBox.appendChild(oSpan);
+			oSpan.style.backgroundPosition=-oSpan.offsetLeft+'px -'+oSpan.offsetTop+'px';
+			oSpan.j=j;
+			oSpan.c=c;
+		};
+	};
+	var now=0;
+	var Ready=true;
+	oBtn.onclick=function ()
+	{
+		if(!Ready)return;
+		Ready=false;
+		var aSpan=oBox.getElementsByTagName('span');
+		for (var i = 0; i < aSpan.length; i++) {
+			aSpan[i].style.backgroundImage='url(img/'+now+'.jpg)';
+			aSpan[i].style.opacity='1';
+			aSpan[i].style.filter='alpha(opacity:100)';
+
+		};
+		now++;
+		if(now==4)now=0;
+		oBox.style.backgroundImage='url(img/'+now+'.jpg)';
+
+		var j=0;
+		for (var i = 0; i < aSpan.length; i++) {
+			(function (index){
+				switch(now){
+					case 0:
+					setTimeout(fnMove,( aSpan[i].j+C-aSpan[i].c )*100)//左下
+						break;
+					case 1:
+					setTimeout(fnMove,(aSpan[i].j+aSpan[i].c)*100)//左上
+						break;
+					case 2:
+					setTimeout(fnMove,(J-aSpan[i].j+aSpan[i].c)*100)//右上
+						break;
+					case 3:
+					setTimeout(fnMove,(J-aSpan[i].j+C-aSpan[i].c)*100)//右下
+						break;
+					};
+					console.log(index+' '+aSpan.length)
+				function fnMove()
+				{
+					j++;
+					startMove(aSpan[index], {opacity: 0}, {time: 100});
+					if (j==aSpan.length) {
+						Ready=true;
+					};
+				}
+			})(i)
+			
+		};
+		
+		
+
+	};
+
+};
+</script>
+</head>
+
+<body>
+<h1>分块运动</h1>
+<input type="button" value="下一张" id="btn1">
+<div id="div1">
+</div>
+
+<p>by <a href="https://github.com/zhe-he">zhe-he</a> <a href="http://www.hezhe.pw/">www.hezhe.pw</a></p>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255766170'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255766170' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

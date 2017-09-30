@@ -1,0 +1,66 @@
+{
+	"msg": "",
+	"j_data": {
+		"dan": 100,
+		"ji": 10,
+		"di": 7,
+		"die_ji": 1,
+		"friend": 10,
+		"all_money": 20
+	},
+	"data": [
+		{
+			"isOpen": 1,
+			"ji": [
+				{"dan": 5},
+				{"dan": 5}
+			]
+		},
+		{
+			"isOpen": 1,
+			"ji": [
+				{"dan": 5},
+				{"dan": 0}
+			]
+		},
+		{
+			"isOpen": 1,
+			"ji": [
+				{"dan": 0},
+				{"dan": 0}
+			]
+		},
+		{
+			"isOpen": 1,
+			"ji": [
+				{"dan": 5}
+			]
+		},
+		{
+			"isOpen": 1,
+			"ji": [
+				{"dan": 0}
+			]
+		},
+		{
+			"isOpen": 1,
+			"ji": []
+		},
+		{
+			"isOpen": 1,
+			"ji": []
+		},
+		{
+			"isOpen": 0,
+			"ji": []
+		},
+		{
+			"isOpen": 0,
+			"ji": []
+		},
+		{
+			"isOpen": 0,
+			"ji": []
+		}
+	]
+}

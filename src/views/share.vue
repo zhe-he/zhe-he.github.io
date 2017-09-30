@@ -4,18 +4,18 @@
     <article class="main-l">
         <h2 class="about_h">您现在的位置是：<router-link to="/">首页</router-link>> <span>程序人生</span></h2>
         <div class="template">
-            <h3>
-                <p><span>xxx</span>分享</p>
-                <router-link to="/" class="more">更多>></router-link></h3>
-            <ul>
-                <li v-for="i in 8" :key="i"><router-link to="/"><img src="images/tmp/t00.jpg"></router-link><span>标题</span></li>
-            </ul>
-            <h3>
-                <p><span>xxx</span>分享</p>
-                <router-link to="/" class="more">更多>></router-link></h3>
-            <ul>
-                <li v-for="i in 8" :key="i"><router-link to="/"><img src="images/tmp/01.jpg"></router-link><span>标题</span></li>
-            </ul>
+            <div :key="index" v-for="(item,index) in share">
+                <h3>
+                    <p><span>{{item.title}}</span>分享</p>
+                    <router-link to="/" class="more">更多>></router-link>
+                </h3>
+                <ul>
+                    <li v-for="item2 in item.content">
+                        <a :href="item2.url"><img :src="item2.imgSrc"></a>
+                        <span>{{item2.title}}</span>
+                    </li>
+                </ul>
+            </div>
         </div>
         <common-page></common-page>
     </article>
@@ -23,6 +23,22 @@
     <div class="clear"></div>
     </div>
 </template>
+
+<script type="text/javascript">
+    var shareDate = require('../data/share.json');
+    export default {
+        data(){
+            return {
+                share: shareDate.data
+            }
+        },
+        mounted(){
+
+        }
+    }
+</script>
+
+
 
 <style lang="scss" scoped>
     @import "../styles/base";
@@ -55,7 +71,7 @@
             padding: 5px 5px 6px 5px; 
             transition: all 1s; 
             img { 
-                width: 142px; 
+                width: 140px; 
                 height: 80px; 
                 background: #FFF; 
                 padding: 4px; 

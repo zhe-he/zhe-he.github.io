@@ -1,0 +1,222 @@
+html,body{
+	height: 100%;
+}
+body{
+	position: relative;
+}
+.hide{
+	display: none;
+}
+.page,#main{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+#main{
+  opacity: 0;
+  z-index: -1;
+}
+#main.show{
+  opacity: 1;
+  z-index: auto;
+}
+.page1{
+	background: url(../images/bg.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.page-top{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0.76rem;
+	background: url(../images/main-top.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+.page_btn1,.page_btn2{
+  position: absolute;
+  width: 4.83rem;
+  height: 1.19rem;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.page_btn1{
+	bottom: 0.92rem;
+	left: 1.24rem;
+	background-image: url(../images/come.png);
+}
+.page_btn2{
+  top: 61.25%;
+  left: 1.24rem;
+  background-image: url(../images/zhuoji.png);
+}
+
+.page2{
+  background: url(../images/bg2.jpg) no-repeat;
+  background-size: 100% 100%;
+}
+.page3{
+  height: 20rem;
+  background: url(../images/bg3.jpg) no-repeat;
+  background-size: 100% 100%;
+}
+.page3 .page3-title{
+  position: absolute;
+  top: 4.07rem;
+  left: 1.89rem;
+  width: 2.15rem;
+  height: 0.72rem;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url(../images/end_font1.png);
+}
+
+.page3.status2 .page3-title{
+  left: 1.9rem;
+  width: 2.11rem;
+  height: 0.71rem;
+  background-image: url(../images/end_font2.png);
+}
+.page3.status3 .page3-title{
+  left: 1.55rem;
+  width: 2.65rem;
+  height: 0.72rem;
+  background-image: url(../images/end_font3.png);
+}
+.page3 .page3-img{
+  position: absolute;
+  top: 5.38rem;
+  left: 1.24rem;
+  width: 4.8rem;
+  height: 3.35rem;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url(../images/end_img1.png);
+}
+.page3.status2 .page3-img{
+  left: 1.21rem;
+  height: 3.32rem;
+  background-image: url(../images/end_img2.png);
+}
+.page3.status3 .page3-img{
+  height: 3.25rem;
+  background-image: url(../images/end_img3.png);
+}
+
+.page3 .page3-nav{
+  position: absolute;
+  top: 10.14rem;
+  left: 0;
+  width: 100%;
+  height: 0.77rem;
+}
+.page3 .close{
+  position: absolute;
+  top: 2.1rem;
+  right: 0.6rem;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.page3 .page3-nav a{
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.page3 .page3-nav .share{
+  width: 2.9rem;
+  left: 0.64rem;
+  background-image: url(../images/share.png);
+}
+.page3 .page3-nav .restart{
+  right: 0.64rem;
+  width: 2.86rem;
+  background-image: url(../images/restart.png);
+}
+
+.page3 .tel{
+  position: absolute;
+  top: 14.1rem;
+  left: 2.13rem;
+  width: 3.72rem;
+  height: .6rem;
+}
+
+
+
+
+
+
+.loading{
+  z-index: 10000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #fff;
+}
+.loading > div{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-top: -70px;
+  height: 140px;
+  width: 100%;
+  
+}
+.loading > div > p:nth-of-type(1){
+  position: relative;
+  width: 80%;
+  height: 20px;
+  margin: 0 auto;
+  border: 1px solid #0C9FC7;
+  border-radius: 10px;
+}
+.loading > div > p:nth-of-type(1) span{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 0%;
+  min-width: 20px !important;
+  background-color: #0C9FC7;
+  border-radius: 10px;
+}
+.loading > div > p:nth-of-type(2){
+  font-size: 16px;
+  line-height: 32px;
+  text-align: center;
+  color: #000;
+}
+.music{
+  z-index: 10000;
+  position: absolute;
+  top: 0.1rem;
+  right: 0.05rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  background: url(../images/music.png) no-repeat;
+  background-size: 0.6rem;
+  -webkit-animation: rotate1 2s linear infinite;
+  animation: rotate1 2s linear infinite;
+  -webkit-transform: scaleX(0.7) scaleY(0.7);
+  transform: scaleX(0.7) scaleY(0.7);
+}
+.music.close{
+  background-position: 0 -0.83rem;
+  -webkit-animation: none;
+  animation: none;
+}
+
+@-webkit-keyframes rotate1{
+0%{-webkit-transform: rotate(0deg) scaleX(0.7) scaleY(0.7)}
+100%{-webkit-transform: rotate(360deg) scaleX(0.7) scaleY(0.7)}
+}
+@keyframes rotate1{
+0%{transform: rotate(0deg) scaleX(0.7) scaleY(0.7)}
+100%{transform: rotate(360deg) scaleX(0.7) scaleY(0.7)}
+}

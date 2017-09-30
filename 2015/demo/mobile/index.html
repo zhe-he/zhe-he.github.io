@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>单页面</title>
+    <meta charset="utf-8" />
+    <meta content="user-scalable=no,initial-scale=1,maximum-scale=1,width=device-width" name="viewport">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+<div id="content">
+    <section class="active page1 page center transition">
+        <a href="#page2" class="btn btn-next">page2</a>
+        <a href="javascript:;" class="menuArrow btn btn-back">menu</a>
+    </section>
+    <section class="page2 page right100 transition">
+        <a href="#page3" class="btn btn-next">page3</a>
+        <a href="#page1" class="btn btn-back">back</a>
+    </section>
+    <section class="page3 page right100 transition">
+        <a href="#page4" class="btn btn-next">page4</a>
+        <a href="#page2" class="btn btn-back">back</a>
+    </section>
+    <section class="page4 page right100 transition">
+        <a href="#page3" class="btn btn-back">back</a>
+    </section>
+	<section class="mask"></section>
+	
+	<nav class="page nav transition left100"></nav>
+</div>
+
+
+
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255766170'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255766170' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

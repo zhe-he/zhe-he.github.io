@@ -1,0 +1,30 @@
+*{margin: 0; padding: 0;}
+li{list-style: none;}
+a{ text-decoration: none;}
+body{overflow-x: hidden; overflow-y: auto; height: 1000px;}
+.boxWarp{width: 1000px; height: 300px; position: relative; margin: 100px auto;}
+.boxWarp .boxUl{width: 100%;}
+.boxWarp .boxUl li{position: absolute; top: 0; left: 0; width: 100%;}
+.boxWarp .boxUl li img{width: 100%;}
+
+.boxWarp .boxTab{position: absolute; left: 50%; margin-left: -47px; bottom: 10px; z-index: 1000;}
+.boxWarp .boxTab li{text-indent: -9999px; float: left; width: 14px; height: 14px; margin-right: 5px; border-radius: 50%; background-color: #fff; cursor: pointer;}
+.boxWarp .boxTab li:hover,.boxWarp .boxTab li.active{background-color: #ccc;}
+.boxWarp .boxArrow a{position: absolute; top: 50%; margin-top: -23px; width: 46px; height: 46px; line-height: 46px; border-radius: 50%; background:rgba(255,255,255,0.8); color: black; font-size: 30px; font-weight: bolder; text-align: center; z-index: 1000;}
+.boxWarp .boxArrow a:hover{background: rgba(255,255,255,0.5);}
+.boxWarp .boxArrow .boxLeft{left: 10px;}
+.boxWarp .boxArrow .boxRight{right: 10px;}
+
+.boxWarp .boxOther{position: absolute; top: 10px; left: 10px; height: 5px; background: #fff; width: 0px; border-radius: 5px; z-index: 1000;
+	
+}
+.boxWarp .boxOther.active{width: 980px;
+	transition: 3s all ease;
+}
+.boxWarp .boxEffect{}
+.boxWarp .boxEffect span{background-size: 1000px; z-index: 100;}
+
+
+
+
+

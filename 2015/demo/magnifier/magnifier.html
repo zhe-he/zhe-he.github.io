@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>模拟放大镜 --zhe-he</title>
+<style type="text/css">
+*{ margin:0; padding:0;}
+body{background: url(images/bg.jpg) no-repeat;}
+h1{background: #000; font-size: 16px; line-height: 40px; text-align: center; color: #fff;}
+#div1{ width:312px; margin:80px auto; position:relative;}
+.small{ width:310px; height:310px; border:1px solid #cdcdcd; overflow:hidden; left:0; top:0; position:absolute;}
+.mark{ position:absolute; width:100%; height:100%; background:#ff0000; filter:alpha(opacity:0); opacity:0; z-index:2;cursor:move;}
+.float1{ width:100px; height:100px; background:#fede4f; border:1px solid #aaa; filter:alpha(opacity:50);opacity:0.5; position:absolute; }
+.big{ width:310px; height:310px; border:1px solid #cdcdcd; overflow:hidden; position:absolute; left:320px; top:0; display:none;}
+.big img{ position:absolute; left:0; top:0;}
+#list{ width:288px; height:46px; overflow:hidden; position:absolute; left:10px; top:320px;}
+#list ul{ position:absolute; left:0;}
+#list li{ list-style:none; float:left; padding:4px; overflow:hidden; width:40px; height:40px;}
+#list li img{ border:1px solid #cdcdcd;}
+#list .active img{  border:1px solid #ff0000;}
+#left{ width:10px; height:45px; display:block; background:url(images/left.gif) no-repeat; position:absolute; top:322px; left:0; cursor:pointer;}
+#right{ width:10px; height:45px; display:block; background:url(images/right.gif) no-repeat; position:absolute; top:322px; left:300px; cursor:pointer;}
+
+.more{width: 100%; position: absolute; bottom: 50px; left: 0;}
+p{text-align:center; padding:10px 0; color:#fff;}
+p a{color:#fff; text-decoration:none;}
+p a:hover{text-decoration:underline;}
+</style>
+<script type="text/javascript">
+function Magnifier(id)
+{
+    if(!id)return;
+    var _this=this;
+    this.oBox=document.getElementById(id);
+    this.oDiv=this.oBox.children[0];
+    this.oBig=this.oBox.children[1];
+    this.BigImg=this.oBig.children[0];
+    //this.aLi=oBox.getElementsByTagName('li');
+    this.span=document.createElement('span');
+    this.span.className='float1';
+    this.oDiv.appendChild(this.span);
+    this.oDiv.onmousemove=function (ev)
+    {
+        _this.move(ev);
+    };
+    
+    this.oDiv.onmouseout=function ()
+    {
+        _this.out();
+    };
+};
+
+Magnifier.prototype.move=function (ev)
+{
+    this.span.style.display='block';
+    this.oBig.style.display='block';
+    var oEvent=ev || event;
+    var l=oEvent.clientX-this.span.offsetWidth/2-getPos(this.oDiv).left;
+    var t=oEvent.clientY-this.span.offsetHeight/2-getPos(this.oDiv).top;
+
+    var X=this.oDiv.offsetWidth-this.span.offsetWidth;
+    var Y=this.oDiv.offsetHeight-this.span.offsetHeight;
+    if (l<0)l=0;
+    if (l>X)l=X;
+    if (t<0)t=0;
+    if (t>Y)t=Y;
+    this.span.style.left=l+'px';
+    this.span.style.top=t+'px';
+
+    var scaleX=l/X;
+    var scaleY=t/Y;
+    var x=this.BigImg.offsetWidth-this.oBig.offsetWidth;
+    var y=this.BigImg.offsetHeight-this.oBig.offsetHeight;
+    this.BigImg.style.left=-scaleX*x+'px';
+    this.BigImg.style.top=-scaleY*y+'px';
+};
+
+Magnifier.prototype.out=function ()
+{
+    this.span.style.display='none';
+    this.oBig.style.display='none';
+};
+
+function getPos(obj)
+{
+    var l=0;
+    var t=0;
+    while(obj){
+        l+=obj.offsetLeft;
+        t+=obj.offsetTop;
+        obj=obj.offsetParent;
+    };
+    return {top: t, left: l};
+};
+
+function ListMagnifier(id)
+{
+    var _this=this;
+    Magnifier.call(this, id);
+
+    this.iNow=0;
+    this.aLi=this.oBox.getElementsByTagName('li');
+    this.oMImg=this.oDiv.children[1];
+    this.oUl=this.oBox.children[4].children[0];
+    var oLeft=this.oBox.children[2];
+    var oRight=this.oBox.children[3];
+
+    for (var i = 0; i < this.aLi.length; i++) {
+        (function(index){
+            _this.aLi[i].onmousemove=function ()
+            {
+                _this.iNow=index;
+                _this.liMove(_this.iNow);
+            };
+        })(i)   
+    };
+
+    oLeft.onclick=function ()
+    {
+        _this.left();
+    };
+
+    oRight.onclick=function ()
+    {
+        _this.right();
+    };
+
+};
+
+ListMagnifier.prototype=new Magnifier();
+ListMagnifier.prototype.constructor=ListMagnifier;
+
+ListMagnifier.prototype.liMove=function (index)
+{
+    for (var i = 0; i < this.aLi.length; i++) {
+        this.aLi[i].className='';
+    };
+    this.aLi[index].className='active';
+    this.oMImg.src='images/m'+(index+1)+'.jpg';
+    this.BigImg.src='images/b'+(index+1)+'.jpg';
+};
+
+
+ListMagnifier.prototype.left=function ()
+{
+    this.iNow--;
+    this.f();
+};
+
+ListMagnifier.prototype.right=function ()
+{
+    this.iNow++;
+    this.f();
+};
+
+ListMagnifier.prototype.f=function ()
+{
+    if (this.iNow==-1)this.iNow=0;
+    if (this.iNow>=(this.aLi.length-5))this.iNow=this.aLi.length-6;
+    var w=this.aLi[0].offsetWidth;
+    this.oUl.style.left=-w*this.iNow+'px';
+};
+
+
+window.onload=function ()
+{
+    new ListMagnifier('div1');
+};
+</script>
+</head>
+
+<body>
+<h1>面向对象写出的模拟放大镜</h1>
+<div id="div1">
+	<div class="small">
+    	<div class="mark"></div>
+        <img src="images/m1.jpg" width="310" height="310" />
+    </div>
+    <div class="big">
+    	<img src="images/b1.jpg"/>
+    </div>
+    <span id="left"></span>
+    <span id="right"></span>
+    <div id="list">
+    	<ul>
+        	<li class="active"><img src="images/s1.jpg" /></li>
+        	<li><img src="images/s2.jpg" /></li>
+        	<li><img src="images/s3.jpg" /></li>
+            <li><img src="images/s4.jpg" /></li>
+        	<li><img src="images/s5.jpg" /></li>
+            <li><img src="images/s6.jpg" /></li>
+            <li><img src="images/s7.jpg" /></li>
+            <li><img src="images/s8.jpg" /></li>
+        	<li><img src="images/s9.jpg" /></li>
+            <li><img src="images/s10.jpg" /></li>
+        </ul>
+    </div>
+</div>
+
+<div class="more">
+    <p>点此查看<a href="../3D_rotation/index.html">3d展示</a></p>
+    <p>by <a href="https://github.com/zhe-he">zhe-he</a> <a href="http://www.hezhe.pw/">www.hezhe.pw</a></p>
+</div>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255766170'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255766170' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

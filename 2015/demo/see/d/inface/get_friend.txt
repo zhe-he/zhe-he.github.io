@@ -1,0 +1,4 @@
+{
+	msg: "",
+	data: [{"img":"http://tva2.sinaimg.cn/crop.3.0.634.634.1024/cd516b22jw8fa4mlfynwzj20hs0hm0tr.jpg","name":"好友1"},{"img":"http://diy.qqjay.com/u/files/2012/0812/761399a284b88b914529accfeec48aa7.jpg",name:"好友2"}]
+}

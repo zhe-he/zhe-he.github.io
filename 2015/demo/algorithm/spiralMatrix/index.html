@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>螺旋矩阵</title>
+<style type="text/css">
+*{margin: 0; padding: 0;}
+html{background-color: #000; color: #fff;}
+#spiralMatrix{overflow: hidden; border: 1px solid #fff; border-right: none; border-bottom: none; margin: 40px auto;}
+#spiralMatrix li{list-style: none; float: left; border: 1px solid #fff; border-top: none; border-left:  none; background-size: cover;}
+#spiralMatrix li.active{
+	-webkit-animation:flash 0.5s linear infinite;
+	-moz-animation: flash 0.5s linear infinite;
+}
+
+@-moz-keyframes flash{
+	0%{opacity: 0.1;}
+	50%{opacity: 1;}
+	0%{opacity: 0.1;}
+}
+@-webkit-keyframes flash{
+	0%{ opacity:0.1;}
+	50%{ opacity:1;}
+	100%{ opacity:0.1;}
+}
+
+p{color: #fff;}
+p a{color: #fff;}
+</style>
+</head>
+<body>
+<p>by <a href="https://github.com/zhe-he">zhe-he</a> <a href="/">zhe-he.github.io</a></p>
+<ul id="spiralMatrix"></ul>
+
+<script type="text/javascript">
+var oMatrix = document.getElementById('spiralMatrix');
+var aLi = oMatrix.children;
+var num = 8;
+var sizeGridX = 40;
+var sizeGridY = 60;
+var arr = [];
+var arrImage = [];
+var timer;
+
+init();
+function init(){
+	createMatrix();
+	run();
+	timer = setInterval(run, 1000);
+}
+
+function createMatrix(){
+	var row = 0,col = 0,min = 0,max = num - 1;
+
+	oMatrix.style.width = num * (sizeGridX + 1) + 'px';
+	for (var i = 0; i < num*num; i++) {
+		var oLi = document.createElement('li');
+		oLi.style.width = sizeGridX + 'px';
+		oLi.style.height = sizeGridY + 'px';
+		oMatrix.appendChild(oLi);
+	};
+
+	for (var i = 0; i < aLi.length; i++) {
+		arr.push(aLi[row*num + col]);
+		//转角点1
+		if (row === min && col < max) {
+			col++;
+		//转角点2
+		}else if(col === max && row < max){
+			row++;
+		//转角点3
+		}else if(row === max && col > min){
+			col--;
+		//转角点3
+		}else if(col === min && row > min + 1){
+			row--;
+		};
+		//重置
+		if (col === min && row === min + 1) {
+			min++;
+			max--;
+		};
+	};
+
+	for (var i = 0; i < arr.length; i++) {
+		if (i%5 === 0) {
+			var img = 'url(../sevenQueen/images/'+Math.floor(Math.random()*20+1)+'.jpg)';
+			arrImage.push([i,img]);
+			arr[i].style.backgroundImage = img;
+		};
+	};
+}
+function run(){
+	for (var i = 0; i < arr.length; i++) {
+		arr[i].style.backgroundImage = '';
+		arr[i].className = '';
+	};
+
+	for (var i = 0; i < arrImage.length; i++) {
+		arrImage[i][0]++;
+		
+		if (arrImage[i][0] === arr.length) {
+			arrImage.pop();
+			arrImage.unshift([0,'../sevenQueen/url(images/'+Math.floor(Math.random()*20+1)+'.jpg)']);
+			arr[arrImage[0][0]].className = 'active';
+			arr[arrImage[0][0]].style.backgroundImage = arrImage[0][1];
+			arr[arrImage[0][0]].style.animationDelay = -Math.random()*2 + 's';
+			arr[arrImage[0][0]].style.WebkitAnimationDelay = -Math.random()*2 + 's';
+			arr[arrImage[0][0]].style.MozAnimationDelay = -Math.random()*2 + 's';
+		}else{
+			arr[arrImage[i][0]].className = 'active';
+			arr[arrImage[i][0]].style.backgroundImage = arrImage[i][1];
+			arr[arrImage[i][0]].style.animationDelay = -Math.random()*2 + 's';
+			arr[arrImage[i][0]].style.WebkitAnimationDelay = -Math.random()*2 + 's';
+			arr[arrImage[i][0]].style.MozAnimationDelay = -Math.random()*2 + 's';
+		};
+	};
+}
+</script>
+</body>
+</html>

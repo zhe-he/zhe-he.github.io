@@ -33,8 +33,8 @@ module.exports = {
             {from: 'images/tmp/**/*'}
         ]),
         new HtmlWebpackPlugin({
-            filename: 'src/template/index.html',
-            template: 'index.html',
+            filename: 'index.html',
+            template: 'src/template/index.html',
             favicon: 'favicon.ico',
             minify: {
                 minimize: true,
