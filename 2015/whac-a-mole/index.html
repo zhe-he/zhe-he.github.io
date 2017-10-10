@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+	<title>whac-a-mole</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<script type="text/javascript" src="js/viewport.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+	<canvas id="mole"></canvas>
+	<audio id="bgmusic" loop autobuffer>
+		<source src="sources/bg.ogg">
+		<source src="sources/bg.mp3">
+	</audio>
+
+	<script type="text/javascript">
+		new Mole('mole').init();
+	</script>
+</body>
+</html>
