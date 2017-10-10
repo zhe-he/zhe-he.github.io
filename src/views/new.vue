@@ -2,7 +2,7 @@
     <div class="ibody">
         <common-nav></common-nav>
         <article class="main-l">
-        <h2 class="about_h">您现在的位置是：<router-link to="/">首页</router-link>><router-link to="/newlist">慢生活</router-link>> <span>xxx</span></h2>
+        <h2 class="about_h">您现在的位置是：<router-link to="/">首页</router-link>><router-link to="/newlist">慢生活</router-link>> <span>{{$route.params.id}}</span></h2>
             <div class="index_about">
                 <h2 class="c_titile">标题</h2>
                 <p class="box_c"><span class="d_time">发布时间：yyyy-mm-dd</span><span>编辑：xxx</span><span>浏览（390）</span><span>评论览（14）</span></p>
@@ -12,6 +12,7 @@
                 <div class="keybq">
                     <p><span>关键字词</span>：黑色,个人博客,时间轴,响应式</p>
                 </div>
+                <div id="pageNew"></div>
                 <div class="nextinfo">
                     <p>上一篇：<router-link to="/">xxx</router-link></p>
                     <p>下一篇：<router-link to="/">xxx</router-link></p>
@@ -28,6 +29,28 @@
         <div class="clear"></div>
     </div>
 </template>
+<script type="text/javascript">
+    import Gitment from 'gitment';
+
+    export default {
+        data(){
+            return {}
+        },
+        mounted(){
+            this.$nextTick(()=>{
+                var gitment = new Gitment({
+                    owner: 'zhe-he',
+                    repo: 'https://github.com/zhe-he/zhe-he.github.io/issues',
+                    oauth: {
+                        client_id: 'b90faff48aa630a47352',
+                        client_secret: 'd7bc7ca7fcbcfe0bc08deb099c229eea2c9b8353',
+                    }
+                })
+                gitment.render('pageNew')
+            });
+        }
+    }
+</script>
 
 <style lang="scss" scoped>
     .index_about { margin: 20px }

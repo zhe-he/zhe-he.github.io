@@ -7,7 +7,7 @@
             <div :key="index" v-for="(item,index) in share">
                 <h3>
                     <p><span>{{item.title}}</span>分享</p>
-                    <router-link to="/" class="more">更多>></router-link>
+                    <!-- <router-link to="/" class="more">更多>></router-link> -->
                 </h3>
                 <ul>
                     <li v-for="item2 in item.content">
@@ -17,7 +17,6 @@
                 </ul>
             </div>
         </div>
-        <common-page></common-page>
     </article>
     <common-aside></common-aside>
     <div class="clear"></div>

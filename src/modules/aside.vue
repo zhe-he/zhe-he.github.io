@@ -9,7 +9,7 @@
         <div class="ph_news">
             <common-article type='hot'></common-article>
             <common-article type='suggest'></common-article>
-            <div>
+            <!-- <div>
                 <h2>
                     <p>最新评论</p>
                 </h2>
@@ -29,7 +29,7 @@
                         <img src="images/tmp/vis.jpg">
                     </ul>
                 </h2>
-            </div>
+            </div> -->
         </div>
         <copyright></copyright>
     </aside>

@@ -5,6 +5,7 @@ const about = r => require(['./views/about'], r);
 const pageNew = r => require(['./views/new'], r);
 const newlist = r => require(['./views/newlist'], r);
 const share = r => require(['./views/share'], r);
+const messBoard = r => require(['./views/messBoard'],r);
 
 // const topic = r => require.ensure([], () => r(require('./views/topic/index.vue')), 'group-topic');
 
@@ -30,10 +31,17 @@ const routes = [{
         keepAlive: true
     }
 },{
-    path: '/new',
-    component: pageNew,
+    path: '/messBoard',
+    component: messBoard,
     meta: {
         keepAlive: true
+    }
+},{
+    path: '/newlist/:id?',
+    component: pageNew,
+    name: 'pageNew',
+    meta: {
+        keepAlive: false
     }
 },{
     path: '/share',

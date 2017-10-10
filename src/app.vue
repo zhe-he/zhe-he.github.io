@@ -16,6 +16,8 @@
     @import "./styles/media";
 </style>
 <script type="text/javascript">
+    import 'gitment/style/default.css';
+
     import msg from './modules/msg';
     import loading from './modules/loading';
     import FastClick from 'fastclick';

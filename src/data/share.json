@@ -5,35 +5,6 @@
             "title": "js效果",
             "content": [
                 {
-                    "title": "3D旋转效果展示",
-                    "url": "/2015/3D_rotation/",
-                    "imgSrc": "images/tmp/3D_rotation.jpg"
-                },
-                {
-                    "title": "寻路算法",
-                    "url": "/2015/algorithm/findWay/",
-                    "imgSrc": "images/tmp/findWay.jpg"
-                },
-                {
-                    "title": "七皇后算法",
-                    "url": "/2015/algorithm/sevenQueen/",
-                    "imgSrc": "images/tmp/sevenQueen.jpg"
-                },{
-
-                    "title": "螺旋矩阵算法",
-                    "url": "/2015/algorithm/spiralMatrix/",
-                    "imgSrc": "images/tmp/spiralMatrix.jpg"
-                },{
-
-                    "title": "仿苹果桌面",
-                    "url": "/2014/apple_desktop/",
-                    "imgSrc": "images/tmp/apple_desktop.jpg"
-                },{
-
-                    "title": "仿苹果菜单",
-                    "url": "/2014/apple_menu/",
-                    "imgSrc": "images/tmp/apple_menu.jpg"
-                },{
 
                     "title": "分块运动",
                     "url": "/2014/block/",
@@ -69,6 +40,44 @@
                     "url": "/2014/waterfall/",
                     "imgSrc": "images/tmp/waterfall.jpg"
                 },{
+                    "title": "3D旋转效果展示",
+                    "url": "/2015/3D_rotation/",
+                    "imgSrc": "images/tmp/3D_rotation.jpg"
+                },{
+
+                    "title": "仿苹果桌面",
+                    "url": "/2014/apple_desktop/",
+                    "imgSrc": "images/tmp/apple_desktop.jpg"
+                },{
+
+                    "title": "仿苹果菜单",
+                    "url": "/2014/apple_menu/",
+                    "imgSrc": "images/tmp/apple_menu.jpg"
+                }
+            ]
+        },{
+            "title": "算法",
+            "content": [
+                {
+                    "title": "寻路算法",
+                    "url": "/2015/algorithm/findWay/",
+                    "imgSrc": "images/tmp/findWay.jpg"
+                },
+                {
+                    "title": "七皇后算法",
+                    "url": "/2015/algorithm/sevenQueen/",
+                    "imgSrc": "images/tmp/sevenQueen.jpg"
+                },{
+
+                    "title": "螺旋矩阵算法",
+                    "url": "/2015/algorithm/spiralMatrix/",
+                    "imgSrc": "images/tmp/spiralMatrix.jpg"
+                }
+            ]
+        },{
+            "title": "游戏",
+            "content": [
+                {
 
                     "title": "打地鼠",
                     "url": "/2015/whac-a-mole/",
