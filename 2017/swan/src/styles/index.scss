@@ -1,0 +1,27 @@
+html,body{
+	font-size: 16px;
+	line-height: 24px;
+	height: 100%;
+}
+
+#app{
+	position: relative;
+	height: 100%;
+}
+.flex{
+	display: flex;
+	box-align: center;
+	align-items: center;
+	.flex-child{
+		display: block;
+		flex: 1;
+	} 
+}
+
+.flex2{
+	@extend .flex;
+	box-orient: vertical;
+	flex-direction: column;
+}
+
+[v-cloak]{display:none;}
