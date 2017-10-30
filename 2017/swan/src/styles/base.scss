@@ -5,7 +5,7 @@ $origin: #ff4f1a;
 
 @mixin bg($img,$x:100%,$y:100%){
 	background-repeat: no-repeat;
-	background-image: url('../../images/#{$img}');
+	background-image: url('../../images/swan/#{$img}');
 	background-size: $x $y;
 }
 @mixin bg2($img,$x:100%,$y:100%,$complete:false){

@@ -1,3 +1,4 @@
+@import "base";
 .page{
     position: absolute;
     top: 0;
@@ -5,17 +6,206 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
+    background-color: #0d0c0a;
+}
+.page.show{
+    opacity: 1;
+    z-index: 10;
 }
 .page1{
-    background-color: #ff33dd;
+    @include bg("bg1.jpg");
+
+    .logo1{
+        position: absolute;
+        top: 0.57rem;
+        right: 0.72rem;
+        width: 1.71rem;
+        height: 0.55rem;
+        @include bg("logo1.png");
+    }
+    .logo2{
+        position: absolute;
+        top: 0.75rem;
+        left: 0.64rem;
+        width: 1.46rem;
+        height: 3.2rem;
+        @include bg("logo2.png");
+    }
+    .font1{
+        position: absolute;
+        bottom: 1.28rem;
+        left: 2.22rem;
+        width: 1.98rem;
+        height: 0.94rem;
+        @include bg("font1.png");
+    }
+    .font2{
+        position: absolute;
+        bottom: 0.43rem;
+        left: 1.9rem;
+        width: 2.6rem;
+        height: 0.53rem;
+        @include bg("font2.png");
+    }
+    .come1{
+        position: absolute;
+        bottom: 2.93rem;
+        left: 2.38rem;
+        width: 1.65rem;
+        height: 0.42rem;
+        @include bg("come1.png");
+    }
 }
 .page2{
-    background-color: #33ffdd;
+    opacity: 0;
+}
+.page2-main{
+    padding: 0.3rem 0;
+    @include bg("bg2.jpg",100%,auto);
+    .btn{
+        height: 0.42rem;
+        padding: 0.26rem 0;
+        a{
+            display: block;
+            width: 1.65rem;
+            height: 0.42rem;
+            margin: 0 auto;
+        }
+    }
+    .open a{
+        @include bg("open.png");
+    }
+    .come2 a{
+        @include bg("come2.png");
+    }
+    .list{
+        margin-left: 0.75rem;
+        margin-top: 0.71rem;
+        height: 0.51rem;
+    }
+    .detail{
+        margin-left: 1.13rem;
+        height: 0.51rem;
+    }
+
+    @for $i from 1 to 5{
+        .list#{$i}{
+            @include bg("list#{$i}.png",auto,0.24rem);
+        }
+        .detail#{$i}{
+            @include bg("detail#{$i}.png",auto,100%);
+        }
+    }
+
+    .list5{
+        margin-top: 3.1rem;
+        height: 0.59rem;
+        @include bg("list5.png",4.74rem,100%);
+        background-position: center center;
+    }
+    .detail5{
+        margin-top: 0.7rem;
+        height: 0.52rem;
+        @include bg("detail5.png",2.21rem,100%);
+        background-position: 3.35rem center;
+    }
+
+
+    .say1{
+        margin-top: 3.3rem;
+        margin-left: 2.77rem;
+        width: 2.82rem;
+        height: 3.76rem;
+        @include bg("say1.png");
+    }
+    .say2{
+        margin-top: 4.18rem;
+        margin-left: 1.8rem;
+        margin-bottom: 0.84rem;
+        width: 2.8rem;
+        height: 2.07rem;
+        @include bg("say2.png");
+    }
 }
 .page3{
-    z-index: 10;
-    background-color: #ffdd33;
+    opacity: 0;
 }
-.page4{
-    background-color: #33ddff;
+.swiper-slide{
+    padding: 2rem 0;
+    box-sizing: border-box;
+    aside,p{
+        width: 5.26rem;
+        margin: 0 auto;
+        &:nth-of-type(2n+1){
+            background-position: left center;
+        }
+        &:nth-of-type(2n){
+            background-position: right center;
+        }
+    }
+    p{
+        height: 0.51rem;
+    }
+    aside{
+        height: 0.44rem;
+        margin-bottom: 2rem;
+    }
+    
+    &:nth-child(1){
+        @include bg('bg32.jpg');
+        @for $i from 1 to 4{
+            p:nth-of-type(#{$i}){
+                @include bg("p#{$i}.png",auto,0.51rem);
+            }
+            aside:nth-of-type(#{$i}){
+                @include bg("i#{$i}.png",auto,0.44rem);
+            }
+        }
+    }
+    &:nth-child(2){
+        @include bg('bg33.jpg');
+        @for $i from 1 to 4{
+            p:nth-of-type(#{$i}){
+                @include bg("p#{($i+3)}.png",auto,0.51rem);
+            }
+            aside:nth-of-type(#{$i}){
+                @include bg("i#{($i+3)}.png",auto,0.44rem);
+            }
+        }
+    }
+    &:nth-child(3){
+        @include bg('bg33.jpg');
+        .end1{
+            width: 100%;
+            height: 2.5rem;
+            @include bg("end1.png",4.2rem,2.46rem);
+            background-position: center center;
+        }
+        @include bg('bg33.jpg');
+        .end2{
+            position: absolute;
+            bottom: 3.7rem;
+            left: 0;
+            width: 100%;
+            height: 1.1rem;
+            @include bg("end2.png",3.66rem,1.1rem);
+            background-position: center center;
+        }
+        .rect{
+            position: absolute;
+            bottom: 0.7rem;
+            left: 0;
+            width: 100%;
+            height: 2.31rem;
+            @include bg('rect.png', 5.49rem,2.31rem);
+            background-position: center center;
+            a{
+                position: absolute;
+                left: 3rem;
+                bottom: 0.38rem;
+                width: 1.7rem;
+                height: 0.37rem;
+            }
+        }
+    }
 }
