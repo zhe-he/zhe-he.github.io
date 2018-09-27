@@ -7,9 +7,9 @@
         </div>
         <div class="about_c">
             <p>网名：踩在🐢上的🐰</p>
-            <p>职业：前端开发工程师</p>
+            <p>职业：前端开发</p>
             <p>籍贯：湖北省—汉川市</p>
-            <p>电话：15072496166</p>
+            <p>电话：150xxxx6166</p>
             <p><a href="mailto:zhe-he@qq.com">邮箱：zhe-he@qq.com</a></p>
         </div>
     </div>
