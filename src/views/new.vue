@@ -41,10 +41,10 @@
                 var gitment = new Gitment({
                     id: 2,
                     owner: 'zhe-he',
-                    repo: 'https://github.com/zhe-he/zhe-he.github.io/issues',
+                    repo: 'zhe-he.github.io',
                     oauth: {
-                        client_id: 'ec289dade103967c53a3',
-                        client_secret: '726d51e54cfcda701e261d001774a9b8ec137cae'
+                        client_id: '527871f21f0e156b8c0e',
+                        client_secret: '834bdee4f48a9b91a1ae9535b119f1deb859d824'
                     }
                 })
                 gitment.render('pageNew')
