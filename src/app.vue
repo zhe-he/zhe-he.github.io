@@ -10,38 +10,22 @@
     </div>
 </template>
 
-<style lang="scss">
-    @import "./styles/reset";
-    @import "./styles/app";
-    @import "./styles/media";
-</style>
 <script type="text/javascript">
-    import 'gitment/style/default.css';
-
-    import msg from './modules/msg';
-    import loading from './modules/loading';
-    import FastClick from 'fastclick';
-    // import "./libs/autosize.js";
+    import Msg from '@/components/msg/msg'
+    import Loading from '@/components/loading/loading'
     import { mapState } from "vuex";
 
     export default {
-        name: 'app',
         data (){
             return {
-
             }
         },
         computed: {
-            ...mapState(["loadStatus","toast"])
-        },
-        created(){
-            this.$nextTick(()=>{
-                FastClick.attach(document.body);
-            })
+            ...mapState(["loadStatus", "toast"])
         },
         components: {
-            msg,
-            loading
+            Msg,
+            Loading
         }
     }
 </script>

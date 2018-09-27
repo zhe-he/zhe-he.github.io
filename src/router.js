@@ -1,51 +1,47 @@
-import Router from 'vue-router';
-import index from './views/';
+import Vue from 'vue'
+import Router from 'vue-router'
+import Index from './views'
 
-const about = r => require(['./views/about'], r);
-const pageNew = r => require(['./views/new'], r);
-const newlist = r => require(['./views/newlist'], r);
-const share = r => require(['./views/share'], r);
-const messBoard = r => require(['./views/messBoard'],r);
-
-// const topic = r => require.ensure([], () => r(require('./views/topic/index.vue')), 'group-topic');
+const views = name => () => import('@/views/' + name);
+Vue.use(Router);
 
 const routes = [{
     path: '/',
     redirect: '/index'
-},{
+}, {
     path: '/index',
-    component: index,
+    component: Index,
     meta: {
         keepAlive: true
     }
-},{
+}, {
     path: '/about',
-    component: about,
+    component: views('about'),
     meta: {
         keepAlive: true
     }
-},{
+}, {
     path: '/newlist',
-    component: newlist,
+    component: views('newlist'),
     meta: {
         keepAlive: true
     }
-},{
-    path: '/messBoard',
-    component: messBoard,
+}, {
+    path: '/msgBoard',
+    component: views('msg-board'),
     meta: {
         keepAlive: true
     }
-},{
+}, {
     path: '/newlist/:id?',
-    component: pageNew,
+    component: views('new'),
     name: 'pageNew',
     meta: {
         keepAlive: false
     }
-},{
+}, {
     path: '/share',
-    component: share,
+    component: views('share'),
     meta: {
         keepAlive: true
     }

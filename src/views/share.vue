@@ -11,7 +11,7 @@
                 </h3>
                 <ul>
                     <li v-for="item2 in item.content">
-                        <a :href="item2.url"><img :src="item2.imgSrc"></a>
+                        <a :href="'static'+item2.url"><img :src="'static/'+item2.imgSrc"></a>
                         <span>{{item2.title}}</span>
                     </li>
                 </ul>
@@ -24,7 +24,7 @@
 </template>
 
 <script type="text/javascript">
-    var shareDate = require('../data/share.json');
+    import shareDate from '@/data/share'
     export default {
         data(){
             return {
@@ -40,7 +40,7 @@
 
 
 <style lang="scss" scoped>
-    @import "../styles/base";
+    @import "~@/common/styles/base.scss";
     .template { 
         margin: 0 10px 0 10px; 
         h3 { 

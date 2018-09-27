@@ -8,51 +8,51 @@
 
                     "title": "分块运动",
                     "url": "/2014/block/",
-                    "imgSrc": "images/tmp/block.jpg"
+                    "imgSrc": "images/block.jpg"
                 },{
 
                     "title": "CSS3时钟",
                     "url": "/2014/clock/",
-                    "imgSrc": "images/tmp/clock.jpg"
+                    "imgSrc": "images/clock.jpg"
                 },{
 
                     "title": "爆炸轮播图",
                     "url": "/2015/html5tab/",
-                    "imgSrc": "images/tmp/html5tab.jpg"
+                    "imgSrc": "images/html5tab.jpg"
                 },{
 
                     "title": "放大镜",
                     "url": "/2014/magnifier/",
-                    "imgSrc": "images/tmp/magnifier.jpg"
+                    "imgSrc": "images/magnifier.jpg"
                 },{
 
                     "title": "照片墙",
                     "url": "/2014/photo_wall/",
-                    "imgSrc": "images/tmp/photo_wall.jpg"
+                    "imgSrc": "images/photo_wall.jpg"
                 },{
 
                     "title": "无缝轮播图",
                     "url": "/2014/tab/",
-                    "imgSrc": "images/tmp/tab.jpg"
+                    "imgSrc": "images/tab.jpg"
                 },{
 
                     "title": "瀑布流",
                     "url": "/2014/waterfall/",
-                    "imgSrc": "images/tmp/waterfall.jpg"
+                    "imgSrc": "images/waterfall.jpg"
                 },{
                     "title": "3D旋转效果展示",
                     "url": "/2015/3D_rotation/",
-                    "imgSrc": "images/tmp/3D_rotation.jpg"
+                    "imgSrc": "images/3D_rotation.jpg"
                 },{
 
                     "title": "仿苹果桌面",
                     "url": "/2014/apple_desktop/",
-                    "imgSrc": "images/tmp/apple_desktop.jpg"
+                    "imgSrc": "images/apple_desktop.jpg"
                 },{
 
                     "title": "仿苹果菜单",
                     "url": "/2014/apple_menu/",
-                    "imgSrc": "images/tmp/apple_menu.jpg"
+                    "imgSrc": "images/apple_menu.jpg"
                 }
             ]
         },{
@@ -61,17 +61,17 @@
                 {
                     "title": "寻路算法",
                     "url": "/2015/algorithm/findWay/",
-                    "imgSrc": "images/tmp/findWay.jpg"
+                    "imgSrc": "images/findWay.jpg"
                 },
                 {
                     "title": "七皇后算法",
                     "url": "/2015/algorithm/sevenQueen/",
-                    "imgSrc": "images/tmp/sevenQueen.jpg"
+                    "imgSrc": "images/sevenQueen.jpg"
                 },{
 
                     "title": "螺旋矩阵算法",
                     "url": "/2015/algorithm/spiralMatrix/",
-                    "imgSrc": "images/tmp/spiralMatrix.jpg"
+                    "imgSrc": "images/spiralMatrix.jpg"
                 }
             ]
         },{
@@ -81,12 +81,12 @@
 
                     "title": "打地鼠",
                     "url": "/2015/whac-a-mole/",
-                    "imgSrc": "images/tmp/whac-a-mole.jpg"
+                    "imgSrc": "images/whac-a-mole.jpg"
                 },{
 
                     "title": "打字游戏",
                     "url": "/2015/word/",
-                    "imgSrc": "images/tmp/word.jpg"
+                    "imgSrc": "images/word.jpg"
                 }
             ]
         }

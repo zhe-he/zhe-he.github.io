@@ -26,7 +26,7 @@
 </template>
 
 <style scoped lang="scss">
-    @import "../styles/base";
+    @import "~@/common/styles/base.scss";
     .about { 
         line-height: 22px; 
         margin: 20px; 
