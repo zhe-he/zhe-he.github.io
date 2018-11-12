@@ -10,7 +10,7 @@
                 </ul>
                 <h2>About my blog</h2>
                 <ul class="blog_a">
-                    <p>域  名：www.hezhe.com 创建于2017年07月07日 <a href="http://www.net.cn/domain/" class="blog_link" target="_blank">注册域名</a><a class="blog_link" href="http://koubei.baidu.com/womc/s/www.hezhe.com" target="_blank">邀你点评</a></p>
+                    <p>域  名：www.hezhe.cn 创建于2017年07月07日 <a href="http://www.net.cn/domain/" class="blog_link" target="_blank">注册域名</a><a class="blog_link" href="http://koubei.baidu.com/womc/s/www.hezhe.com" target="_blank">邀你点评</a></p>
                     <p>服务器：阿里云服务器<a href="http://www.aliyun.com/product/ecs/?ali_trackid=2:mm_11085263_4976026_15602229:1389838528_3k2_34164590" class="blog_link" target="_blank">购买空间</a><a href="javascript:;" target="_blank" class="blog_link" >参考我的空间配置</a></p>
                     <p>程  序：nodejs</p>
                     <p>微信公众号：何哲</p>
